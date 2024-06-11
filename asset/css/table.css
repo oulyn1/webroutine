@@ -1,0 +1,19 @@
+table,
+    th,
+    td {
+        border: 1px solid black;
+        border-spacing: 0;
+    }
+    th{
+        font-size: 20px;
+        padding: 8px;
+    }
+    td{
+      padding: 8px;
+      text-align: center;
+    }
+    .thea{
+        color: #000;
+        text-decoration: none;
+    }
+    

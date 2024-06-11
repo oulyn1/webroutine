@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+div.header {
+  display: flex;
+  min-width: 72px;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.header__list-items:hover b,
+#main {
+  color: rgb(0, 0, 0, 0.5);
+}
+
+.header__list {
+  margin-left: 46px;
+}
+.header__list .header__list-items {
+  text-decoration: none;
+  line-height: 72px;
+  padding: 8px;
+  color: #000;
+  font-size: 16px;
+}
+.header__list2 {
+  display: flex;
+  margin-right: 46px;
+  align-items: center;
+}
+
+.header__list2 .search {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.header__list2 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  padding-left: 8px;
+}
+.tablesql,.footer, table.tlb-info,
+.body-header {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+.body-info {
+  padding: 16px;
+}
+.info-name {
+  font-size: 20px;
+  padding: 24px;
+}
+.info-name-property {
+  font-size: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 420px;
+}
+.tlb-submit {
+  display: flex;
+  justify-content: center;
+}
+.btn-update {
+  font-size: 20px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+  border-radius: 4px;
+}
+.footer a{
+  color: #000;
+}
+.createacc{
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+.createacc a{
+  color: #fff;
+  text-decoration: none;
+  background-color: #00CC33;
+  padding: 16px;
+  border-radius: 4px;
+}
+.btn-update,
+.btn-add:hover,
+.createacc a:hover{
+  opacity: 0.7;
+}
+.tlb-add{
+  display: flex;
+  justify-content: center;
+}
+.btn-add{
+  font-size: 20px;
+  background-color: #00CC33;
+  color: #fff;
+  border: 1px solid #00CC33;
+  padding: 8px;
+  border-radius: 4px;
+}
+
