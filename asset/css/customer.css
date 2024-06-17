@@ -330,6 +330,76 @@ html{
     width: 100%;
     padding: 10px 10px;
 }
+.product_list{
+    list-style: none;
+    width: 100%;
+}
+.product_list li{
+    width: 23.5%;
+    border: 1px dashed #000;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+}
+.product_list li img{
+    width: 100%;
+}
+.product_list li a{
+    text-decoration: none; 
+}
+
+.price_product{
+    font-weight: bold;
+}
+
+.modal-after{
+    background-color: white;
+    position: absolute;
+    border-radius: 5px;
+    padding: 15px 20px;
+    right: 100px;
+    top: 75px;
+    width: 240px;   
+    height: 200px;  
+}
+
+.model-innerafter{
+    text-align: left;
+}
+
+.model-innerafter .ti-close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.body-after{
+    width: 100%;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.body-after div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.body-after a, .body-end a{
+    text-decoration: none;
+    color: #000;
+}
+.body-start{
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.body-after a:hover, .body-end :hover{
+    text-decoration:underline;
+}
+.body-end{
+    margin-top: 20px;
+}
 @keyframes modalAnimation{
     from{
       opacity: 0;
