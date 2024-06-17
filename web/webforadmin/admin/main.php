@@ -13,12 +13,12 @@
     <div class="container">
         <div class="header">
             <div class="header__list">
-                <a href="#" class="header__list-items" id="main"><b>Tổng quan</b></a>
-                <a href="../khachhang/khachhang.php" class="header__list-items"><b>Khách hàng</b></a>
-                <a href="../taikhoan/taikhoan.php" class="header__list-items"><b>Tài khoản</b></a>
-                <a href="../sanpham/sanpham.php" class="header__list-items"><b>Sản phẩm</b></a>
-                <a href="../kho/kho.php" class="header__list-items"><b>Kho</b></a>
-                <a href="../thongke/thongke.php" class="header__list-items"><b>Thống Kê</b></a>
+                <a href="#" class="header__list-items?ID=ID" id="main"><b>Tổng quan</b></a>
+                <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
+                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
+                <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
+                <a href="../kho/kho.php?ID=ID" class="header__list-items"><b>Kho</b></a>
+                <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
             </div>
             <div class="header__list2">
                 <a href="" class="logout" class="logout">Đăng xuất</a>
@@ -30,20 +30,20 @@
             </div>
             <?php 
       include("../../../config/config.php");
-      $id_user=0;
+      $id_user=$_GET["ID"];
       $Fullname="";
       $Password="";
       $Email="";
       $Permission="";
       
-      $query = "SELECT * FROM user WHERE id_user=2";
+      $query = "SELECT * FROM user WHERE Id_user=$id_user";
       $result=mysqli_query($conn, $query);
       if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result)) {
             $FullName = $row["Fullname"];
             $Email = $row["Email"];
             $Permission = $row["Permission"];
-            $id_user=$row["Id_user"];
+            // $id_user=$row["Id_user"];
             $Password= md5($row["Password"]);
         }
       }
@@ -57,7 +57,7 @@
                                 <td class="info-name"><label for="ID">ID</label></td>
                                 <td>
                                     <input type="text" class="info-name-property" id="ID" name="txtID"
-                                        value="<?php echo $id_user ?>" />
+                                        value="<?php echo $id_user ?>" disabled />
                                 </td>
                             </tr>
                             <tr>
