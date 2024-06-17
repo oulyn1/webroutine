@@ -4,23 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Routine hãy mặc theo cách của bạn</title>
-    <link rel="stylesheet" href="../../asset/css/customer.css" />
-    <link rel="stylesheet"href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css"/>
+    <link rel="stylesheet" href="asset/css/customer.css" />
+    <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css"/>
   </head>
+  <?php
+          session_start();
+          include("config/config.php");
+          if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            $email=$_POST['email'];
+            $password=md5($_POST['password']);
+            $query="SELECT * FROM user WHERE Email='".$email."' AND Password='".$password."' LIMIT 1";
+            $result=mysqli_query($conn,$query);
+            if(mysqli_num_rows($result)> 0){
+              while ($row = mysqli_fetch_assoc($result)) {
+              if($row["Permission"]=="Admin"){
+                $_SESSION['admin']= $row["Id_user"];
+                header("Location:web/webforadmin/admin/main.php?ID='".$row["Id_user"]."'");
+              }
+            }
+            }else{
+              echo"";
+            }
+
+          }
+?>
   <body>
     <div id="main">
       <div id="header">
         <div class="header__left">
           <a href="index.php" class="logo">
             <img
-              src="../../asset/img/logo-routine.png"
+              src="asset/img/logo-routine.png"
               alt=""
               class="logo__img"
             />
           </a>
           <ul class="nav">
-            <li><a href="man.php">NAM</a></li>
-            <li><a href="women.php">NỮ</a></li>
+            <li><a href="web/webforcustomer/man.php">NAM</a></li>
+            <li><a href="web/webforcustomer/women.php">NỮ</a></li>
             <li><a href="#banner">NEW</a></li>
             <li><a href="#content">BEST</a></li>
           </ul>
@@ -39,11 +60,11 @@
       <div id="slider">
         <div class="slider-wrapper">
           <div class="slider-img">
-            <img src="../../asset/img/sld1.jpg" alt="img1" id="img-slider1" />
-            <img src="../../asset/img/sld2.webp" alt="img2" id="img-slider2" />
-            <img src="../../asset/img/sld3.webp" alt="img3" id="img-slider3" />
-            <img src="../../asset/img/sld4.webp" alt="img4" id="img-slider4" />
-            <img src="../../asset/img/sld5.webp" alt="img5" id="img-slider5" />
+            <img src="asset/img/sld1.jpg" alt="img1" id="img-slider1" />
+            <img src="asset/img/sld2.webp" alt="img2" id="img-slider2" />
+            <img src="asset/img/sld3.webp" alt="img3" id="img-slider3" />
+            <img src="asset/img/sld4.webp" alt="img4" id="img-slider4" />
+            <img src="asset/img/sld5.webp" alt="img5" id="img-slider5" />
           </div>
           <div class="slider-nav">
             <a href="#img-slider1"></a>
@@ -56,13 +77,13 @@
       </div>
 
       <div id="banner">
-        <img src="../../asset/img/banner1.webp" alt="" />
-        <img src="../../asset/img/banner2.webp" alt="" />
+        <img src="asset/img/banner1.webp" alt="" />
+        <img src="asset/img/banner2.webp" alt="" />
       </div>
 
       <div id="content">
         <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
+          <img src="asset/img/imgitem1.jpg" alt="" />
           <div class="item-title">
             <a href="" class="font-titles"
               >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
@@ -73,7 +94,7 @@
           <b>499.000 đ</b>
         </div>
         <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
+          <img src="asset/img/imgitem1.jpg" alt="" />
           <div class="item-title">
             <a href="" class="font-titles"
               >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
@@ -84,7 +105,7 @@
           <b>499.000 đ</b>
         </div>
         <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
+          <img src="asset/img/imgitem1.jpg" alt="" />
           <div class="item-title">
             <a href="" class="font-titles"
               >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
@@ -95,7 +116,7 @@
           <b>499.000 đ</b>
         </div>
         <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
+          <img src="asset/img/imgitem1.jpg" alt="" />
           <div class="item-title">
             <a href="" class="font-titles"
               >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
@@ -120,22 +141,25 @@
               đãi hấp dẫn
             </p>
           </div>
-          <div class="auth-form">
-            <div class="auth-group">
-              <p>Email</p>
-              <input type="text" placeholder="Email" />
+          
+          <form method="POST">
+            <div class="auth-form">
+              <div class="auth-group">
+                <p>Email</p>
+                <input type="text" placeholder="Email" name="email"/>
+              </div>
+              <div class="auth-group">
+                <p>Mật khẩu</p>
+                <input type="password" placeholder="Mật khẩu" name="password"/>
+              </div>
             </div>
-            <div class="auth-group">
-              <p>Mật khẩu</p>
-              <input type="password" placeholder="Mật khẩu" />
+            <div class="auht-control">
+              <div class="forgot">
+                <a href="">Quên mật khẩu?</a>
+              </div>
+              <input type="submit" name="dangnhap" class="btn" value="ĐĂNG NHẬP"></input>
             </div>
-          </div>
-          <div class="auht-control">
-            <div class="forgot">
-              <a href="">Quên mật khẩu?</a>
-            </div>
-            <button class="btn">ĐĂNG NHẬP</button>
-          </div>
+          </form>
           <div class="auth-switch">
             <p>Bạn chưa có tài khoản?</p>
             <a href="#modal-signin" id="opensignin">Đăng kí thành viên -></a>
@@ -224,6 +248,6 @@
       </div>
     </div>
 
-    <script src="../../asset/js/main.js"></script>
+    <script src="asset/js/main.js"></script>
   </body>
 </html>

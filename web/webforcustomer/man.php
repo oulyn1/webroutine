@@ -11,7 +11,7 @@
     <div id="main">
         <div id="header">
             <div class="header__left">
-                <a href="index.php" class="logo">
+                <a href="../../index.php" class="logo">
                     <img src="../../asset/img/logo-routine.png" alt="" class="logo__img">
                 </a>
                 <ul class="nav">
@@ -42,22 +42,28 @@
                     <h2>Đăng nhập</h2>
                     <p>Đăng nhập thành viên Routine để nhận nhiều những chương trình ưu đãi hấp dẫn</p>
                 </div>
-                <div class="auth-form">
-                    <div class="auth-group">
-                        <p>Email</p>
-                        <input type="text" placeholder="Email">
+                <?php
+                session_start()
+                 
+                ?>
+                <form method="POST">
+                    <div class="auth-form">
+                        <div class="auth-group">
+                            <p>Email</p>
+                            <input type="text" placeholder="Email" name="txtemail">
+                        </div>
+                        <div class="auth-group">
+                            <p>Mật khẩu</p>
+                            <input type="password" placeholder="Mật khẩu" name="txtpassword">
+                        </div>
                     </div>
-                    <div class="auth-group">
-                        <p>Mật khẩu</p>
-                        <input type="password" placeholder="Mật khẩu">
+                    <div class="auht-control">
+                        <div class="forgot">
+                            <a href="">Quên mật khẩu?</a>
+                        </div>
+                        <input type="submit" class="btn">ĐĂNG NHẬP</input>
                     </div>
-                </div>
-                <div class="auht-control">
-                    <div class="forgot">
-                        <a href="">Quên mật khẩu?</a>
-                    </div>
-                    <button class="btn">ĐĂNG NHẬP</button>
-                </div>
+                </form>
                 <div class="auth-switch">
                     <p>Bạn chưa có tài khoản?</p>
                     <a href="#modal-signin" id="opensignin">Đăng kí thành viên -></a>
