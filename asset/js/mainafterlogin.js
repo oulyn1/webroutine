@@ -1,6 +1,6 @@
 var signin = document.getElementById("modal-signin");
 var btnsignin = document.getElementById("openlogin");
-var spansignin = document.getElementsByClassName("ti-close")[1];
+var spansignin = document.getElementsByClassName("ti-close")[2];
 btnsignin.onclick = function() {
     signin.style.display = "block";
 }
@@ -20,7 +20,7 @@ spanlove.onclick = function() {
 
 var shopping = document.getElementById("modal-shopping");
 var btn = document.getElementById("openshopping");
-var span = document.getElementsByClassName("ti-close")[2];
+var span = document.getElementsByClassName("ti-close")[1];
 btn.onclick = function() {
     shopping.style.display = "block";
 }
