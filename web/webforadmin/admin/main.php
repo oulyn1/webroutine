@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location: ../../../index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +29,7 @@
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
             </div>
             <div class="header__list2">
-                <a href="" class="logout" class="logout">Đăng xuất</a>
+                <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
             </div>
         </div>
         <div class="body">
