@@ -184,36 +184,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             đãi hấp dẫn
           </p>
         </div>
-        <div class="auth-form">
-          <div class="auth-group">
-            <p>Họ và tên</p>
-            <input type="text" placeholder="Họ và tên" />
+        <form method="post">
+          <div class="auth-form">
+            <div class="auth-group">
+              <p>Họ và tên</p>
+              <input type="text" placeholder="Họ và tên" />
+            </div>
+            <div class="auth-group">
+              <p>Email</p>
+              <input type="text" placeholder="Email" />
+            </div>
+            <div class="auth-group">
+              <p>Mã OTP</p>
+              <input type="text" placeholder="OTP" />
+            </div>
+            <div class="auth-group">
+              <p>Mật khẩu</p>
+              <input type="password" placeholder="Mật khẩu" />
+            </div>
+            <div class="auth-group">
+              <p>Nhắc lại mật khẩu</p>
+              <input type="password" placeholder="Nhập lại mật khẩu" />
+            </div>
           </div>
-          <div class="auth-group">
-            <p>Email</p>
-            <input type="text" placeholder="Email" />
-          </div>
-          <div class="auth-group">
-            <p>Mã OTP</p>
-            <input type="text" placeholder="OTP" />
-          </div>
-          <div class="auth-group">
-            <p>Mật khẩu</p>
-            <input type="password" placeholder="Mật khẩu" />
-          </div>
-          <div class="auth-group">
-            <p>Nhắc lại mật khẩu</p>
-            <input type="password" placeholder="Nhập lại mật khẩu" />
-          </div>
-        </div>
-        <div class="auht-control">
-          <div class="dk">
-            <input type="checkbox" />
-            <a href="">
-              Tôi chấp nhận <u>điều khoản quyền riêng tư và bảo mật</u>
-            </a>
-          </div>
-          <button class="btn">ĐĂNG KÍ TÀI KHOẢN</button>
+          <div class="auht-control">
+            <div class="dk">
+              <input type="checkbox" />
+              <a href="">
+                Tôi chấp nhận <u>điều khoản quyền riêng tư và bảo mật</u>
+              </a>
+            </div>
+            <button class="btn">ĐĂNG KÍ TÀI KHOẢN</button>
+        </form>
         </div>
         <div class="auth-switch">
           <a href="#modal-login" id="openlogin2"><- Đăng nhập</a>
