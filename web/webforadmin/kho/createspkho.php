@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
@@ -36,55 +36,66 @@
                 <table class="tlb-info">
                     <div class="user-info">
                         <tbody>
-                        <tr>
-                            <td class="info-name"><label for="idsanpham">ID Sản Phẩm</label></td>
-                            <td><input type="text" class="info-name-property" id="idsanpham" name="txtidsanpham" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="soluong">Số lượng</label></td>
-                            <td><input type="text" class="info-name-property" id="soluong" name="txtsoluong" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="ngaynhap">Ngày nhập</label></td>
-                            <td><input type="date" class="info-name-property" id="ngaynhap" name="txtngaynhap" required /></td>
-                        </tr>
-                    </tbody>
+                            <tr>
+                                <td class="info-name"><label for="idsanpham">ID Sản Phẩm</label></td>
+                                <td><select name="txtidsanpham" id="idsanpham" class="info-name-property" required>
+                                        <?php
+                                        include ("../../../config/config.php");
+                                        $sql = "SELECT * FROM tbl_sanpham";
+                                        $result = mysqli_query($conn, $sql);
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                            echo '<option value="'.$row["idsanpham"].'">'.$row["idsanpham"].'</option>';
+                                            }
+                                        }
+                                        ?>
+                                        
+                                    </select></td>
+                            </tr>
+                            <tr>
+                                <td class="info-name"><label for="soluong">Số lượng</label></td>
+                                <td><input type="text" class="info-name-property" id="soluong" name="txtsoluong"
+                                        required /></td>
+                            </tr>
+                            <tr>
+                                <td class="info-name"><label for="ngaynhap">Ngày nhập</label></td>
+                                <td><input type="date" class="info-name-property" id="ngaynhap" name="txtngaynhap"
+                                        required /></td>
+                            </tr>
+                        </tbody>
                 </table>
-                <div class="tlb-add"><input type="submit" value="Thêm sản phẩm" class="btn-add" colspan="2" name="txtThem" /></div>
+                <div class="tlb-add"><input type="submit" value="Thêm sản phẩm" class="btn-add" colspan="2"
+                        name="txtThem" /></div>
             </form>
 
         </div>
     </div>
     <?php
-        include("../../../config/config.php");
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idsanpham = $_POST['txtidsanpham'];
-            $soluong = $_POST['txtsoluong'];
-            $ngaynhap = $_POST['txtngaynhap'];
-            if (!$conn) {
-                echo 'Kết nối không thành công' . mysqli_connect_error();
-            }
-            else {
-                $sql = "INSERT INTO khohang VALUES ('".$idsanpham."' ,'".$soluong."','".$ngaynhap."')";
-                $result = mysqli_query($conn, $sql);
-                if ($result > 0) {
-                    echo "  <script>
+    include ("../../../config/config.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $idsanpham = $_POST['txtidsanpham'];
+        $soluong = $_POST['txtsoluong'];
+        $ngaynhap = $_POST['txtngaynhap'];
+        if (!$conn) {
+            echo 'Kết nối không thành công' . mysqli_connect_error();
+        } else {
+            $sql = "INSERT INTO khohang VALUES ('" . $idsanpham . "' ,'" . $soluong . "','" . $ngaynhap . "')";
+            $result = mysqli_query($conn, $sql);
+            if ($result > 0) {
+                echo "  <script>
                                 alert('Cập nhật dữ liệu thành công');
                                 window.location.href='kho.php';
                             </script>";
-                }
-                else {
-                    echo "  <script>
+            } else {
+                echo "  <script>
                                 alert('Lỗi Cập nhật dữ liệu ');
                                 window.location.href='kho.php';
                             </script>";
-                }
             }
-        
+        }
+
     }
     ?>
 </body>
 
 </html>
-
-        
