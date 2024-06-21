@@ -7,9 +7,9 @@
 </head>
 <body>
     <?php
-    $ID=$_GET["ID"];
+    $idsanpham=$_GET["idsanpham"];
     include("../../../config/config.php");
-    $sql = "DELETE FROM kho WHERE ID='".$ID."'";
+    $sql = "DELETE FROM khohang WHERE idsanpham='".$idsanpham."'";
         
         $result = mysqli_query($conn, $sql);
         if ($result > 0) {

@@ -37,48 +37,16 @@
                     <div class="user-info">
                         <tbody>
                         <tr>
-                            <td class="info-name"><label for="MaSP">Mã sản phẩm</label></td>
-                            <td><input type="text" class="info-name-property" id="MaSP" name="txtMaSP" required /></td>
+                            <td class="info-name"><label for="idsanpham">ID Sản Phẩm</label></td>
+                            <td><input type="text" class="info-name-property" id="idsanpham" name="txtidsanpham" required /></td>
                         </tr>
                         <tr>
-                            <td class="info-name"><label for="Name">Tên sản phẩm</label></td>
-                            <td><input type="text" class="info-name-property" id="Name" name="txtName" required /></td>
+                            <td class="info-name"><label for="soluong">Số lượng</label></td>
+                            <td><input type="text" class="info-name-property" id="soluong" name="txtsoluong" required /></td>
                         </tr>
                         <tr>
-                            <td class="info-name"><label for="MaKho">Mã kho</label></td>
-                            <td><input type="text" class="info-name-property" id="MaKho" name="txtMaKho" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="Size">Size</label></td>
-                            <td>
-                                <select class="info-name-property" id="Size" name="txtSize" required>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="Color">Color</label></td>
-                            <td><input type="text" class="info-name-property" id="Color" name="txtColor" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="GiaBan">Giá bán</label></td>
-                            <td><input type="text" class="info-name-property" id="GiaBan" name="txtGiaBan" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="SoLuong">Số lượng</label></td>
-                            <td><input type="text" class="info-name-property" id="SoLuong" name="txtSoLuong" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="Image">Hình ảnh</label></td>
-                            <td><input type="file" class="info-name-property" id="Image" name="txtImage" required /></td>
-                        </tr>
-                        <tr>
-                            <td class="info-name"><label for="NgayNhap">Ngày nhập</label></td>
-                            <td><input type="date" class="info-name-property" id="NgayNhap" name="txtNgayNhap" required /></td>
+                            <td class="info-name"><label for="ngaynhap">Ngày nhập</label></td>
+                            <td><input type="date" class="info-name-property" id="ngaynhap" name="txtngaynhap" required /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -90,20 +58,14 @@
     <?php
         include("../../../config/config.php");
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $MaSP = $_POST['txtMaSP'];
-            $Name = $_POST['txtName'];
-            $MaKho = $_POST['txtMaKho'];
-            $Size = $_POST['txtSize'];
-            $Color = $_POST['txtColor'];
-            $GiaBan = $_POST['txtGiaBan'];
-            $SoLuong = $_POST['txtSoLuong'];
-            $Image = $_FILES['txtImage']['name'];
-            $NgayNhap = $_POST['txtNgayNhap'];
+            $idsanpham = $_POST['txtidsanpham'];
+            $soluong = $_POST['txtsoluong'];
+            $ngaynhap = $_POST['txtngaynhap'];
             if (!$conn) {
                 echo 'Kết nối không thành công' . mysqli_connect_error();
             }
             else {
-                $sql = "INSERT INTO kho VALUES ('','".$MaSP."' , '".$Name."' ,'".$MaKho."' , '".$Size."' , '".$Color."','".$GiaBan."','".$SoLuong."','".$Image."','".$NgayNhap."')";
+                $sql = "INSERT INTO khohang VALUES ('".$idsanpham."' ,'".$soluong."','".$ngaynhap."')";
                 $result = mysqli_query($conn, $sql);
                 if ($result > 0) {
                     echo "  <script>
