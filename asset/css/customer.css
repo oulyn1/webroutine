@@ -20,6 +20,7 @@ html{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     position: fixed;
     z-index: 10;
     top: 0;

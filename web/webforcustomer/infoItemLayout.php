@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routine</title>
-    <link rel="stylesheet" href="infoItemStyle.css">
+    <link rel="stylesheet" href="/asset/css/infoItemStyle.css">
     <link rel="stylesheet" href="/HTML/image">
-    <link rel="stylesheet" href="/font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/asset/css/themify-icons-font/themify-icons/themify-icons.css">
 </head>
 <body>
     <div id="header">
         <div class="header__left">
             <a href="" class="Logo">
-                <img src="/image/Logo-Rountine.png" alt=""  class="Logo__img">
+                <img src="/asset/img/logo-routine.png" alt=""  class="Logo__img">
             </a>
             <ul class="nav">
                 <li><a href="">Nam</a></li>
@@ -33,32 +33,9 @@
         </div>
     </div>
 
-    <div class="pageWrapper">
-        <div class="breadcrumbs">
-            <ul class="items">
-                <li class="breadcrumbs__item">
-                    <a href="" class="breadcrumbs__link" title="Đi đến trang chủ">Trang chủ</a>
-                </li>
-                <li class="breadcrumbs__item">
-                    <a href="" class="breadcrumbs__link">Thời trang nam</a>
-                </li>
-                <li class="breadcrumbs__item">
-                    <a href="" class="breadcrumbs__link">Áo nam</a>
-                </li>
-                <li class="breadcrumbs__item">
-                    <a href="" class="breadcrumbs__link">Áo polo nam</a>
-                </li>
-                <li class="breadcrumbs__item">
-                    <a href="" class="breadcrumbs__link">Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted - 10S24POL004P</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-        
-
     <div class="main__content">
         <div class="image__content">
-            <img src="/image/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
+            <img src="/asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
         </div>
             
         <div class="product__info__main">
@@ -75,12 +52,12 @@
                 <form class="choose__color__image">
                     <input id="op1" class="op1 radio" type="radio" name="color__choose" value="1">
                     <label for="op1">
-                        <img src="/image/whitePOLO.png" alt="" class="color__image">
+                        <img src="/asset/img/whitePOLO.png" alt="" class="color__image">
                     </label>
                     
                     <input id="op2" class="op2 radio" type="radio" name="color__choose" value="2">
                     <label for="op2">
-                        <img src="/image/blackPOLO.png" alt="" class="color__image">
+                        <img src="/asset/img/blackPOLO.png" alt="" class="color__image">
                     </label>
                 </form>
             </div>
@@ -126,7 +103,7 @@
             <div class="product__info__bottom">
 
                 <div class="product__feature">
-                    <img src="/image/product_feature.png" alt="">
+                    <img src="/asset/img/product_feature.png" alt="">
                 </div>
 
                 <div class="product__attributes">
@@ -247,6 +224,6 @@
         </div>
     </div>
 
-    <script src="/Routine/script.js"></script>
+    <script src="/asset/js/script.js"></script>
 </body>
 </html>

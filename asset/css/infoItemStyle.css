@@ -31,6 +31,9 @@ ul li a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     position: fixed;
     z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .header__left {
@@ -94,34 +97,10 @@ ul li a {
     color: #000;
 }
 
-.breadcrumbs {
-    padding-top: 90px;
-}
-
-.breadcrumbs .items {
-    display: flex;
-    justify-content: center;
-}
-
-.breadcrumbs__item {
-    display: inline-block;
-    margin-bottom: 40px;
-}
-
-.breadcrumbs__item:not(:last-of-type)::after {
-    content: '/';
-}
-
-.breadcrumbs__link {
-    text-decoration: none;
-    color: #737373;
-    font-size: 13px;
-    line-height: 15px;
-}
-
 .main__content {
     padding: 0 50px;
     display: flex;
+    margin-top: 90px;
 }
 
 .main__content .image__content {
