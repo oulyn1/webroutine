@@ -17,7 +17,7 @@
     <div id="main">
       <div id="header">
         <div class="header__left">
-          <a href="index.php" class="logo">
+          <a href="mainafterlogin.php" class="logo">
             <img
               src="../../asset/img/logo-routine.png"
               alt=""
@@ -25,8 +25,8 @@
             />
           </a>
           <ul class="nav">
-            <li><a href="man.php">NAM</a></li>
-            <li><a href="women.php">NỮ</a></li>
+            <li><a href="manafterlogin.php">NAM</a></li>
+            <li><a href="womenafterlogin.php">NỮ</a></li>
             <li><a href="#banner">NEW</a></li>
             <li><a href="#content">BEST</a></li>
           </ul>
