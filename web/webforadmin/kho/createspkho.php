@@ -37,8 +37,16 @@
                     <div class="user-info">
                         <tbody>
                         <tr>
+                            <td class="info-name"><label for="MaSP">Mã sản phẩm</label></td>
+                            <td><input type="text" class="info-name-property" id="MaSP" name="txtMaSP" required /></td>
+                        </tr>
+                        <tr>
                             <td class="info-name"><label for="Name">Tên sản phẩm</label></td>
                             <td><input type="text" class="info-name-property" id="Name" name="txtName" required /></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="MaKho">Mã kho</label></td>
+                            <td><input type="text" class="info-name-property" id="MaKho" name="txtMaKho" required /></td>
                         </tr>
                         <tr>
                             <td class="info-name"><label for="Size">Size</label></td>
@@ -69,8 +77,8 @@
                             <td><input type="file" class="info-name-property" id="Image" name="txtImage" required /></td>
                         </tr>
                         <tr>
-                            <td class="info-name"><label for="MieuTa">Miêu tả</label></td>
-                            <td><input type="text" class="info-name-property" id="MieuTa" name="txtMieuTa" required /></td>
+                            <td class="info-name"><label for="NgayNhap">Ngày nhập</label></td>
+                            <td><input type="date" class="info-name-property" id="NgayNhap" name="txtNgayNhap" required /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -79,34 +87,42 @@
 
         </div>
     </div>
-    <?
+    <?php
         include("../../../config/config.php");
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $MaSP = $_POST['txtMaSP'];
             $Name = $_POST['txtName'];
-            $SiZe = $_POST['txtSize'];
+            $MaKho = $_POST['txtMaKho'];
+            $Size = $_POST['txtSize'];
             $Color = $_POST['txtColor'];
             $GiaBan = $_POST['txtGiaBan'];
             $SoLuong = $_POST['txtSoLuong'];
-            $Image = $_POST['txtImage'];
-            $MieuTa = $_POST['txtMieuTa'];
+            $Image = $_FILES['txtImage']['name'];
+            $NgayNhap = $_POST['txtNgayNhap'];
             if (!$conn) {
                 echo 'Kết nối không thành công' . mysqli_connect_error();
             }
             else {
-                $sql = "INSERT INTO kho VALUES ('".$Name."' , '".$SiZe."' , '".$Color."','".$GiaBan."','".$SoLuong."','".$Image."','".$MieuTa."')";
+                $sql = "INSERT INTO kho VALUES ('','".$MaSP."' , '".$Name."' ,'".$MaKho."' , '".$Size."' , '".$Color."','".$GiaBan."','".$SoLuong."','".$Image."','".$NgayNhap."')";
                 $result = mysqli_query($conn, $sql);
-                $result = mysqli_query($conn, $query);
                 if ($result > 0) {
-                    echo "Ghi dữ liệu thành công";
+                    echo "  <script>
+                                alert('Cập nhật dữ liệu thành công');
+                                window.location.href='kho.php';
+                            </script>";
                 }
                 else {
-                    echo "Lỗi ghi dữ liệu";
+                    echo "  <script>
+                                alert('Lỗi Cập nhật dữ liệu ');
+                                window.location.href='kho.php';
+                            </script>";
                 }
             }
         
     }
     ?>
 </body>
+
 </html>
 
         
