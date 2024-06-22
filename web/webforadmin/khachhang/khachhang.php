@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../../asset/css/table.css">
+    <link rel="stylesheet" href="../../../asset/css/khach_hang.css">
     <title>Khách hàng</title>
 </head>
 
@@ -32,3 +33,10 @@
             <div class="body-header">
                 <h1>Quản lý khách hàng</h1>
             </div>
+                <div class="tablesql"><?php 
+                include("xulykh.php");
+            ?>
+                </div>
+            <div class="createskh"><a href="create_customer.php">Thêm Khách Hàng Mới</></div>
+            
+          
