@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Routine hãy mặc theo cách của bạn</title>
   <link rel="stylesheet" href="asset/css/customer.css" />
+  <!-- <link rel="stylesheet" href="asset/js/script.js"> -->
   <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css" />
 </head>
 <?php
@@ -68,25 +69,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <span class="ti-shopping-cart" id="openshopping" href=""></span>
       </div>
     </div>
+        <!-- slider -->
+        <div id="slider">
+          <div class="slider-wrapper">
+            <div class="slider-img">
+              <?php
+              // Mảng chứa đường dẫn tới các hình ảnh slider
+              $slider_images = [
+                "asset/img/sld1.jpg",
+                "asset/img/sld2.webp",
+                "asset/img/sld3.webp",
+                "asset/img/sld4.webp",
+                "asset/img/sld5.webp"
+              ];
 
-    <div id="slider">
-      <div class="slider-wrapper">
-        <div class="slider-img">
-          <img src="asset/img/sld1.jpg" alt="img1" id="img-slider1" />
-          <img src="asset/img/sld2.webp" alt="img2" id="img-slider2" />
-          <img src="asset/img/sld3.webp" alt="img3" id="img-slider3" />
-          <img src="asset/img/sld4.webp" alt="img4" id="img-slider4" />
-          <img src="asset/img/sld5.webp" alt="img5" id="img-slider5" />
+              // Hiển thị từng hình ảnh trong slider
+              foreach ($slider_images as $index => $image) {
+                echo '<img src="' . $image . '" alt="Slide ' . ($index + 1) . '" />';
+              }
+              ?>
+            </div>
+            <div class="slider-nav">
+              <?php
+              // Tạo các liên kết điều hướng slider
+              foreach ($slider_images as $index => $image) {
+                echo '<a href="#img-slider' . ($index + 1) . '" class="slider-nav-link"></a>';
+              }
+              ?>
+            </div>
+          </div>
         </div>
-        <div class="slider-nav">
-          <a href="#img-slider1"></a>
-          <a href="#img-slider2"></a>
-          <a href="#img-slider3"></a>
-          <a href="#img-slider4"></a>
-          <a href="#img-slider5"></a>
-        </div>
-      </div>
-    </div>
 
     <div id="banner">
       <img src="asset/img/banner1.webp" alt="" />
