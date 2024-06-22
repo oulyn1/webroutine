@@ -16,7 +16,7 @@
                 </a>
                 <ul id="nav">
                 <li>
-                    <a href="web/webforcustomer/man.php">NAM</a>
+                    <a href="../webforcustomer/man.php">NAM</a>
                     <?php
                     include("../../config/config.php");
                     //buoc 2 viet truy van
@@ -36,7 +36,7 @@
                     ?>
                 </li>
                 <li>
-                    <a href="web/webforcustomer/women.php">NỮ</a>
+                    <a href="../webforcustomer/women.php">NỮ</a>
                     <?php
                     include("../../config/config.php");
                     //buoc 2 viet truy van
