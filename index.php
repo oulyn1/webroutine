@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Routine hãy mặc theo cách của bạn</title>
   <link rel="stylesheet" href="asset/css/customer.css" />
-  <!-- <link rel="stylesheet" href="asset/js/script.js"> -->
+  <link rel="stylesheet" href="asset/js/script.js">
   <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css" />
 </head>
 <?php
