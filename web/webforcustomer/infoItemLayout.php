@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routine</title>
-    <link rel="stylesheet" href="/asset/css/infoItemStyle.css">
-    <link rel="stylesheet" href="/HTML/image">
-    <link rel="stylesheet" href="/asset/css/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../../asset/css/infoItemStyle.css?v= <?php echo time(); ?>">
+    <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css?v= <?php echo time(); ?>">
 </head>
 <body>
     <div id="header">
         <div class="header__left">
             <a href="" class="Logo">
-                <img src="/asset/img/logo-routine.png" alt=""  class="Logo__img">
+                <img src="../../asset/img/logo-routine.png" alt=""  class="Logo__img">
             </a>
             <ul class="nav">
                 <li><a href="">Nam</a></li>
@@ -35,7 +34,7 @@
 
     <div class="main__content">
         <div class="image__content">
-            <img src="/asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
+            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
         </div>
             
         <div class="product__info__main">
@@ -52,12 +51,12 @@
                 <form class="choose__color__image">
                     <input id="op1" class="op1 radio" type="radio" name="color__choose" value="1">
                     <label for="op1">
-                        <img src="/asset/img/whitePOLO.png" alt="" class="color__image">
+                        <img src="../../asset/img/whitePOLO.png" alt="" class="color__image">
                     </label>
                     
                     <input id="op2" class="op2 radio" type="radio" name="color__choose" value="2">
                     <label for="op2">
-                        <img src="/asset/img/blackPOLO.png" alt="" class="color__image">
+                        <img src="../../asset/img/blackPOLO.png" alt="" class="color__image">
                     </label>
                 </form>
             </div>

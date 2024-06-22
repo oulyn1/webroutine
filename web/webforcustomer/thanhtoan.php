@@ -44,33 +44,16 @@
 
     <!-- content -->
 
-    <div class="container">
-        <h1>Đặt hàng</h1>
-        <form action="xu_ly_dat_hang.php" method="post">
-            <label for="ten_khachhang">Tên khách hàng:</label>
-            <input type="text" id="ten_khachhang" name="ten_khachhang" required><br>
-            
-            <label for="sdt_khachhang">Số điện thoại:</label>
-            <input type="text" id="sdt_khachhang" name="sdt_khachhang" required><br>
-            
-            <label for="dia_chi">Địa chỉ giao hàng:</label>
-            <input type="text" id="dia_chi" name="dia_chi" required><br>
-            
-            <label for="email_khachhang">Email:</label>
-            <input type="email" id="email_khachhang" name="email_khachhang" required><br>
-            
-            <label for="ten_sanpham">Tên sản phẩm:</label>
-            <input type="text" id="ten_sanpham" name="ten_sanpham" required><br>
-            
-            <label for="so_luong">Số lượng:</label>
-            <input type="number" id="so_luong" name="so_luong" min="1" required><br>
-            
-            <label for="gia">Giá:</label>
-            <input type="text" id="gia" name="gia" required><br>
-            
-            <input type="submit" value="Đặt hàng">
-        </form>
-    </div>
+    <div class="content">
+
+        <div class="pice">
+
+            <ul>
+                <li><a href="">Trang chủ</a></li>
+                <li> / Giỏ hàng</li>
+            </ul>
+
+        </div>
 
         <div class="check">
 

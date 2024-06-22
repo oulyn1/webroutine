@@ -14,10 +14,48 @@
                 <a href="mainafterlogin.php" class="logo">
                     <img src="../../asset/img/logo-routine.png" alt="" class="logo__img">
                 </a>
-                <ul class="nav">
-                    <li><a href="manafterlogin.php">NAM</a></li>
-                    <li><a href="womenafterlogin.php">NỮ</a></li>
-                </ul>
+                <ul id="nav">
+                <li>
+                    <a href="manafterlogin.php">NAM</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="womenafterlogin.php">NỮ</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+            </ul>
             </div>
             <div class="header__right">
                 <a class="search" href="">
@@ -88,32 +126,29 @@
     </div>
 
     <?php
-        $conn= mysqli_connect("localhost", "root","", "thietbi");
-        if(!$conn){
-            echo 'Ket noi khong thanh cong ' . mysqli_connect_error();
-        }else{
-            //buoc 2 viet truy van
-            $query = "SELECT * FROM sanpham";
-            //buoc 3 thuc thi cau lenh
-            $result = mysqli_query($conn, $query);
-            //buoc 4 lay du lieu
-            if(mysqli_num_rows($result) >0){
-                echo'<div class="maincontent">
-                    <ul class="product_list">';
-                while ($row = mysqli_fetch_assoc($result)){
+        include("../../config/config.php");
+        //buoc 2 viet truy van
+        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
+        //buoc 3 thuc thi cau lenh
+        $result = mysqli_query($conn, $query);
+        //buoc 4 lay du lieu
+        if(mysqli_num_rows($result) >0){
+            echo'<div class="maincontent">
+                <ul class="product_list">';
+            while ($row = mysqli_fetch_assoc($result)){
+                if ($row["idloaisanpham"]==2){
                     echo'<li>
                     <a href="">
-                        <img src="'.$row["hinhanhsanpham"].'" alt="">
+                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                         <p class="title_product">'.$row["tensanpham"].'</p>
-                        <p class="price_product">'.$row["giasanpham"].'</p>
+                        <p class="price_product">'.$row["giasanpham"].' <u>đ</u></p>
                     </a>
-                     </li>';
+                    </li>';
                 }
-                echo'</ul>
-                 </div>';
             }
+            echo'</ul>
+             </div>';
         }
     ?>
-    <script src="../../asset/js/main.js"></script>
 </body>
 </html>

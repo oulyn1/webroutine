@@ -52,12 +52,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="index.php" class="logo">
           <img src="asset/img/logo-routine.png" alt="" class="logo__img" />
         </a>
-        <ul class="nav">
-          <li><a href="web/webforcustomer/man.php">NAM</a></li>
-          <li><a href="web/webforcustomer/women.php">NỮ</a></li>
-          <li><a href="#banner">NEW</a></li>
-          <li><a href="#content">BEST</a></li>
-        </ul>
+        <ul id="nav">
+                <li>
+                    <a href="web/webforcustomer/man.php">NAM</a>
+                    <?php
+                    include("config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="web/webforcustomer/women.php">NỮ</a>
+                    <?php
+                    include("config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li><a href="#banner">BEST</a></li>
+                <li><a href="#content">NEW</a></li>
+            </ul>
       </div>
       <div class="header__right">
         <a class="search" href="">

@@ -43,7 +43,7 @@ html{
     width: 128px;
 }
 
-.nav{
+/* .nav{
     width: 268px;
     display: flex;
     align-items: center;
@@ -63,6 +63,86 @@ html{
 .nav li a:hover{
     text-decoration: underline;
 }
+.nav li:hover .nav-child{
+    display: block;
+}
+.nav .nav-child {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.nav-child a{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+} */
+
+#nav{
+    display: inline-block;
+}
+
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav >li{
+    display: inline-block;
+}
+
+#nav li{
+    position: relative;
+    
+}
+
+#nav>li>a{
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#nav li a{
+    text-decoration: none;
+    line-height: 46.5px;
+    padding: 0 24px ;
+    display: block;
+
+}
+
+#nav >li:hover .subnav{
+    display: block;
+}
+
+#nav >li:hover >a,
+#nav .subnav li:hover a{
+    color: black;
+    background-color: #ccc;
+}
+
+#nav .subnav{
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#nav .subnav a{
+    color: black;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down{
+    font-size: 12px;
+}
+
 
 .header__right{
     width: 470px;
@@ -325,8 +405,11 @@ html{
 .bannermw{
     margin-top: 75px;
     width: 100%;
+    padding: 10px;
 }
-
+.maincontent{
+    padding: 20px;
+}
 .img-bannermw{
     width: 100%;
     padding: 10px 10px;
@@ -336,8 +419,7 @@ html{
     width: 100%;
 }
 .product_list li{
-    width: 23.5%;
-    border: 1px dashed #000;
+    width: 347px;
     margin: 10px;
     padding: 5px;
     float: left;
@@ -347,10 +429,18 @@ html{
 }
 .product_list li a{
     text-decoration: none; 
+    color: #000;
 }
-
+.product_list li img{
+    border-radius: 12px;
+}
+.title_product{
+    margin-top: 8px;
+    height: 40px;
+}
 .price_product{
     font-weight: bold;
+    margin-top: 8px;
 }
 
 .modal-after{
@@ -401,6 +491,7 @@ html{
 .body-end{
     margin-top: 20px;
 }
+
 @keyframes modalAnimation{
     from{
       opacity: 0;

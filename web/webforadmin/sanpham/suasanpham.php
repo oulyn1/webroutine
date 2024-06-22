@@ -22,9 +22,9 @@
                 <a href="../thongke/thongke.php" class="header__list-items"><b>Thống Kê</b></a>
             </div>
             <div class="header__list2">
-                <form method="POST">
+                <!-- <form method="POST">
                     <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
-                </form>
+                </form> -->
                 <a href="" class="logout" class="logout">Đăng xuất</a>
             </div>
         </div>
@@ -40,6 +40,8 @@
                 $Image = "";
                 $MieuTa = "";
                 $Loai = "";
+                $LoaiCT= "";
+                $SoLuong= "";
                 $query = "SELECT * FROM tbl_sanpham WHERE idsanpham='" . $id . "'";
                 $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) > 0) {
@@ -51,6 +53,8 @@
                         $Image = $row["hinhanhsanpham"];
                         $MieuTa = $row["motasanpham"];
                         $Loai = $row["idloaisanpham"];
+                        $LoaiCT= $row["iddanhmuccon"];
+                        $SoLuong = $row["soluong"];
                     }
                 }
                 ?>
@@ -121,7 +125,7 @@
                                     </tr>
                                     <tr>
                                         <td class="info-name"><label for="GiaBan">Giá bán</label></td>
-                                        <td><input type="text" class="info-name-property" id="GiaBan" name="txtGiaBan"
+                                        <td><input type="number" class="info-name-property" id="GiaBan" name="txtGiaBan"
                                                 value="<?php echo $GiaBan ?>" required /></td>
                                     </tr>
                                     <tr>
@@ -158,6 +162,35 @@
                                             </select>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="info-name"><label for="LoaiCT">Loại sản phẩm</label></td>
+                                        <td>
+                                            <select class="info-name-property" id="LoaiCT" name="txtLoaiCT">
+                                                <?php
+                                                $query_loai = "SELECT * FROM tbl_danhmuccon ORDER BY iddanhmuccon DESC";
+                                                $result_loai = mysqli_query($conn, $query_loai);
+                                                while ($row_loai = mysqli_fetch_assoc($result_loai)) {
+                                                    if ($row_loai['iddanhmuccon'] == $LoaiCT) {
+                                                        ?>
+                                                        <option value="<?php echo $row_loai["iddanhmuccon"] ?>" selected>
+                                                            <?php echo $row_loai["tendanhmuccon"] ?></option>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <option value="<?php echo $row_loai["iddanhmuccon"] ?>">
+                                                            <?php echo $row_loai["tendanhmuccon"] ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info-name"><label for="SoLuong">Số lượng</label></td>
+                                        <td><input type="number" class="info-name-property" id="SoLuong" name="txtSoLuong"
+                                                value="<?php echo $SoLuong ?>" required /></td>
+                                    </tr>
                                 </tbody>
                         </table>
                         <div class="tlb-add"><input type="submit" value="Hoàn tất sửa sản phẩm" class="btn-add"
@@ -173,10 +206,12 @@
                         $Image = $_POST['txtImage'];
                         $MieuTa = $_POST['txtMieuTa'];
                         $Loai = $_POST['txtLoai'];
+                        $LoaiCT = $_POST['txtLoaiCT'];
+                        $SoLuong = $_POST['txtSoLuong'];
                         if (!$conn) {
                             echo 'Kết nối không thành công' . mysqli_connect_error();
                         } else {
-                            $sql = "UPDATE tbl_sanpham SET tensanpham='" . $Name . "', giasanpham='" . $GiaBan . "', hinhanhsanpham='" . $Image . "', color='" . $Color . "', size='" . $Size . "', motasanpham='" . $MieuTa . "', idloaisanpham='" . $Loai . "'  WHERE idsanpham='" . $id . "' ";
+                            $sql = "UPDATE tbl_sanpham SET tensanpham='" . $Name . "', giasanpham='" . $GiaBan . "', hinhanhsanpham='" . $Image . "', color='" . $Color . "', size='" . $Size . "', motasanpham='" . $MieuTa . "', idloaisanpham='" . $Loai . "', iddanhmuccon='" . $LoaiCT . "', soluong='" . $SoLuong . "'  WHERE idsanpham='" . $id . "' ";
                             $result = mysqli_query($conn, $sql);
                             if ($result > 0) {
                                 echo "  <script>
@@ -197,3 +232,6 @@
             </div>
         </div>
     </div>
+</body>
+</html>
+

@@ -24,12 +24,50 @@
               class="logo__img"
             />
           </a>
-          <ul class="nav">
-            <li><a href="manafterlogin.php">NAM</a></li>
-            <li><a href="womenafterlogin.php">NỮ</a></li>
-            <li><a href="#banner">NEW</a></li>
-            <li><a href="#content">BEST</a></li>
-          </ul>
+          <ul id="nav">
+                <li>
+                    <a href="manafterlogin.php">NAM</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="womenafterlogin.php">NỮ</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li><a href="#banner">BEST</a></li>
+                <li><a href="#content">NEW</a></li>
+            </ul>
         </div>
         <div class="header__right">
           <a class="search" href="">
@@ -66,53 +104,30 @@
         <img src="../../asset/img/banner2.webp" alt="" />
       </div>
 
-      <div id="content">
-        <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
-          <div class="item-title">
-            <a href="" class="font-titles"
-              >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
-              10S24POL004P</a
-            >
-            <a href="" class="ti-heart"></a>
-          </div>
-          <b>499.000 đ</b>
-        </div>
-        <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
-          <div class="item-title">
-            <a href="" class="font-titles"
-              >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
-              10S24POL004P</a
-            >
-            <a href="" class="ti-heart"></a>
-          </div>
-          <b>499.000 đ</b>
-        </div>
-        <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
-          <div class="item-title">
-            <a href="" class="font-titles"
-              >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
-              10S24POL004P</a
-            >
-            <a href="" class="ti-heart"></a>
-          </div>
-          <b>499.000 đ</b>
-        </div>
-        <div class="content-items">
-          <img src="../../asset/img/imgitem1.jpg" alt="" />
-          <div class="item-title">
-            <a href="" class="font-titles"
-              >Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted -
-              10S24POL004P</a
-            >
-            <a href="" class="ti-heart"></a>
-          </div>
-          <b>499.000 đ</b>
-        </div>
-      </div>
-    </div>
+      <?php
+        include("../../config/config.php");
+        //buoc 2 viet truy van
+        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC limit 4";
+        //buoc 3 thuc thi cau lenh
+        $result = mysqli_query($conn, $query);
+        //buoc 4 lay du lieu
+        if(mysqli_num_rows($result) >0){
+            echo'<div class="maincontent" id="content">
+                <ul class="product_list">';
+            while ($row = mysqli_fetch_assoc($result)){
+                    echo'<li>
+                    <a href="">
+                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
+                        <p class="title_product">'.$row["tensanpham"].'</p>
+                        <p class="price_product">'.$row["giasanpham"].' <u>đ</u></p>
+                    </a>
+                    </li>';
+                
+            }
+            echo'</ul>
+             </div>';
+        }
+    ?>
 
     <div class="model" id="modal-love">
       <div class="model-overlay"></div>

@@ -11,12 +11,50 @@
     <div id="main">
         <div id="header">
             <div class="header__left">
-                <a href="index.php" class="logo">
-                    <img src="assets\img\logo-routine.png" alt="" class="logo__img">
+                <a href="../../index.php" class="logo">
+                    <img src="../../asset/img/logo-routine.png" alt="" class="logo__img">
                 </a>
-                <ul class="nav">
-                    <li><a href="man.php">NAM</a></li>
-                    <li><a href="women.php">NỮ</a></li>
+                <ul id="nav">
+                <li>
+                    <a href="web/webforcustomer/man.php">NAM</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="web/webforcustomer/women.php">NỮ</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
                 </ul>
             </div>
             <div class="header__right">
@@ -152,15 +190,12 @@
     </div>
 
     <div class="bannermw">
-        <img src="assets\img\bannerman.png" alt="" class="img-bannermw">
+        <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
     </div>
     <?php
-        $conn= mysqli_connect("localhost", "root","", "thietbi");
-        if(!$conn){
-            echo 'Ket noi khong thanh cong ' . mysqli_connect_error();
-        }else{
+            include("../../config/config.php");
             //buoc 2 viet truy van
-            $query = "SELECT * FROM sanpham";
+            $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);
             //buoc 4 lay du lieu
@@ -168,18 +203,19 @@
                 echo'<div class="maincontent">
                     <ul class="product_list">';
                 while ($row = mysqli_fetch_assoc($result)){
-                    echo'<li>
-                    <a href="">
-                        <img src="'.$row["hinhanhsanpham"].'" alt="">
-                        <p class="title_product">'.$row["tensanpham"].'</p>
-                        <p class="price_product">'.$row["giasanpham"].'</p>
-                    </a>
-                     </li>';
+                    if ($row["idloaisanpham"]==1){
+                        echo'<li>
+                        <a href="">
+                            <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
+                            <p class="title_product">'.$row["tensanpham"].'</p>
+                            <p class="price_product">'.$row["giasanpham"].'</p>
+                        </a>
+                        </li>';
+                    }
                 }
                 echo'</ul>
                  </div>';
             }
-        }
     ?>
     <script src="assets\js\main.js"></script>
 </body>

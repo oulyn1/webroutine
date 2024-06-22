@@ -23,7 +23,7 @@
             </div>
             <div class="header__list2">
                 <form method="POST">
-                    <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
+                    <input type="text" name="txtTimkiem" id="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form>
                 <a href="" class="logout" class="logout">Đăng xuất</a>
             </div>
@@ -35,7 +35,7 @@
                     <?php
                         include("../../../config/config.php");
                         //buoc 2 viet truy van
-                        $query = "SELECT * FROM tbl_sanpham,tbl_loaisanpham WHERE tbl_sanpham.idloaisanpham=tbl_loaisanpham.idloaisanpham ORDER BY idsanpham DESC";
+                        $query = "SELECT * FROM tbl_sanpham,tbl_loaisanpham,tbl_danhmuccon WHERE tbl_sanpham.idloaisanpham=tbl_loaisanpham.idloaisanpham AND tbl_sanpham.iddanhmuccon=tbl_danhmuccon.iddanhmuccon ORDER BY idsanpham DESC";
                         //buoc 3 thuc thi cau lenh
                         $result = mysqli_query($conn, $query);
                         //buoc 4 lay du lieu
@@ -50,6 +50,8 @@
                                         <th>Size</th>
                                         <th>Mô tả sản phẩm</th>
                                         <th>Loại sản phẩm</th>
+                                        <th>Chi tiết loại sản phẩm</th>
+                                        <th>Số lượng</th>
                                         <th>Sửa</th>
                                         <th>Xóa</th>
                                     </thead>
@@ -64,6 +66,8 @@
                                         <td>'.$row["size"].'</td>
                                         <td>'.$row["motasanpham"].'</td>
                                         <td>'.$row["tenloaisanpham"].'</td>
+                                        <td>'.$row["tendanhmuccon"].'</td>
+                                        <td>'.$row["soluong"].'</td>
                                         <td><a class="thea" href="suasanpham.php?ID='.$row["idsanpham"].'"><i class="ti-pencil-alt"></i></a></td>
                                         <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa sản phẩm không?\');" href="xoasanpham.php?ID='.$row["idsanpham"].'"><i class="ti-trash"></i></a></td>
                                     </tr>';
@@ -76,98 +80,67 @@
                             echo 'Không có dữ liệu sản phẩm';
                         }
                     ?>
-                    </div>
-                    <h2>Thêm sản phẩm mới</h2>
-                    <div class="tbl_them">
-                        <form method="POST">
-                            <table class="tlb-info">
-                                <div class="user-info">
-                                    <tbody>
-                                    <tr>
-                                        <td class="info-name"><label for="Name">Tên sản phẩm</label></td>
-                                        <td><input type="text" class="info-name-property" id="Name" name="txtName" required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="Size">Size</label></td>
-                                        <td>
-                                            <select class="info-name-property" id="Size" name="txtSize" required>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="Color">Color</label></td>
-                                        <td><input type="text" class="info-name-property" id="Color" name="txtColor" required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="GiaBan">Giá bán</label></td>
-                                        <td><input type="text" class="info-name-property" id="GiaBan" name="txtGiaBan" required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="Image">Hình ảnh</label></td>
-                                        <td><input type="file" class="info-name-property" id="Image" name="txtImage" required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="MieuTa">Miêu tả</label></td>
-                                        <td><input type="text" class="info-name-property" id="MieuTa" name="txtMieuTa" required /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="info-name"><label for="Loai">Loại sản phẩm</label></td>
-                                        <td>
-                                            <select class="info-name-property" id="Loai" name="txtLoai" required>
-                                                <?php
-                                                    $query_loai= "SELECT * FROM tbl_loaisanpham ORDER BY idloaisanpham DESC";
-                                                    $result_loai= mysqli_query($conn, $query_loai);
-                                                    while ($row_loai = mysqli_fetch_assoc($result_loai)){
-                                                ?>
-                                                <option value="<?php echo $row_loai["idloaisanpham"] ?>"><?php echo $row_loai["tenloaisanpham"]?></option>
-                                                <?php
-                                                    }
-                                                ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="tlb-add"><input type="submit" value="Thêm sản phẩm" class="btn-add" colspan="2" name="txtThem" /></div>
-                        </form>
-                        <?php
-                        include("../../../config/config.php");
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $Name = $_POST['txtName'];
-                            $Size = $_POST['txtSize'];
-                            $Color = $_POST['txtColor'];
-                            $GiaBan = $_POST['txtGiaBan'];
-                            $Image = $_POST['txtImage'];
-                            $MieuTa = $_POST['txtMieuTa'];
-                            $Loai= $_POST['txtLoai'];
-                            if (!$conn) {
-                                echo 'Kết nối không thành công' . mysqli_connect_error();
-                            }
-                            else {
-                                $sql = "INSERT INTO tbl_sanpham VALUES (' ' ,'".$Name."' , '".$GiaBan."' , '".$Image."','".$Color."','".$Size."','".$MieuTa."', '".$Loai."')";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result > 0) {
-                                    echo "  <script>
-                                                alert('Thêm sản phẩm thành công');
-                                                window.location.href='sanpham.php';
-                                            </script>";
-                                }
-                                else {
-                                    echo "  <script>
-                                                alert('Lỗi thêm sản phẩm ');
-                                                window.location.href='sanpham.php';
-                                            </script>";
-                                }
-                            }
+                    <?php
+                        if($_SERVER['REQUEST_METHOD'] == "POST"){
+                            $keysearch=$_POST['txtTimkiem'];
+                            include("../../../config/config.php");
+                            //buoc 2 viet truy van
+                            $query = "SELECT * FROM tbl_sanpham,tbl_loaisanpham,tbl_danhmuccon WHERE tbl_sanpham.idloaisanpham=tbl_loaisanpham.idloaisanpham AND tbl_sanpham.iddanhmuccon=tbl_danhmuccon.iddanhmuccon AND tbl_sanpham.tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
+                            //buoc 3 thuc thi cau lenh
+                            $result = mysqli_query($conn, $query);
+                            echo '
+                                    <script type="text/javascript">
+                                        var table = document.getElementById("tblMain");
+                                        table.style.display ="none";
+                                    </script>
+                                    ';
+                            //buoc 4 lay du lieu
+                            if(mysqli_num_rows($result) >0){
+                                echo '<table>
+                                        <thead>
+                                            <th>ID sản phẩm</th>
+                                            <th>Hình ảnh sản phẩm</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Giá sản phẩm</th>
+                                            <th>Màu sản phẩm</th>
+                                            <th>Size</th>
+                                            <th>Mô tả sản phẩm</th>
+                                            <th>Loại sản phẩm</th>
+                                            <th>Chi tiết loại sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Sửa</th>
+                                            <th>Xóa</th>
+                                        </thead>
+                                        <tbody>';
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    echo'<tr>
+                                            <td>'.$row["idsanpham"].'</td>
+                                            <td><img width=100px src="../../../asset/img/'.$row["hinhanhsanpham"].'" alt=""></td>
+                                            <td>'.$row["tensanpham"].'</td>
+                                            <td>'.$row["giasanpham"].'</td>
+                                            <td>'.$row["color"].'</td>
+                                            <td>'.$row["size"].'</td>
+                                            <td>'.$row["motasanpham"].'</td>
+                                            <td>'.$row["tenloaisanpham"].'</td>
+                                            <td>'.$row["tendanhmuccon"].'</td>
+                                            <td>'.$row["soluong"].'</td>
+                                            <td><a class="thea" href="suasanpham.php?ID='.$row["idsanpham"].'"><i class="ti-pencil-alt"></i></a></td>
+                                            <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa sản phẩm không?\');" href="xoasanpham.php?ID='.$row["idsanpham"].'"><i class="ti-trash"></i></a></td>
+                                        </tr>';
+                                        }
                         
-                    }
+                                echo'  </tbody>
+                                    </table>
+                                    ';
+                                
+                            }else{
+                                echo 'Không tìm thấy dữ liệu sản phẩm <a href="sanpham.php" style="color: red;">Quay lại</a>';
+                            }
+                        }
                     ?>
                     </div>
+                    </div>
+                    <div class="createacc"><a href="themsanpham.php">Thêm sản phẩm mới</a></div>
                 </div>
             </div>
         </div>
