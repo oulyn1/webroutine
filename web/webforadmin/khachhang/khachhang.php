@@ -23,10 +23,10 @@
                 <a href="../thongke/thongke.php" class="header__list-items"><b>Thống Kê</b></a>
             </div>
             <div class="header__list2">
-                <form method="POST">
+                <form method="POST" action="khachhang.php">
                     <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form>
-                <a href="" class="logout" class="logout">Đăng xuất</a>
+                <a href="" class="logout">Đăng xuất</a>
             </div>
         </div>
         <div class="body">
@@ -37,6 +37,9 @@
                 include("xulykh.php");
             ?>
                 </div>
-            <div class="createskh"><a href="create_customer.php">Thêm Khách Hàng Mới</></div>
-            
-          
+            <div class="createskh"><a href="create_customer.php">Thêm Khách Hàng Mới</a></div>
+        </div>
+    </div>
+</body>
+
+</html>
