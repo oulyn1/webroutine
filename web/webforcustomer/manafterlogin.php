@@ -32,7 +32,7 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==1){
-                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/'.$row["url"].'afterlogin.php?IDDM='.$row["iddanhmuccon"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';
@@ -52,7 +52,7 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==2){
-                          echo'<li><a href="">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/'.$row["url"].'afterlogin.php?IDDM='.$row["iddanhmuccon"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';

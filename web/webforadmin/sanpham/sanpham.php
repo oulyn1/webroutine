@@ -85,7 +85,11 @@
                             $keysearch=$_POST['txtTimkiem'];
                             include("../../../config/config.php");
                             //buoc 2 viet truy van
-                            $query = "SELECT * FROM tbl_sanpham,tbl_loaisanpham,tbl_danhmuccon WHERE tbl_sanpham.idloaisanpham=tbl_loaisanpham.idloaisanpham AND tbl_sanpham.iddanhmuccon=tbl_danhmuccon.iddanhmuccon AND tbl_sanpham.tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
+                            $query = "SELECT * FROM tbl_sanpham,tbl_loaisanpham,tbl_danhmuccon 
+                            WHERE tbl_sanpham.idloaisanpham=tbl_loaisanpham.idloaisanpham 
+                            AND tbl_sanpham.iddanhmuccon=tbl_danhmuccon.iddanhmuccon 
+                            AND tbl_sanpham.tensanpham LIKE N'%".$keysearch."%' 
+                            ORDER BY idsanpham DESC";
                             //buoc 3 thuc thi cau lenh
                             $result = mysqli_query($conn, $query);
                             echo '
