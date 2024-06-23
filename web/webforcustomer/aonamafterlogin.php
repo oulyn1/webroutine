@@ -32,7 +32,7 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==1){
-                          echo'<li><a href="../webforcustomer/'.$row["url"].'afterlogin.php?IDDM='.$row["iddanhmuccon"].'">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';
@@ -52,7 +52,7 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==2){
-                          echo'<li><a href="../webforcustomer/'.$row["url"].'afterlogin.php?IDDM='.$row["iddanhmuccon"].'">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';
@@ -132,9 +132,9 @@
     <?php
             include("../../config/config.php");
             //buoc 2 viet truy van
-            $query = "SELECT * FROM tbl_sanpham,tbl_danhmuccon 
-            WHERE tbl_sanpham.iddanhmuccon=tbl_danhmuccon.iddanhmuccon
-            AND tbl_sanpham.iddanhmuccon='$_GET[IDDM]'
+            $query = "SELECT * FROM tbl_sanpham
+            WHERE iddanhmuccon='$_GET[IDDM]'
+            AND idloaisanpham='$_GET[IDLSP]'
             ORDER BY idsanpham DESC";
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);
@@ -143,7 +143,7 @@
                 echo'<div class="maincontent">
                     <ul class="product_list">';
                 while ($row = mysqli_fetch_assoc($result)){
-                    if ($row["idloaisanpham"]==1){
+          
                         echo'<li>
                         <a href="">
                             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
@@ -151,7 +151,7 @@
                             <p class="price_product">'.$row["giasanpham"].' <u>đ</u></p>
                         </a>
                         </li>';
-                    }
+                    
                 }
                 echo'</ul>
                  </div>';
