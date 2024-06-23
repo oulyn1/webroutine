@@ -5,33 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routine</title>
     <link rel="stylesheet" href="../../asset/css/infoItemStyle.css?v= <?php echo time(); ?>">
+    <link rel="stylesheet" href="../../asset/css/customer.css">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css?v= <?php echo time(); ?>">
 </head>
 <body>
-    <div id="header">
+<div id="header">
         <div class="header__left">
-            <a href="" class="Logo">
-                <img src="../../asset/img/logo-routine.png" alt=""  class="Logo__img">
-            </a>
-            <ul class="nav">
-                <li><a href="">Nam</a></li>
-                <li><a href="">Nữ</a></li>
-                <li><a href="">New</a></li>
-                <li><a href="">Best</a></li>
+          <a href="mainafterlogin.php" class="logo">
+            <img
+              src="../../asset/img/logo-routine.png"
+              alt=""
+              class="logo__img"
+            />
+          </a>
+          <ul id="nav">
+          <li>
+                    <a href="manafterlogin.php">NAM</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="womenafterlogin.php">NỮ</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
             </ul>
         </div>
         <div class="header__right">
-            <a href="#" class="search">
-                <i class="ti-search"></i>
-                <span class="search__title">Tìm kiếm</span>
-            </a>
-            <a class="ti-user" href=""></a>
-            <a class="ti-heart" href=""></a>
-            <a class="ti-shopping-cart" href=""></a>
-
+          <a class="search" href="">
+            <i class="ti-search"></i>
+            <span class="search__title">Tìm kiếm</span>
+          </a>
+          <span class="ti-user" id="openlogin" href=""></span>
+          <span class="ti-heart" id="openlove" href=""></span>
+          <span class="ti-shopping-cart" id="openshopping" href=""></span>
         </div>
+      </div>
+
+
+      <div class="model" id="modal-love">
+      <div class="model-overlay"></div>
+      <div class="modal-right">
+        <div class="modal-love">
+          <div class="love-heading">
+            <p>
+              <i class="ti-heart"></i>
+              <b>Sản phẩm yêu thích</b>
+            </p>
+            <span class="ti-close"></span>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <div class="model" id="modal-shopping">
+      <div class="model-overlay"></div>
+      <div class="modal-right">
+        <div class="modal-love">
+          <div class="love-heading">
+            <p>
+              <i class="ti-shopping-cart"></i>
+              <b>Giỏ hàng</b>
+            </p>
+            <span class="ti-close"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="model" id="modal-signin">
+      <div class="model-overlay"></div>
+      <div class="modal-after">
+        <div class="model-innerafter">
+          <span class="ti-close"></span>
+        </div>
+        <div class="body-start">Chào khách hàng</div>
+        <hr />
+        <div class="body-after">
+          <div>
+            <a href=""><p>Theo dõi đơn hàng</p></a>
+          </div>
+          <div>
+            <a href=""><p>Sản phẩm yêu thích</p></a>
+          </div>
+        </div>
+        <hr />
+        <div class="body-end"><a href="index.php">Đăng xuất</a></div>
+      </div>
+    </div>
+
+    <script src="../../asset/js/mainafterlogin.js"></script>
+
+<form action="">
     <div class="main__content">
         <div class="image__content">
             <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
@@ -48,7 +143,7 @@
                     <p class="color__info">BRIGHT WHITE</p>
                 </div>
 
-                <form class="choose__color__image">
+                <div class="choose__color__image">
                     <input id="op1" class="op1 radio" type="radio" name="color__choose" value="1">
                     <label for="op1">
                         <img src="../../asset/img/whitePOLO.png" alt="" class="color__image">
@@ -58,12 +153,12 @@
                     <label for="op2">
                         <img src="../../asset/img/blackPOLO.png" alt="" class="color__image">
                     </label>
-                </form>
+                </div>
             </div>
             
             <div class="select__size">
                 <p class="size__title">Chọn size:</p>
-                <form action="" class="size">
+                <div class="size">
                     <input type="radio" id="size-s" name="size" value="S">
                     <label for="size-s">S</label>
 
@@ -78,31 +173,30 @@
 
                     <input type="radio" id="size-xxl" name="size" value="XXL">
                     <label for="size-xxl">XXL</label>
-                </form>
-            </div>
-            <div class="box__tocart">
-                <form action="">
-                    <div class="title">Chọn số lượng: </div>
-
-                    <div class="quantity__selector">
-                        <button type="button" id="decrease">-</button>
-                        <input type="number" id="quantity" min="1" value="1" readonly>
-                        <button type="button" id="increase">+</button>
-                    </div>
-                </form>
-
-                <div class="add">
-                    <form action="" class="add__tocart">
-                        <button type="submit">THÊM VÀO GIỎ HÀNG</button>
-                        <a class="ti-heart" href=""></a>
-                    </form>
                 </div>
             </div>
 
+            <div class="box__tocart">
+                <div class="title">Chọn số lượng: </div>
+
+                <div class="quantity__selector">
+                    <button type="button" id="decrease">-</button>
+                    <input type="number" id="quantity" min="1" max="10" value="1" readonly>
+                    <button type="button" id="increase">+</button>
+                </div>
+
+                <div class="add">
+                    <div action="" class="add__tocart">
+                        <input type="submit" value="THÊM VÀO GIỎ HÀNG">
+                        <a class="ti-heart" href=""></a>
+                    </div>
+                </div>
+            </div>
+</form>
             <div class="product__info__bottom">
 
                 <div class="product__feature">
-                    <img src="/asset/img/product_feature.png" alt="">
+                    <img src="../../asset/img/product_feature.png" alt="">
                 </div>
 
                 <div class="product__attributes">
@@ -135,16 +229,6 @@
             <h2>MÔ TẢ SẢN PHẨM</h2>
             <h1>Áo Polo Nam Premium Cotton Phối Sọc Form Fitted</h1>
             <p class="product-name"><strong>Áo Polo Nam Premium - 10S24POL004P</strong> là sản phẩm được các tín đồ thời trang yêu thích với vẻ đẹp hiện đại và trẻ trung với kiểu dáng thiết kế thời thượng. Đảm bảo mang đến những trải nghiệm về thời trang tuyệt vời nhất nhờ những đặc tính ưu việt như sau:</p>
-            <ul id="product-details">
-                <li>Chất liệu 100% Cotton: Đây là chất liệu được chế tạo hoàn toàn từ sợi bông tự nhiên. Có đặc tính mềm mại và mịn màng tạo cảm giác êm ái và dễ chịu khi tiếp xúc với da.</li>
-                <li>Loại vải này khả năng thấm hút mồ hôi tốt và không gây cảm giác bí bách khi mặc.</li>
-                <li>Đặc biệt có độ bền cao, giữ được form và màu sắc tốt sau thời gian dài sử dụng.</li>
-                <li>Form dáng Fitted: là kiểu dáng mặc vừa vặn và phần thân giúp tôn lên dáng cho người mặc. Riêng ở phần tay áo sẽ hơi ôm vào cơ thể nhưng không quá sát tạo ra một vẻ ngoài gọn gàng và thời trang.</li>
-                <li>Áo Polo Nam còn có thiết kế cổ polo và kiểu tay ngắn cùng chi tiết sọc ngang nổi bật.</li>
-                <li>Ngoài ra áo polo nam có thêm một chi tiết khiến các bạn trẻ khá thích chính là phối màu sọc ngang trên áo tạo cho áo có điểm nhấn và giúp người mặc thêm phần cá tính nhưng vẫn sang trọng và thời thượng.</li>
-                <li>Kiểu áo phù hợp ngay cả khi đi học, đi làm hay đi chơi, du lịch. Dễ dàng mix match với nhiều loại trang phục khác nhau.</li>
-            </ul>
-            <button id="toggle-button">XEM THÊM</button>
         </div>
     </div>
 
@@ -154,11 +238,11 @@
 
         <div class="information">
 
-            <img src="image/Logo-Rountine.png" alt="" class="logo">
-            <h3>CÔNG TY TNHH ROUNTIINE VIETNAM</h3>
+            <img src="../../asset/img/logo-routine.png" alt="" class="logo">
+            <h3>CÔNG TY TNHH ROUTINE VIETNAM</h3>
             <P>Mã số thuế: 0106486365</P>
             <P></P>
-            <P>Văn phòng: tầng 5 tòa nahf IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
+            <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
             <h3>THAM GIA BẢNG TIN CỦA CHÚNG TÔI</h3>
 
         </div>
@@ -223,6 +307,6 @@
         </div>
     </div>
 
-    <script src="/asset/js/script.js"></script>
+    <script src="../../asset/js/script.js"></script>
 </body>
 </html>

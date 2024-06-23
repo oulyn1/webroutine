@@ -43,45 +43,6 @@ html{
     width: 128px;
 }
 
-/* .nav{
-    width: 268px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.nav li{
-    display: inline-block; 
-}
-
-.nav li a{
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-}
-
-.nav li a:hover{
-    text-decoration: underline;
-}
-.nav li:hover .nav-child{
-    display: block;
-}
-.nav .nav-child {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-.nav-child a{
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-} */
-
 #nav{
     display: inline-block;
 }
