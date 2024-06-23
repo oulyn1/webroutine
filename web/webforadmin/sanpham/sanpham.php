@@ -14,12 +14,14 @@
     <div class="container">
         <div class="header">
             <div class="header__list">
-                <a href="../admin/main.php" class="header__list-items"><b>Tổng quan</b></a>
-                <a href="../khachhang/khachhang.php" class="header__list-items"><b>Khách hàng</b></a>
-                <a href="../taikhoan/taikhoan.php" class="header__list-items"><b>Tài khoản</b></a>
-                <a href="../sanpham/sanpham.php" class="header__list-items" id="main"><b>Sản phẩm</b></a>
-                <a href="../kho/kho.php" class="header__list-items"><b>Kho</b></a>
-                <a href="../thongke/thongke.php" class="header__list-items"><b>Thống Kê</b></a>
+            <a href="#" class="header__list-items?ID=ID" id="main"><b>Tổng quan</b></a>
+                <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
+                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
+                <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
+                <a href="" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
+                <a href="" class="header__list-items"><b>Đơn hàng</b></a>
+                <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
+                <a href="" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST">
