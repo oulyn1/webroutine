@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="../../../asset/css/table.css">
-    <title>Tài Khoản</title>
+    <link rel="stylesheet" href="../../../asset/css/sanpham.css?v= <?php echo time(); ?>">
+    <title>Sản Phẩm</title>
 </head>
 
 <body>
@@ -25,18 +25,14 @@
             </div>
             <div class="header__list2">
                 <form method="POST">
-                    <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
+                    <input type="text" name="txtTimkiem" id="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form>
                 <a href="" class="logout" class="logout">Đăng xuất</a>
             </div>
+            </div>
+            <div class="body">
+                <div class="body-headersanpham">
+                    <h1>Quản lý đơn hàng</h1>
+                </div>
+            </div>
         </div>
-        <div class="body">
-            <div class="body-header">
-                <h1>Quản lý tài khoản</h1>
-            </div>
-            <div class="tablesql"><?php 
-            include("xuly.php");
-            ?>
-            </div>
-            <div class="createacc"><a href="createacc.php">Thêm tài khoản <i class="ti-user"></i></a></div>
-        </div> 

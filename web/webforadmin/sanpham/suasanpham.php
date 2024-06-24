@@ -18,8 +18,8 @@
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
-                <a href="" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
-                <a href="" class="header__list-items"><b>Đơn hàng</b></a>
+                <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
+                <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
                 <a href="" class="header__list-items"><b>Slider</b></a>
             </div>
@@ -165,7 +165,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="info-name"><label for="LoaiCT">Loại sản phẩm</label></td>
+                                        <td class="info-name"><label for="LoaiCT">Chi tiết loại sản phẩm</label></td>
                                         <td>
                                             <select class="info-name-property" id="LoaiCT" name="txtLoaiCT">
                                                 <?php
