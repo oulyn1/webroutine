@@ -148,7 +148,7 @@
                         <a href="">
                             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                             <p class="title_product">'.$row["tensanpham"].'</p>
-                            <p class="price_product">'.$row["giasanpham"].' <u>đ</u></p>
+                            <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
                         </a>
                         </li>';
                     
