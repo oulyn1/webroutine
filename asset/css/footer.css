@@ -23,7 +23,9 @@
 }
 
 .footer .information img{
-    max-height: 44px;
+    width: 200px;
+    height: auto;
+    border: 0;
 }
 
 .footer .logo{
@@ -31,9 +33,7 @@
 }
 
 img{
-    max-width: 100%;
-    height: auto;
-    border: 0;
+    
     
 }
 

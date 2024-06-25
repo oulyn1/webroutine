@@ -126,37 +126,26 @@
     </div>
 
     <script src="../../asset/js/mainafterlogin.js"></script>
-
-<form action="">
+<?php
+  include("../../config/config.php");
+  //buoc 2 viet truy van
+  $query = "SELECT * FROM tbl_sanpham WHERE idsanpham='$_GET[ID]' ORDER BY idsanpham DESC limit 1";
+  //buoc 3 thuc thi cau lenh
+  $result = mysqli_query($conn, $query);
+  //buoc 4 lay du lieu
+  if(mysqli_num_rows($result) >0){
+      while ($row = mysqli_fetch_assoc($result)){
+        echo'<form action="">
     <div class="main__content">
         <div class="image__content">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image__item">
+            <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image__item">
         </div>
             
         <div class="product__info__main">
             <p class="product__title">
-                Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted - 10S24POL004P
+                '.$row["tensanpham"].'
             </p>
-            <h2 class="price">589.000 đ</h2>
-
-            <!-- <div class="choose__color">
-                <div class="color__title">
-                    <p class="color">Chọn màu sắc:</p>
-                    <p class="color__info">BRIGHT WHITE</p>
-                </div>
-
-                <div class="choose__color__image">
-                    <input id="op1" class="op1 radio" type="radio" name="color__choose" value="1">
-                    <label for="op1">
-                        <img src="../../asset/img/whitePOLO.png" alt="" class="color__image">
-                    </label>
-                    
-                    <input id="op2" class="op2 radio" type="radio" name="color__choose" value="2">
-                    <label for="op2">
-                        <img src="../../asset/img/blackPOLO.png" alt="" class="color__image">
-                    </label>
-                </div>
-            </div> -->
+            <h2 class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></h2>
             
             <div class="select__size">
                 <p class="size__title">Chọn size:</p>
@@ -196,45 +185,29 @@
                     </div>
                 </div>
             </div>
-</form>
             <div class="product__info__bottom">
 
                 <div class="product__feature">
                     <img src="../../asset/img/product_feature.png" alt="">
                 </div>
 
-                <!-- <div class="product__attributes">
-                    <h2>ĐẶC ĐIỂM NỔI BẬT</h2>
-                    <div class="attributes__columns">
-                        <div class="attributes__column">
-                            <ul>
-                                <li><strong>Nhóm sản phẩm</strong> Áo Polo</li>
-                                <li><strong>Giới tính</strong> Nam</li>
-                                <li><strong>Thiết kế</strong> Trơn</li>
-                                <li><strong>Kiểu cổ</strong> Cổ gài nút</li>
-                            </ul>
-                        </div>
-                        <div class="attributes__column">
-                            <ul>
-                                <li><strong>Form dáng</strong> Fitted</li>
-                                <li><strong>Chất liệu</strong> Cotton</li>
-                                <li><strong>Kiểu tay</strong> Tay ngắn</li>
-                            </ul>
-                        </div>
+
+                <div class="product-description-container">
+                    <div class="product-description">
+                        <h2>MÔ TẢ SẢN PHẨM</h2>
+                        <h1>'.$row["tensanpham"].'</h1>
+                        <p class="product-name"><strong>'.$row["tensanpham"].'</strong> '.$row["motasanpham"].'</p>
                     </div>
-                </div> -->
+                </div>
 
             </div>
         </div>
     </div>
+</form>';  
+      }
+  }
+?>
 
-    <div class="product-description-container">
-        <div class="product-description">
-            <h2>MÔ TẢ SẢN PHẨM</h2>
-            <h1>Áo Polo Nam Premium Cotton Phối Sọc Form Fitted</h1>
-            <p class="product-name"><strong>Áo Polo Nam Premium - 10S24POL004P</strong> là sản phẩm được các tín đồ thời trang yêu thích với vẻ đẹp hiện đại và trẻ trung với kiểu dáng thiết kế thời thượng. Đảm bảo mang đến những trải nghiệm về thời trang tuyệt vời nhất nhờ những đặc tính ưu việt như sau:</p>
-        </div>
-    </div>
 
 <!-- footer -->
 
