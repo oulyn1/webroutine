@@ -110,34 +110,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
         <!-- slider -->
         <div id="slider">
-          <div class="slider-wrapper">
-            <div class="slider-img">
-              <?php
-              // Mảng chứa đường dẫn tới các hình ảnh slider
-              $slider_images = [
-                "asset/img/sld1.jpg",
-                "asset/img/sld2.webp",
-                "asset/img/sld3.webp",
-                "asset/img/sld4.webp",
-                "asset/img/sld5.webp"
-              ];
-
-              // Hiển thị từng hình ảnh trong slider
-              foreach ($slider_images as $index => $image) {
-                echo '<img src="' . $image . '" alt="Slide ' . ($index + 1) . '" />';
-              }
-              ?>
-            </div>
-            <div class="slider-nav">
-              <?php
-              // Tạo các liên kết điều hướng slider
-              foreach ($slider_images as $index => $image) {
-                echo '<a href="#img-slider' . ($index + 1) . '" class="slider-nav-link"></a>';
-              }
-              ?>
-            </div>
-          </div>
+    <div class="slider-wrapper">
+        <div class="slider-img">
+            <?php
+            include("config/config.php");
+            $query = "SELECT * FROM slider_images";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<img src="' . $row["image_path"] . '" alt="Slide" />';
+                }
+            } else {
+                echo '<p>Không có ảnh slider nào</p>';
+            }
+            ?>
         </div>
+        <div class="slider-nav">
+            <?php
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                $index = 1;
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<a href="#img-slider' . $index . '" class="slider-nav-link"></a>';
+                    $index++;
+                }
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
 
     <div id="banner">
       <img src="asset/img/banner1.webp" alt="" />
