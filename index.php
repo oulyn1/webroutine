@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="asset/css/customer.css" />
   <link rel="stylesheet" href="asset/js/script.js">
   <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css" />
+  <link rel="stylesheet" href="asset/css/footer.css">
 </head>
 <?php
 session_start();
@@ -152,18 +153,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //buoc 4 lay du lieu
         if(mysqli_num_rows($result) >0){
             echo'<div class="maincontent" id="content">
-                <ul class="product_list">';
+                <div class="product_list">';
             while ($row = mysqli_fetch_assoc($result)){
-                    echo'<li>
+                    echo'<div>
                     <a href="">
                         <img src="asset/img/'.$row["hinhanhsanpham"].'" alt="">
                         <p class="title_product">'.$row["tensanpham"].'</p>
                         <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
                     </a>
-                    </li>';
+                    </div>';
                 
             }
-            echo'</ul>
+            echo'</div>
              </div>';
         }
     ?>
@@ -288,6 +289,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </div>
+
+
+  
+  <div class="footer">
+
+        <div class="information">
+
+            <img src="asset/img/logo-routine.png" alt="" class="logo">
+            <h3>CÔNG TY TNHH ROUTINE VIETNAM</h3>
+            <P>Mã số thuế: 0106486365</P>
+            <P></P>
+            <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
+            <h3>THAM GIA BẢNG TIN CỦA CHÚNG TÔI</h3>
+
+        </div>
+
+        <div class="about">
+
+            <div class="company">
+
+                <h5>CÔNG TY</h5>
+                <ul>
+                    <li><a href="">Giới thiệu về ROUTINE</a></li>
+                    <li><a href="">THE 31</a></li>
+                    <li><a href="">Tuyển dụng</a></li>
+                    <li><a href="">Tin thời trang</a></li>
+                    <li><a href="">Hợp tác nhượng quyền</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+
+            </div>
+
+            <div class="social">
+
+                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+
+            </div>
+
+        </div>
+
+        <div class="policy">
+
+            <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
+            <ul>
+                <li><a href="">Chính sách khách hàng thân thiết</a></li>
+                <li><a href="">Chính sách đổi trả</a></li>
+                <li><a href="">Chính sách bảo hành</a></li>
+                <li><a href="">Chính sách bảo mật</a></li>
+                <li><a href=""> Câu hỏi thường gặp</a></li>
+                <li><a href="">hướng dẫn mua hàng online</a></li>
+                <li><a href="">Hướng dẫn kiểm trra hạng thành viên</a></li>
+            </ul>
+            
+        </div>
+
+        <div class="store">
+
+            <h5>THÔNG TIN CỬA HÀNG</h5>
+            <ul>
+                <li>
+                    <h4>CỬA HÀNG THỨU 34</h4>
+                    <p>F15 tầng 1 AEON Mall Tân Phú, 30 Bờ Bao Tân Thắng, Phường Sơn Kỳ, TP Hồ Chí Minh</p>
+                </li>
+                <li>
+                    <h4>CỬA HÀNG THỨ 33</h4>
+                    <p>809 Giải Phóng, Phường Giáp Bát, Quận Hoàng Mai, TP Hà Nội</p>
+                </li>
+                <li>
+                    <h4>CỬA HÀNG THỨ 32</h4>
+                    <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
+                </li>
+            </ul>
+            <a href="">XEM TẤT CẢ CỬA HÀNG</a>
+        </div>
+    </div>
 
   <script src="asset/js/main.js"></script>
 </body>

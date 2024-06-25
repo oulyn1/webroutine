@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../asset/css/infoItemStyle.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/customer.css">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css?v= <?php echo time(); ?>">
+    <link rel="stylesheet" href="../../asset/css/footer.css">
 </head>
 <body>
 <div id="header">
@@ -137,7 +138,8 @@
                 Áo Polo Nam Premium 100% Cotton Phối Sọc Form Fitted - 10S24POL004P
             </p>
             <h2 class="price">589.000 đ</h2>
-            <div class="choose__color">
+
+            <!-- <div class="choose__color">
                 <div class="color__title">
                     <p class="color">Chọn màu sắc:</p>
                     <p class="color__info">BRIGHT WHITE</p>
@@ -154,7 +156,7 @@
                         <img src="../../asset/img/blackPOLO.png" alt="" class="color__image">
                     </label>
                 </div>
-            </div>
+            </div> -->
             
             <div class="select__size">
                 <p class="size__title">Chọn size:</p>
@@ -188,7 +190,9 @@
                 <div class="add">
                     <div action="" class="add__tocart">
                         <input type="submit" value="THÊM VÀO GIỎ HÀNG">
-                        <a class="ti-heart" href=""></a>
+                    </div>
+                    <div>
+                      <a class="ti-heart" href=""></a>
                     </div>
                 </div>
             </div>
@@ -199,7 +203,7 @@
                     <img src="../../asset/img/product_feature.png" alt="">
                 </div>
 
-                <div class="product__attributes">
+                <!-- <div class="product__attributes">
                     <h2>ĐẶC ĐIỂM NỔI BẬT</h2>
                     <div class="attributes__columns">
                         <div class="attributes__column">
@@ -218,7 +222,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
