@@ -28,15 +28,16 @@ ul li a {
 
 .main__content .image__content {
     width: 50%;
-    /* padding-right: 40px; */
+    padding-right: 40px;
     z-index: 1;
     flex: 1;
 }
 
 .image__content .image__item {
+    width: 80%;
+    max-width: 100%;
     height: auto;
     border: 0;
-    height: 820px;
     margin-left: 20px;
 }
 
