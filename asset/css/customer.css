@@ -370,6 +370,7 @@ html{
 }
 .maincontent{
     padding: 20px;
+    display: flex;
 }
 .img-bannermw{
     width: 100%;
@@ -379,20 +380,20 @@ html{
     list-style: none;
     width: 100%;
 }
-.product_list li{
+.product_list div{
     width: 347px;
     margin: 10px;
     padding: 5px;
     float: left;
 }
-.product_list li img{
+.product_list div img{
     width: 100%;
 }
-.product_list li a{
+.product_list div a{
     text-decoration: none; 
     color: #000;
 }
-.product_list li img{
+.product_list div img{
     border-radius: 12px;
 }
 .title_product{
