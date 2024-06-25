@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="../../../asset/css/table.css">
-    <link rel="stylesheet" href="../../../asset/css/khach_hang.css">
-    <title>Khách hàng</title>
+    <title>Thống kê</title>
 </head>
 
 <body>
@@ -25,23 +23,13 @@
                 <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
-                <form method="POST" action="khachhang.php">
+                <form method="POST">
                     <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form>
-                <a href="" class="logout">Đăng xuất</a>
+                <a href="" class="logout" class="logout">Đăng xuất</a>
             </div>
         </div>
         <div class="body">
             <div class="body-header">
-                <h1>Quản lý khách hàng</h1>
+                <h1>Slider</h1>
             </div>
-                <div class="tablesql"><?php 
-                include("xulykh.php");
-            ?>
-                </div>
-            <div class="createskh"><a href="create_customer.php">Thêm Khách Hàng Mới</a></div>
-        </div>
-    </div>
-</body>
-
-</html>
