@@ -30,14 +30,20 @@ ul li a {
     width: 50%;
     padding-right: 40px;
     z-index: 1;
+    flex: 1;
 }
 
 .image__content .image__item {
     width: 650px;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    padding-bottom: 50px;
 }
 
 .product__info__main {
     z-index: 1;
+    flex: 1;
 }
 
 .product__info__main .product__title {
@@ -48,7 +54,7 @@ ul li a {
 
 .product__info__main .price {
     font-size: 24px;
-    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .radio {
@@ -170,8 +176,7 @@ ul li a {
 }
 
 .product__info__bottom .product__feature img {
-    width: 831px;
-    height: 248px;
+    width: 100%;
 }
 
 .product__attributes {
@@ -230,7 +235,7 @@ ul li a {
 }
 
 .product-description {
-    width: 50%;
+    width: 100%;
     text-align: left;
     background-color: #fff;
     padding: 20px;
