@@ -21,7 +21,7 @@
                 <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
-                <a href="" class="header__list-items"><b>Slider</b></a>
+                <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
                 <!-- <form method="POST">
