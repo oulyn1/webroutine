@@ -27,16 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
 
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css?v=<?php echo time(); ?>" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-        <link rel="stylesheet" href="../../../asset/css/slider.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../../asset/css/slider.css?v=<?php echo time(); ?>">
     <title>Thêm Slider</title>
 </head>
-
 <body>
     <div class="container">
         <div class="header">
@@ -73,21 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
                         <div class="tlb-add"><input type="submit" value="Thêm hình ảnh" class="btn-add" name="submit" /></div>
                     </form>
                 </div>
-                <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
-                    if ($result > 0) {
-                        echo "<script>
-                                alert('Thêm hình ảnh thành công');
-                                window.location.href='slider.php';
-                              </script>";
-                    } else {
-                        echo "<script>
-                                alert('Lỗi thêm hình ảnh');
-                                window.location.href='slider.php';
-                              </script>";
-                    }
-                }
-                ?>
             </div>
         </div>
     </div>
