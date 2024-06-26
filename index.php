@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          echo "<script>
             alert('Đăng nhập thành công');
         </script>";
-        header("Location:web/webforadmin/admin/main.php?ID='" . $row["Id_user"] . "'");
+        header("Location:web/webforadmin/admin/main.php?ID=".$row["Id_user"]."");
        
       } else {
         $_SESSION["customer"] = $row["Id_user"];
