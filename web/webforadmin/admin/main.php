@@ -21,6 +21,7 @@ if (!isset($_SESSION["admin"])) {
     <div class="container">
         <div class="header">
             <div class="header__list">
+                <a href="../admin/main.php" class="header__list-items" id="main"><b>Tổng quan</b></a>
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
@@ -28,7 +29,6 @@ if (!isset($_SESSION["admin"])) {
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
                 <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
-                <a href="" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
                 <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
