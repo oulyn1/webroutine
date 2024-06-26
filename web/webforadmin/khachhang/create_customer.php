@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -8,26 +8,39 @@
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../../asset/css/kho.css">
     <title>Tạo Khách Hàng</title>
+    <script>
+        function laydulieu() {
+            var userSelect = document.getElementById("userSelect");
+            var selectedUser = userSelect.options[userSelect.selectedIndex].dataset;
+            document.getElementById("id").value = selectedUser.id;
+            document.getElementById("ten").value = selectedUser.name;
+            document.getElementById("email").value = selectedUser.email;
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
             <div class="header__list">
+<<<<<<< HEAD
             <a href="#" class="header__list-items" ><b>Tổng quan</b></a>
+=======
+                <a href="#" class="header__list-items" id="main"><b>Tổng quan</b></a>
+>>>>>>> 8c3f54a65aafe3ac3e660cd6c905e67978483bbf
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"id="main"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
-                <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
-                <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
+                <a href="#" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
+                <a href="#" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
-                <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
+                <a href="#" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST">
                     <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form>
-                <a href="" class="logout">Đăng xuất</a>
+                <a href="#" class="logout">Đăng xuất</a>
             </div>
         </div>
         <div class="body">
@@ -36,41 +49,56 @@
             </div>
             <form method="POST">
                 <table class="tlb-info">
-                    <div class="user-info">
-                        <tbody>
-                            <tr>
-                                <td class="info-name"><label for="id">ID</label></td>
-                                <td><input type="text" class="info-name-property" id="id" name="id" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="ten">Tên</label></td>
-                                <td><input type="text" class="info-name-property" id="ten" name="ten" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="email">Email</label></td>
-                                <td><input type="email" class="info-name-property" id="email" name="email" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="so_dien_thoai">Số điện thoại</label></td>
-                                <td><input type="text" class="info-name-property" id="so_dien_thoai" name="so_dien_thoai" /></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="dia_chi">Địa chỉ</label></td>
-                                <td><textarea class="info-name-property" id="dia_chi" name="dia_chi"></textarea></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="ngay_tao">Ngày tạo</label></td>
-                                <td><input type="date" class="info-name-property" id="ngay_tao" name="ngay_tao" required /></td>
-                            </tr>
-                        </tbody>
+                    <tbody>
+                        <tr>
+                            <td class="info-name"><label for="userSelect">Chọn tài khoản</label></td>
+                            <td>
+                                <select id="userSelect" onchange="laydulieu()">
+                                    <option value="">Chọn tài khoản</option>
+                                    <?php
+                                    include("../../../config/config.php");
+                                    $query = "SELECT Id_user, Fullname, Email FROM user";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<option data-id="' . $row["Id_user"] . '" data-name="' . $row["Fullname"] . '" data-email="' . $row["Email"] . '">' . $row["Fullname"] . ' (' . $row["Email"] . ')</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="id">ID</label></td>
+                            <td><input type="text" class="info-name-property" id="id" name="id" required /></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="ten">Tên</label></td>
+                            <td><input type="text" class="info-name-property" id="ten" name="ten" required /></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="email">Email</label></td>
+                            <td><input type="email" class="info-name-property" id="email" name="email" required /></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="so_dien_thoai">Số điện thoại</label></td>
+                            <td><input type="text" class="info-name-property" id="so_dien_thoai" name="so_dien_thoai" /></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="dia_chi">Địa chỉ</label></td>
+                            <td><textarea class="info-name-property" id="dia_chi" name="dia_chi"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="info-name"><label for="ngay_tao">Ngày tạo</label></td>
+                            <td><input type="date" class="info-name-property" id="ngay_tao" name="ngay_tao" required /></td>
+                        </tr>
+                    </tbody>
                 </table>
-                <div class="tlb-add"><input type="submit" value="Tạo khách hàng" class="btn-add" colspan="2" name="txtThem" /></div>
+                <div class="tlb-add"><input type="submit" value="Tạo khách hàng" class="btn-add" name="txtThem" /></div>
             </form>
-
         </div>
     </div>
     <?php
     include("../../../config/config.php");
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST['id'];
         $ten = $_POST['ten'];
@@ -80,22 +108,28 @@
         $ngay_tao = $_POST['ngay_tao'];
 
         if (!$conn) {
-            echo 'Kết nối không thành công' . mysqli_connect_error();
+            echo 'Kết nối không thành công: ' . mysqli_connect_error();
         } else {
-            $sql = "INSERT INTO khach_hang VALUES ('".$id."','".$ten."', '".$email."', '".$so_dien_thoai."', '".$dia_chi."', '".$ngay_tao."')";
-            $result = mysqli_query($conn, $sql);
-            if ($result > 0) {
-                echo "  <script>
-                                alert('Tạo khách hàng thành công');
-                                window.location.href='khachhang.php';
-                            </script>";
+            $sql = "INSERT INTO khach_hang (id, ten, email, so_dien_thoai, dia_chi, ngay_tao) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $id, $ten, $email, $so_dien_thoai, $dia_chi, $ngay_tao);
+
+            if ($stmt->execute()) {
+                echo "<script>
+                          alert('Tạo khách hàng thành công');
+                          window.location.href='khachhang.php';
+                      </script>";
             } else {
-                echo "  <script>
-                                alert('Lỗi tạo khách hàng');
-                                window.location.href='khachhang.php';
-                            </script>";
+                echo "<script>
+                          alert('Lỗi tạo khách hàng');
+                          window.location.href='khachhang.php';
+                      </script>";
             }
+
+            $stmt->close();
         }
+
+        $conn->close();
     }
     ?>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -13,14 +13,18 @@
     <div class="container">
         <div class="header">
             <div class="header__list">
+<<<<<<< HEAD
             <a href="#" class="header__list-items" ><b>Tổng quan</b></a>
+=======
+                <a href="#" class="header__list-items?ID=ID" id="main"><b>Tổng quan</b></a>
+>>>>>>> 8c3f54a65aafe3ac3e660cd6c905e67978483bbf
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"id="main"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
                 <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
-                <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
+                <a href="" class="header__list-items"><b>Slider</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST">
@@ -40,11 +44,10 @@
             $email = "";
             $so_dien_thoai = "";
             $dia_chi = "";
-            $ngay_tao = "";
+
             if (!$conn){
                 echo 'Kết nối không thành công: ' . mysqli_connect_error();
-            }
-            else{
+            } else {
                 $sql = "SELECT * FROM khach_hang WHERE id='$id'";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
@@ -54,7 +57,6 @@
                         $email = $row["email"];
                         $so_dien_thoai = $row["so_dien_thoai"];
                         $dia_chi = $row["dia_chi"];
-                        $ngay_tao = $row["ngay_tao"];
                     }
                 }
             }
@@ -70,11 +72,11 @@
                             </tr>
                             <tr>
                                 <td class="info-name"><label for="ten">Tên</label></td>
-                                <td><input type="text" class="info-name-property" id="ten" name="ten" value="<?php echo $ten; ?>" required /></td>
+                                <td><input type="text" class="info-name-property" id="ten" name="ten" value="<?php echo $ten; ?>" readonly /></td>
                             </tr>
                             <tr>
                                 <td class="info-name"><label for="email">Email</label></td>
-                                <td><input type="email" class="info-name-property" id="email" name="email" value="<?php echo $email; ?>" required /></td>
+                                <td><input type="email" class="info-name-property" id="email" name="email" value="<?php echo $email; ?>" readonly /></td>
                             </tr>
                             <tr>
                                 <td class="info-name"><label for="so_dien_thoai">Số điện thoại</label></td>
@@ -83,10 +85,6 @@
                             <tr>
                                 <td class="info-name"><label for="dia_chi">Địa chỉ</label></td>
                                 <td><textarea class="info-name-property" id="dia_chi" name="dia_chi"><?php echo $dia_chi; ?></textarea></td>
-                            </tr>
-                            <tr>
-                                <td class="info-name"><label for="ngay_tao">Ngày tạo</label></td>
-                                <td><input type="date" class="info-name-property" id="ngay_tao" name="ngay_tao" value="<?php echo $ngay_tao; ?>" required /></td>
                             </tr>
                         </tbody>
                     </div>
@@ -97,16 +95,13 @@
     </div>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $ten = $_POST['ten'];
-        $email = $_POST['email'];
         $so_dien_thoai = $_POST['so_dien_thoai'];
         $dia_chi = $_POST['dia_chi'];
-        $ngay_tao = $_POST['ngay_tao'];
 
         if (!$conn) {
             echo 'Kết nối không thành công: ' . mysqli_connect_error();
         } else {
-            $sql = "UPDATE khach_hang SET ten='$ten', email='$email', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi', ngay_tao='$ngay_tao' WHERE id='$id'";
+            $sql = "UPDATE khach_hang SET so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id='$id'";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
