@@ -13,9 +13,13 @@
     <div class="container">
         <div class="header">
             <div class="header__list">
+<<<<<<< HEAD
+            <a href="#" class="header__list-items" ><b>Tổng quan</b></a>
+=======
                 <a href="#" class="header__list-items?ID=ID" id="main"><b>Tổng quan</b></a>
+>>>>>>> 8c3f54a65aafe3ac3e660cd6c905e67978483bbf
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
-                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
+                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"id="main"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
                 <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
