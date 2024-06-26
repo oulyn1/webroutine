@@ -148,23 +148,7 @@
             <h2 class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></h2>
             
             <div class="select__size">
-                <p class="size__title">Chọn size:</p>
-                <div class="size">
-                    <input type="radio" id="size-s" name="size" value="S">
-                    <label for="size-s">S</label>
-
-                    <input type="radio" id="size-m" name="size" value="M">
-                    <label for="size-m">M</label>
-
-                    <input type="radio" id="size-l" name="size" value="L">
-                    <label for="size-l">L</label>
-
-                    <input type="radio" id="size-xl" name="size" value="XL">
-                    <label for="size-xl">XL</label>
-
-                    <input type="radio" id="size-xxl" name="size" value="XXL">
-                    <label for="size-xxl">XXL</label>
-                </div>
+                <p class="size__title">Chọn size: '.$row["size"].'</p>               
             </div>
 
             <div class="box__tocart">
@@ -172,7 +156,7 @@
 
                 <div class="quantity__selector">
                     <button type="button" id="decrease">-</button>
-                    <input type="number" id="quantity" min="1" max="10" value="1" readonly>
+                    <input type="number" id="quantity" min="1" max="'.$row["soluong"].'" value="1" readonly>
                     <button type="button" id="increase">+</button>
                 </div>
 
@@ -207,7 +191,22 @@
       }
   }
 ?>
+<!-- <div class="size">
+                    <input type="radio" id="size-s" name="size" value="S">
+                    <label for="size-s">S</label>
 
+                    <input type="radio" id="size-m" name="size" value="M">
+                    <label for="size-m">M</label>
+
+                    <input type="radio" id="size-l" name="size" value="L">
+                    <label for="size-l">L</label>
+
+                    <input type="radio" id="size-xl" name="size" value="XL">
+                    <label for="size-xl">XL</label>
+
+                    <input type="radio" id="size-xxl" name="size" value="XXL">
+                    <label for="size-xxl">XXL</label>
+                </div> -->
 
 <!-- footer -->
 
