@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+.body-headersanpham{
+    margin-top: 20px;
+    text-align: center;
+}
+.tbl_hienthi{
+    margin: 10px;
+}
+.tbl_them{
+    margin: 10px;
+}
+.tbl_hienthi a{
+    text-decoration: none;
+    color: #000;
+}
