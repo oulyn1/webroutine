@@ -82,10 +82,6 @@
                             <td class="info-name"><label for="dia_chi">Địa chỉ</label></td>
                             <td><textarea class="info-name-property" id="dia_chi" name="dia_chi"></textarea></td>
                         </tr>
-                        <tr>
-                            <td class="info-name"><label for="ngay_tao">Ngày tạo</label></td>
-                            <td><input type="date" class="info-name-property" id="ngay_tao" name="ngay_tao" required /></td>
-                        </tr>
                     </tbody>
                 </table>
                 <div class="tlb-add"><input type="submit" value="Tạo khách hàng" class="btn-add" name="txtThem" /></div>
@@ -101,14 +97,13 @@
         $email = $_POST['email'];
         $so_dien_thoai = $_POST['so_dien_thoai'];
         $dia_chi = $_POST['dia_chi'];
-        $ngay_tao = $_POST['ngay_tao'];
 
         if (!$conn) {
             echo 'Kết nối không thành công: ' . mysqli_connect_error();
         } else {
-            $sql = "INSERT INTO khach_hang (id, ten, email, so_dien_thoai, dia_chi, ngay_tao) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO khach_hang (id, ten, email, so_dien_thoai, dia_chi,) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssss", $id, $ten, $email, $so_dien_thoai, $dia_chi, $ngay_tao);
+            $stmt->bind_param($id, $ten, $email, $so_dien_thoai, $dia_chi);
 
             if ($stmt->execute()) {
                 echo "<script>
