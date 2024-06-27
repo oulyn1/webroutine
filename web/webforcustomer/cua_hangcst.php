@@ -11,6 +11,9 @@
 </head>
 <body>
   <div id="main">
+
+  <!-- header -->
+
       <div id="header">
         <div class="header__left">
           <a href="mainafterlogin.php" class="logo">
@@ -128,13 +131,14 @@
 
     <script src="../../asset/js/mainafterlogin.js"></script>
 
+    <!-- content -->
+
     <div class="content">
         <div class="content-main">
             <h1>Danh sách cửa hàng</h1>
             <?php
-            if ($result->num_rows > 0) {
-                // Hiển thị dữ liệu từng cửa hàng
-                while($row = $result->fetch_assoc()) {
+            if(mysqli_num_rows($result) >0) {
+                while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='store'>";
                     echo "<h2>" . $row["ten"] . "</h2>";
                     echo "<p>" . $row["dia_chi"] . ", " . $row["thanh_pho"] . "</p>";
@@ -148,6 +152,8 @@
             ?>
         </div>
     </div>
+
+<!-- footer -->
 
 <div class="footer">
 
