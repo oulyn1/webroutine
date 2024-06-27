@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location: ../../../index.php");
+    exit;
+}else{$ID= $_SESSION["admin"];}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +22,7 @@
     <div class="container">
         <div class="header">
             <div class="header__list">
-            <a href="#" class="header__list-items" ><b>Tổng quan</b></a>
+            <a href="../admin/main.php?ID=<?php echo $ID ?>" class="header__list-items" ><b>Tổng quan</b></a>
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
@@ -27,7 +35,7 @@
                 <!-- <form method="POST">
                     <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
                 </form> -->
-                <a href="" class="logout" class="logout">Đăng xuất</a>
+                <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
             </div>
         </div>
 

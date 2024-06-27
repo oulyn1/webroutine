@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["admin"])) {
     header("location: ../../../index.php");
     exit;
-}
+}else{$ID= $_SESSION["admin"];}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ if (!isset($_SESSION["admin"])) {
     <div class="container">
         <div class="header">
             <div class="header__list">
-                <a href="../admin/main.php" class="header__list-items" id="main"><b>Tổng quan</b></a>
+                <a href="../admin/main.php=<?php echo $ID ?>" class="header__list-items" id="main"><b>Tổng quan</b></a>
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
                 <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
