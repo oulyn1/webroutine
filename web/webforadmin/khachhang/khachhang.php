@@ -23,6 +23,7 @@
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
                 <a href="" class="header__list-items"><b>Slider</b></a>
+                <a href="../cuahang/cua_hang.php?ID=ID" class="header__list-items"><b>Cửa hàng</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST" action="khachhang.php">
