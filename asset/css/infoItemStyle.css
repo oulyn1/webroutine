@@ -313,3 +313,20 @@ ul li a {
 .product-description button:hover {
     background-color: #333;
 }
+
+.modal__items {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal__items .modal__items__img {
+
+}
+
+.modal__items .modal__items__img img {
+    width: 30%;
+}
+
+.modal__items .modal__items__info {
+    width: 60%;
+}
