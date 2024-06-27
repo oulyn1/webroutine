@@ -139,7 +139,7 @@
                     <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
                 </li>
             </ul>
-            <a href="">XEM TẤT CẢ CỬA HÀNG</a>
+            <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
         </div>
     </div>
 </div>
