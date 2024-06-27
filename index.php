@@ -231,8 +231,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="text" placeholder="Email" />
             </div>
             <div class="auth-group">
-              <p>Mã OTP</p>
-              <input type="text" placeholder="OTP" />
             </div>
             <div class="auth-group">
               <p>Mật khẩu</p>
