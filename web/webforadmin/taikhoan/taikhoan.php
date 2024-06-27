@@ -42,9 +42,12 @@ if (!isset($_SESSION["admin"])) {
             <div class="body-header">
                 <h1>Quản lý tài khoản</h1>
             </div>
-            <div class="tablesql"><?php 
+            <div class="tablesql"><?php
             include("xuly.php");
             ?>
             </div>
             <div class="createacc"><a href="createacc.php">Thêm tài khoản <i class="ti-user"></i></a></div>
-        </div> 
+        </div>
+    </div>
+</body>
+</html>
