@@ -30,6 +30,7 @@ if (!isset($_SESSION["admin"])) {
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
                 <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
+                <a href="../cuahang/cua_hang.php?ID=ID" class="header__list-items"><b>Cửa hàng</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST">
@@ -42,9 +43,12 @@ if (!isset($_SESSION["admin"])) {
             <div class="body-header">
                 <h1>Quản lý tài khoản</h1>
             </div>
-            <div class="tablesql"><?php 
+            <div class="tablesql"><?php
             include("xuly.php");
             ?>
             </div>
             <div class="createacc"><a href="createacc.php">Thêm tài khoản <i class="ti-user"></i></a></div>
-        </div> 
+        </div>
+    </div>
+</body>
+</html>

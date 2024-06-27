@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
 </head>
 <body>
   <div id="main">
@@ -127,34 +128,26 @@
 
     <script src="../../asset/js/mainafterlogin.js"></script>
 
-    <div class="bannermw">
-        <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
-    </div>
-    <?php
-        include("../../config/config.php");
-        //buoc 2 viet truy van
-        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
-        //buoc 3 thuc thi cau lenh
-        $result = mysqli_query($conn, $query);
-        //buoc 4 lay du lieu
-        if(mysqli_num_rows($result) >0){
-            echo'<div class="maincontent">
-                <div class="product_list">';
-            while ($row = mysqli_fetch_assoc($result)){
-                if ($row["idloaisanpham"]==1){
-                    echo'<div>
-                    <a href="infoItemLayout.php?ID='.$row["idsanpham"].'">
-                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
-                        <p class="title_product">'.$row["tensanpham"].'</p>
-                        <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
-                    </a>
-                    </div>';
+    <div class="content">
+        <div class="content-main">
+            <h1>Danh sách cửa hàng</h1>
+            <?php
+            if ($result->num_rows > 0) {
+                // Hiển thị dữ liệu từng cửa hàng
+                while($row = $result->fetch_assoc()) {
+                    echo "<div class='store'>";
+                    echo "<h2>" . $row["ten"] . "</h2>";
+                    echo "<p>" . $row["dia_chi"] . ", " . $row["thanh_pho"] . "</p>";
+                    echo "<p>" . $row["mo_ta"] . "</p>";
+                    echo "<img src='path/to/your/images/" . $row["hinh_anh"] . "' alt='" . $row["ten"] . "'>";
+                    echo "</div>";
                 }
+            } else {
+                echo "Không có cửa hàng nào.";
             }
-            echo'</div>
-             </div>';
-        }
-    ?>
+            ?>
+        </div>
+    </div>
 
 <div class="footer">
 

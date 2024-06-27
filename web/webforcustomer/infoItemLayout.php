@@ -100,6 +100,32 @@
             </p>
             <span class="ti-close"></span>
           </div>
+
+
+          <div class="modal__items">
+            <div class="modal__items__img">
+              <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
+            </div>
+            <div class="modal__items__info">
+              <p class="modal__items__title">
+                Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
+              </p>
+              <h2 class="modal__items__price">392.000 đ<u>đ</u></h2>
+
+              <div class="modal__items__quantity">
+                  <div class="title">Chọn số lượng: </div>
+
+                  <div class="quantity__selector">
+                      <button type="button" id="decrease">-</button>
+                      <input type="number" id="quantity" min="1" max="10" value="1" readonly>
+                      <button type="button" id="increase">+</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+            
+          
         </div>
       </div>
     </div>
@@ -161,8 +187,8 @@
                 </div>
 
                 <div class="add">
-                    <div action="" class="add__tocart">
-                        <input type="submit" value="THÊM VÀO GIỎ HÀNG">
+                    <div action="" class="add__tocart" id="add-to-cart">
+                        <input type="button" value="THÊM VÀO GIỎ HÀNG">
                     </div>
                     <div>
                       <a class="ti-heart" href=""></a>
@@ -279,10 +305,11 @@
                     <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
                 </li>
             </ul>
-            <a href="">XEM TẤT CẢ CỬA HÀNG</a>
+            <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
         </div>
     </div>
 
     <script src="../../asset/js/script.js"></script>
+    <script src="../../asset/js/mainafterlogin.js"></script>
 </body>
 </html>
