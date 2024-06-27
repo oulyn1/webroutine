@@ -231,8 +231,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="text" placeholder="Email" />
             </div>
             <div class="auth-group">
-              <p>Mã OTP</p>
-              <input type="text" placeholder="OTP" />
             </div>
             <div class="auth-group">
               <p>Mật khẩu</p>
@@ -250,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Tôi chấp nhận <u>điều khoản quyền riêng tư và bảo mật</u>
               </a>
             </div>
-            <button class="btn">ĐĂNG KÍ TÀI KHOẢN</button>
+            <input type="submit" class="btn" value="ĐĂNG KÍ TÀI KHOẢN"/>
         </form>
         </div>
         <div class="auth-switch">

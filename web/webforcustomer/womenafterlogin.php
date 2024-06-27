@@ -116,7 +116,7 @@
           </div>
         </div>
         <hr />
-        <div class="body-end"><a href="index.php">Đăng xuất</a></div>
+        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
       </div>
     </div>
 
