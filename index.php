@@ -248,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Tôi chấp nhận <u>điều khoản quyền riêng tư và bảo mật</u>
               </a>
             </div>
-            <button class="btn">ĐĂNG KÍ TÀI KHOẢN</button>
+            <input type="submit" class="btn" value="ĐĂNG KÍ TÀI KHOẢN"/>
         </form>
         </div>
         <div class="auth-switch">
