@@ -49,6 +49,7 @@ if ($result>0) {
     $mail->guimail($subject,$content,$Email);
     echo"<script>
             alert('Vui lòng kiểm tra email để đặt lại mật khẩu!');
+            window.location.href='../../index.php';
         </script>";
         
     }
