@@ -127,9 +127,6 @@
 
     <script src="../../asset/js/mainafterlogin.js"></script>
 
-    <div class="bannermw">
-        <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
-    </div>
 
     <?php
             include("../../config/config.php");
@@ -142,6 +139,15 @@
             $result = mysqli_query($conn, $query);
             //buoc 4 lay du lieu
             if(mysqli_num_rows($result) >0){
+                if($_GET["IDLSP"]==1){
+                    echo'<div class="bannermw">
+                            <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
+                        </div>';
+                }else{
+                    echo'<div class="bannermw">
+                            <img src="../../asset/img/bannerwoman.png" alt="" class="img-bannermw">
+                        </div>';
+                }
                 echo'<div class="maincontent">
                     <div class="product_list">';
                 while ($row = mysqli_fetch_assoc($result)){

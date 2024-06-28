@@ -188,8 +188,12 @@ html{
     justify-content: space-evenly;
 }
 
-#banner img{
+#banner a{
     width: 46%;
+    
+}
+#banner img{
+    width: 100%;
     border-radius: 5%;
 }
 

@@ -148,8 +148,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
     <div id="banner">
-      <img src="asset/img/banner1.webp" alt="" />
-      <img src="asset/img/banner2.webp" alt="" />
+      <a href="web/webforcustomer/man.php"><img src="asset/img/banner1.webp" alt="" /></a>
+      <a href="web/webforcustomer/women.php"><img src="asset/img/banner2.webp" alt="" /></a>
     </div>
 
     <?php
