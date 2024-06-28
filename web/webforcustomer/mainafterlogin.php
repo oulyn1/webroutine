@@ -101,8 +101,8 @@
       </div>
 
       <div id="banner">
-        <img src="../../asset/img/banner1.webp" alt="" />
-        <img src="../../asset/img/banner2.webp" alt="" />
+        <a href="manafterlogin.php"><img src="../../asset/img/banner1.webp" alt="" /></a>
+        <a href="womenafterlogin.php"><img src="../../asset/img/banner2.webp" alt="" /></a>
       </div>
 
       <?php
