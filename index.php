@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["admin"])) {
+    header("location:web/webforadmin/admin/main.php?ID=".$_SESSION['admin']."");
+}else if(isset($_SESSION["customer"])) {
+  header("location:web/webforcustomer/mainafterlogin.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,18 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     while ($row = mysqli_fetch_assoc($result)) {
       if ($row["Permission"] == "Admin") {
         $_SESSION['admin'] = $row["Id_user"];
-         echo "<script>
+        $_SESSION["email"] = $row["Email"];
+       echo "<script>
             alert('Đăng nhập thành công');
+            window.location.href='web/webforadmin/admin/main.php?ID=".$row["Id_user"]."';
         </script>";
-        header("Location:web/webforadmin/admin/main.php?ID=".$row["Id_user"]."");
-       
       } else {
         $_SESSION["customer"] = $row["Id_user"];
-        echo "<script>
+        $_SESSION["email"] = $row["Email"];
+         echo "<script>
             alert('Đăng nhập thành công');
+            window.location.href='web/webforcustomer/mainafterlogin.php';
         </script>";
-        header("Location:web/webforcustomer/mainafterlogin.php");
-        
       }
     }
   } else {
@@ -195,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <div class="auht-control">
             <div class="forgot">
-              <a href="">Quên mật khẩu?</a>
+              <a href="web/forgot/nhapmail.php">Quên mật khẩu?</a>
             </div>
             <input type="submit" name="dangnhap" class="btn" value="ĐĂNG NHẬP"></input>
           </div>
@@ -220,35 +228,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             đãi hấp dẫn
           </p>
         </div>
-        <form method="post">
+
+        <form method="post" action="web/dangki.php">
           <div class="auth-form">
             <div class="auth-group">
               <p>Họ và tên</p>
-              <input type="text" placeholder="Họ và tên" />
+              <input type="text" placeholder="Họ và tên" name="txtname" required/>
             </div>
             <div class="auth-group">
               <p>Email</p>
-              <input type="text" placeholder="Email" />
+              <input type="text" placeholder="Email" name="txtemail" required/>
             </div>
             <div class="auth-group">
             </div>
             <div class="auth-group">
               <p>Mật khẩu</p>
-              <input type="password" placeholder="Mật khẩu" />
+              <input type="password" placeholder="Mật khẩu" name="txtpassword" required/>
             </div>
             <div class="auth-group">
               <p>Nhắc lại mật khẩu</p>
-              <input type="password" placeholder="Nhập lại mật khẩu" />
+              <input type="password" placeholder="Nhập lại mật khẩu" name="txtpassword2" required/>
             </div>
           </div>
           <div class="auht-control">
             <div class="dk">
-              <input type="checkbox" />
+              <input type="checkbox" value="1" name="cbdieukhoan" />
               <a href="">
                 Tôi chấp nhận <u>điều khoản quyền riêng tư và bảo mật</u>
               </a>
             </div>
-            <input type="submit" class="btn" value="ĐĂNG KÍ TÀI KHOẢN"/>
+            <input type="submit" class="btn" value="ĐĂNG KÍ TÀI KHOẢN" name="submit"/>
         </form>
         </div>
         <div class="auth-switch">

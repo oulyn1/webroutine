@@ -101,6 +101,9 @@ $Password =md5($_POST['Password']);
 $Password2=md5($_POST['Password2']);
 $Permission=$_POST['Permission'];
 if ($Password == $Password2) {
+    $qsl="SELECT * FROM user where Email='".$Email."'";
+    $result = mysqli_query($conn, $qsl);
+    if (mysqli_num_rows($result) == 0) {
 $query="INSERT INTO user VALUES('','".$Fullname."','".$Password."','".$Email."','".$Permission."','')";
 $result = mysqli_query($conn, $query);
 if ($result>0) {
@@ -115,6 +118,10 @@ if ($result>0) {
             window.location.href='taikhoan.php';
         </script>";
         }
+    }
+    else { echo"<script>
+        alert('Email đã tồn tại! Vui lòng thử 1 email khác');
+    </script>";}
 
 }
 else {

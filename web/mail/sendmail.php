@@ -5,11 +5,14 @@ include("../mail/phpmailer/src/SMTP.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+class Mailer {
+    public function guimail($subject,$body,$email) {
 $mail= new PHPMailer(true);
+$mail->CharSet = "UTF-8";
 // print_r($mail);
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output SMTP::DEBUG_SERVER
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -19,8 +22,8 @@ try {
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('routinevietnam2@gmail.com', 'Routine');
-    $mail->addAddress('bach23042004@gmail.com');     //Add a recipient
+    $mail->setFrom('routinevietnam2@gmail.com', 'Routine Việt Nam');
+    $mail->addAddress($email);     //Add a recipient
     // $mail->addAddress('ellen@example.com');   //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     $mail->addCC('routinevietnam2@gmail.com');
@@ -32,13 +35,15 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Test mail';
-    $mail->Body    = 'Toàn bị <b>Gay</b>';
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+    }
 }
 ?>
