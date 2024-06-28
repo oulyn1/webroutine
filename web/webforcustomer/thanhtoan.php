@@ -45,26 +45,51 @@
 
     <!-- content -->
 
-    <div class="content">
-
-        <div class="pice">
-
-            <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li> / Giỏ hàng</li>
-            </ul>
-
+    <div class="cart-container">
+        <div class="title">
+            <p class="ti-shopping-cart"></p>
+            <p class="">Giỏ hàng</p>
         </div>
 
-        <div class="check">
-
-            <div class="check-img"></div>
-            <h1>Giỏ hàng</h1>
-
+        <div class="cart-item">
+            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="">
+            <div class="item-details">
+                <p class="item-name">Áo Polo Nam Vải Gân Phối Bo Nẹp Trang Trí Form Fitted - 10F23POL017</p>
+                
+                <div class="item-quantity">
+                    Số lượng: 
+                </div>
+                <p class="item-price">
+                    <span class="price">260.000 đ</span>
+                </p>
+            </div>
         </div>
-
-        <div class="content-main">
-
+        <div class="shopping-info">
+            <h3>Thông tin giao hàng</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" value="Nguyễn">
+                    <input type="text" value="Bách">
+                    <input type="text" value="0862011329">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Nhập Tỉnh/Thành phố, Quận/Huyện, Phường/Xã">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Số nhà, đường *">
+                    <input type="text" value="bachne23040@gmail.com">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Ghi chú đơn hàng">
+                </div>
+            </form>
+        </div>
+        <div class="total-price">
+            <p>Tổng tiền:</p>
+            <p>260.000 đ</p>
+        </div>
+        <div class="cart-buttons">
+            <button class="checkout">THANH TOÁN</button>
         </div>
     </div>
 
@@ -75,10 +100,10 @@
         <div class="information">
 
             <img src="../../asset/img/logo-routine.png" alt="" class="logo">
-            <h3>CÔNG TY TNHH ROUNTIINE VIETNAM</h3>
+            <h3>CÔNG TY TNHH ROUTINE VIETNAM</h3>
             <P>Mã số thuế: 0106486365</P>
             <P></P>
-            <P>Văn phòng: tầng 5 tòa nahf IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
+            <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
             <h3>THAM GIA BẢNG TIN CỦA CHÚNG TÔI</h3>
 
         </div>
