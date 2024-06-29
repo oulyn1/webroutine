@@ -1,4 +1,3 @@
-/* Reset mặc định */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,6 @@ body {
     flex-direction: column;
 }
 
-/* Đảm bảo container bao ngoài */
 .container {
     display: flex;
     flex-direction: column;
@@ -25,7 +23,6 @@ body {
 /* Nội dung chính chiếm không gian còn lại */
 .content {
     flex: 1;
-    /* margin-top: 90px; */
 }
 
 /* Định dạng footer */
@@ -132,9 +129,6 @@ body {
 
 /* Định dạng breadcrumbs */
 .breadcrumbs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 10px;
     margin-top: 70px;
 }
@@ -146,21 +140,10 @@ body {
     margin: 0;
 }
 
-.breadcrumbs .item {
-    margin-right: 10px;
-}
-
-.breadcrumbs .item a {
-    text-decoration: none;
-    color: #333;
-}
-
-.breadcrumbs .item strong {
-    font-weight: bold;
-    color: #000;
-}
 
 /* Nội dung chính */
+
+
 .page-main {
     max-width: 1260px;
     margin-right: auto;
@@ -171,18 +154,22 @@ body {
     box-sizing: border-box;
 }
 
-.columns {
+.page-main .columns {
     display: block;
     box-sizing: border-box;
 }
 
-.column-main {
+.page-main .columns .column-main {
     padding-left: 40px;
     width: 70%;
     margin-top: 60px;
     padding-bottom: 100px;
     min-height: 300px;
     float: right;
+}
+
+.column-main .page-title-wrapper h1 {
+    margin-bottom: 10px;
 }
 
 .sidebar-main {
@@ -303,15 +290,15 @@ li {
 }
 
 .block-collapsible-nav-content .nav.items {
-    display: block;
+    display: block; /* Đảm bảo danh sách hiển thị theo chiều dọc */
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .block-collapsible-nav-content .nav.items .nav.item {
-    display: block;
-    padding: 10px 12px 10px 0px;
+    display: block; /* Đảm bảo từng mục trong danh sách hiển thị theo chiều dọc */
+    padding: 10px 12px 10px 0px; /* Khoảng cách giữa các mục */
 }
 
 .block-collapsible-nav-content .nav.items .nav.item a {
@@ -343,8 +330,6 @@ li {
 .block-account-information .field-group {
     width: 50%;
     margin-bottom: 25px;
- 
-
 }
 
 .block-account-information .field-group-1 {
@@ -357,9 +342,65 @@ li {
 .block-account-information .field-group-2 {
     width: 50%;
     margin-bottom: 25px;
-
 }
 
 .p2{
     margin: 0px 0px 10px;
+}
+
+.items-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.items-container .image {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.items-container .items__details .items__name{
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.items-container .items__quantity .title {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.items-container .items__details .items__price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.items-container .ti-close {
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    justify-self: flex-end;
+}
+
+.button-add {
+    display: flex;
+    justify-content: end;
+    margin-top: 24px;
+}
+
+.button-add .button {
+    width: 50%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #000;
+    color: #fff;
+    width: 80%;
+    text-decoration: none;
+    text-align: center;
 }

@@ -3,87 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../asset/css/admin.css" />
+    <title>Quần áo thời trang nam</title>
+    <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="../../asset/css/table.css">
+    <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
+    <link rel="stylesheet" href="../../asset/css/favoriteList.css">
+
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header__list">
-            <a href="../admin/main.php?ID=<?php echo $ID ?>" class="header__list-items" ><b>Tổng quan</b></a>
-                <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
-                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"id="main"><b>Tài khoản</b></a>
-                <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
-                <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
-                <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
-                <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
-                <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
-            </div>
-            <div class="header__list2">
-                <form method="POST">
-                    <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
-                </form>
-                <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
-            </div>
+  < id="main">
+
+  <!-- header -->
+
+      <div id="header">
+        <div class="header__left">
+          <a href="mainafterlogin.php" class="logo">
+            <img
+              src="../../asset/img/logo-routine.png"
+              alt=""
+              class="logo__img"
+            />
+          </a>
+          <ul id="nav">
+          <li>
+                    <a href="manafterlogin.php">NAM</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==1){
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <a href="womenafterlogin.php">NỮ</a>
+                    <?php
+                    include("../../config/config.php");
+                    //buoc 2 viet truy van
+                    $query = "SELECT * FROM tbl_danhmuccon";
+                    //buoc 3 thuc thi cau lenh
+                    $result = mysqli_query($conn, $query);
+                    //buoc 4 lay du lieu
+                    if(mysqli_num_rows($result) >0){
+                      echo'<ul class="subnav">';
+                      while ($row = mysqli_fetch_assoc($result)){
+                        if($row["idloaisanpham"]==2){
+                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                        }
+                      }
+                      echo'</ul>';
+                    }
+                    ?>
+                </li>
+            </ul>
         </div>
-        <div class="body">
-            <div class="body-header">
-                <h1>Quản lý tài khoản</h1>
-            </div>
-            
-            <div class="createacc"><a href="createacc.php">Thêm tài khoản <i class="ti-user"></i></a></div>
+        <div class="header__right">
+          <a class="search" href="">
+            <i class="ti-search"></i>
+            <span class="search__title">Tìm kiếm</span>
+          </a>
+          <span class="ti-user" id="openlogin" href=""></span>
+          <span class="ti-heart" id="openlove" href=""></span>
+          <span class="ti-shopping-cart" id="openshopping" href=""></span>
         </div>
+      </div>
+
+
+      <div class="model" id="modal-love">
+      <div class="model-overlay"></div>
+      <div class="modal-right">
+        <div class="modal-love">
+          <div class="love-heading">
+            <p>
+              <i class="ti-heart"></i>
+              <b>Sản phẩm yêu thích</b>
+            </p>
+            <span class="ti-close"></span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <?php
-        include("../../config/config.php");
-        $query="SELECT * FROM user";
-        $result = mysqli_query($conn, $query);
-        $num = 1;
-            if (mysqli_num_rows($result) > 0) {
-                echo '<table id="tblMain">
-                    <thead>
-                        <th>STT</th>
-                        <th>ID</th>
-                        <th>Họ Và Tên</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Quyền Hạn</th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
-                    </thead>
-                    <tbody>';
-                while ($row = mysqli_fetch_assoc($result)) {
-                    if ($row['Permission'] == 'Admin') {
-                    echo '<tr>
-                            <td>' . ($num++) . '</td>
-                            <td>' . $row["Id_user"] . '</td>
-                            <td>' . $row["Fullname"] . '</td>
-                            <td>' . $row["Email"] . '</td>
-                            <td>' . $row["Password"] . '</td>
-                            <td>' . $row["Permission"] . '</td>
-                            <td><td>
-                        </tr>';}
-                        else{
-                            echo '<tr>
-                            <td>' . ($num++) . '</td>
-                            <td>' . $row["Id_user"] . '</td>
-                            <td>' . $row["Fullname"] . '</td>
-                            <td>' . $row["Email"] . '</td>
-                            <td>' . $row["Password"] . '</td>
-                            <td>' . $row["Permission"] . '</td>
-                            <td><a class="thea" href="editacc.php?ID=' . $row["Id_user"] . '"><i class="ti-pencil-alt"></i></a></td>
-                            <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa dữ liệu không?\');" href="deleteacc.php?ID=' . $row["Id_user"] . '"><i class="ti-trash"></i></a></td>
-                        </tr>'; 
-                        }
-                }
-                echo '</tbody>
-                </table>';
-            } else {
-                echo "Khong co du lieu tai khoan";
-            }
-    ?>
+    <div class="model" id="modal-shopping">
+      <div class="model-overlay"></div>
+      <div class="modal-right">
+        <div class="modal-love">
+          <div class="love-heading">
+            <p>
+              <i class="ti-shopping-cart"></i>
+              <b>Giỏ hàng</b>
+            </p>
+            <span class="ti-close"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="model" id="modal-signin">
+      <div class="model-overlay"></div>
+      <div class="modal-after">
+        <div class="model-innerafter">
+          <span class="ti-close"></span>
+        </div>
+        <div class="body-start">Chào khách hàng</div>
+        <hr />
+        <div class="body-after">
+          <div>
+            <a href=""><p>Theo dõi đơn hàng</p></a>
+          </div>
+          <div>
+            <a href=""><p>Sản phẩm yêu thích</p></a>
+          </div>
+        </div>
+        <hr />
+        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
+      </div>
+    </div>
+
+    <script src="../../asset/js/mainafterlogin.js"></script>
+
+    <!-- content -->
+    <div class="content">
+        
+            <div class="breadcrumbs">
+
+            </div>
+            <div class="page-main">
+                    <div class="columns">
+                        <div class="column-main">
+                            <div class="page-title-wrapper">
+                                <h1 class="page-title">Sản phẩm yêu thích</h1>
+                                <p class="des">Bạn có thể cập nhật thông tin của mình ở trang này</p>
+                            </div>
+
+                            <div class="items">
+                                <div class="items-container">
+                                    <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
+                                    <div class="items__details">
+                                        <p class="items__name">
+                                        Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
+                                        </p>
+
+                                        <div class="items__quantity">
+                                            <div class="title">Số lượng: </div>
+                                        </div>
+
+                                        <p class="items__price">392.000<u>đ</u></p>
+
+                                        <div class="button-add">
+                                            <a href="infoItemLayout.php" class="button">THÊM VÀO GIỎ HÀNG</a>
+                                        </div>
+                                    </div>
+
+                                    <span class="ti-close"></span>
+
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="sidebar sidebar-main">
+                            <div class="account-page-title">
+                                <h1 class="ti-user">Tài khoản của bạn</h1>
+                            </div>
+                            <div class="block-collapsible-nav">
+                                <div class="block-title">
+                                    <h2>Toàn Nguyễn</h2>
+                                </div>
+                                <div class="block-content block-collapsible-nav-content">
+                                <ul class="nav items">
+                                    <li class="nav item"><a>Thông tin tài khoản</a></li>
+                                    <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
+                                    <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
+                                    <li class="nav item"><span class="delimiter"></span></li>
+                                    <li class="nav item"><a href="">Đăng xuất</a></li>
+                                </ul>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
+    
+<!-- footer -->
+
+<div class="footer">
+<div class="information">
+
+    <img src="../../asset/img/logo-routine.png" alt="" class="logo">
+    <h3>CÔNG TY TNHH ROUTINE VIETNAM</h3>
+    <P>Mã số thuế: 0106486365</P>
+    <P></P>
+    <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
+    <h3>THAM GIA BẢNG TIN CỦA CHÚNG TÔI</h3>
+
+</div>
+
+<div class="about">
+
+    <div class="company">
+
+        <h5>CÔNG TY</h5>
+        <ul>
+            <li><a href="">Giới thiệu về ROUTINE</a></li>
+            <li><a href="">THE 31</a></li>
+            <li><a href="">Tuyển dụng</a></li>
+            <li><a href="">Tin thời trang</a></li>
+            <li><a href="">Hợp tác nhượng quyền</a></li>
+            <li><a href="">Liên hệ</a></li>
+        </ul>
+
+    </div>
+
+    <div class="social">
+
+        <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+
+    </div>
+
+</div>
+
+<div class="policy">
+
+    <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
+    <ul>
+        <li><a href="">Chính sách khách hàng thân thiết</a></li>
+        <li><a href="">Chính sách đổi trả</a></li>
+        <li><a href="">Chính sách bảo hành</a></li>
+        <li><a href="">Chính sách bảo mật</a></li>
+        <li><a href=""> Câu hỏi thường gặp</a></li>
+        <li><a href="">hướng dẫn mua hàng online</a></li>
+        <li><a href="">Hướng dẫn kiểm trra hạng thành viên</a></li>
+    </ul>
+    
+</div>
+
+<div class="store">
+
+    <h5>THÔNG TIN CỬA HÀNG</h5>
+    <ul>
+        <li>
+            <h4>CỬA HÀNG THỨU 34</h4>
+            <p>F15 tầng 1 AEON Mall Tân Phú, 30 Bờ Bao Tân Thắng, Phường Sơn Kỳ, TP Hồ Chí Minh</p>
+        </li>
+        <li>
+            <h4>CỬA HÀNG THỨ 33</h4>
+            <p>809 Giải Phóng, Phường Giáp Bát, Quận Hoàng Mai, TP Hà Nội</p>
+        </li>
+        <li>
+            <h4>CỬA HÀNG THỨ 32</h4>
+            <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
+        </li>
+    </ul>
+    <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
+</div>
+</div>
 </body>
 </html>
