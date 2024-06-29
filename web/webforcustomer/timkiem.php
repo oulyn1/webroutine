@@ -228,6 +228,10 @@
                 }
                 echo'</div>
                 </div>';
+            }else{
+                echo'<div class="maincontent" id="content">
+                Hiện chưa có sản phẩm này vui lòng tìm kiếm sản phẩm khác!
+                </div>';
             }
         }
     ?>
