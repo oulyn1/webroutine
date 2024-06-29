@@ -1,0 +1,365 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Đảm bảo container bao ngoài */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Nội dung chính chiếm không gian còn lại */
+.content {
+    flex: 1;
+}
+
+/* Định dạng footer */
+.footer {
+    background-color: #f8f8f8;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    margin-top: auto;
+    display: flex;
+    padding: 60px 50px;
+}
+
+.footer .information p {
+    padding: 3px 0;
+}
+
+.footer .information {
+    width: 29%;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+.footer .information img {
+    width: 200px;
+    height: auto;
+    border: 0;
+}
+
+.footer .logo {
+    margin-bottom: 24px;
+}
+
+.footer h3 {
+    margin: 0 0 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 30px;
+}
+
+.footer p {
+    display: block;
+    font-size: 14px;
+}
+
+.footer .about {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer h5 {
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.footer ul {
+    margin-bottom: 26px;
+    list-style: none;
+}
+
+.footer ul li {
+    padding: 4px 0 4px 11px;
+    margin: 0;
+    position: relative;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.policy {
+    width: 21%;
+}
+
+.store {
+    width: 20%;
+}
+
+.store a {
+    font-weight: 700;
+    text-decoration-line: underline;
+    padding-right: 20px;
+    background-position: right center;
+    color: black;
+}
+
+.store ul li {
+    margin: 0 0 20px;
+    padding: 0 0 0 14px;
+}
+
+.store ul li h4 {
+    margin: 0 0 8px;
+}
+
+/* Định dạng breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 70px;
+}
+
+.breadcrumbs .items {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumbs .item {
+    margin-right: 10px;
+}
+
+.breadcrumbs .item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.breadcrumbs .item strong {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Nội dung chính */
+.page-main {
+    max-width: 1260px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.columns {
+    display: block;
+    box-sizing: border-box;
+}
+
+.column-main {
+    padding-left: 40px;
+    width: 70%;
+    margin-top: 60px;
+    padding-bottom: 100px;
+    min-height: 300px;
+    float: right;
+}
+
+.sidebar-main {
+    width: 30%;
+    box-sizing: border-box;
+    padding-right: 0;
+    float: left;
+}
+
+.footer .information {
+    width: 29%;
+    margin-right: auto;
+    padding: 0 15px;
+    float: left;
+}
+
+.footer .about {
+    width: 25%;
+    padding: 0 15px;
+    float: left;
+}
+
+.policy {
+    width: 21%;
+    float: left;
+}   
+
+.store {
+    width: 20%;
+    float: left;
+}
+
+h1{
+    font-size: 24px;
+}
+h2{
+    font-size: 20px;
+}
+h3{
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0 0 25px;
+}
+
+.page-title-wrapper {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 25px;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.block-account-information {
+   
+    display: flex;
+    margin: 0 -30px;
+}
+
+.block-account-information .login-information {
+    margin-bottom: 40px;
+    width: 50%;
+    padding: 0 30px;
+}
+
+.block-account-information .login-information, .block-account-information .personal-information {
+    width: 50%;
+    padding: 0 30px;
+}
+
+.account-page-title {
+    display: block;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000;
+    margin-bottom: 35px;
+    position: relative;
+    margin-left: -25px;
+}
+
+.block-collapsible-nav {
+    margin-bottom: 80px;
+    position: static;
+    border: 1px solid #e0e0e0;
+    padding: 0 20px 8px;
+}
+
+.block-collapsible-nav .block-title {
+    display: flex;
+  
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 26px 0 31px;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 15px;
+}
+
+ol, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
+.block-collapsible-nav-content {
+    padding: 0 20px 8px;
+}
+
+.block-collapsible-nav-content .nav.items {
+    display: block; /* Đảm bảo danh sách hiển thị theo chiều dọc */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.block-collapsible-nav-content .nav.items .nav.item {
+    display: block; /* Đảm bảo từng mục trong danh sách hiển thị theo chiều dọc */
+    padding: 10px 12px 10px 0px; /* Khoảng cách giữa các mục */
+}
+
+.block-collapsible-nav-content .nav.items .nav.item a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    display: block;
+}
+
+.block-collapsible-nav-content .nav.items .nav.item strong {
+    font-weight: bold;
+}
+
+
+.p1{
+    margin-top: 10px;
+}
+
+.login-information .box-information{
+    margin-bottom: 10px;
+}
+
+.block-account-information .field-group-name {
+ 
+    display: flex;
+    justify-content: space-between; 
+}
+
+.block-account-information .field-group {
+    width: 50%;
+    margin-bottom: 25px;
+ 
+
+}
+
+.block-account-information .field-group-1 {
+    width: 50%;
+    margin-bottom: 25px;
+   
+
+}
+
+.block-account-information .field-group-2 {
+    width: 50%;
+    margin-bottom: 25px;
+
+}
+
+.p2{
+    margin: 0px 0px 10px;
+}

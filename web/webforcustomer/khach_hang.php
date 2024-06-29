@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
+    <link rel="stylesheet" href="../../asset/css/kh.css">
+
 </head>
 <body>
-  <div id="main">
+  < id="main">
+
+  <!-- header -->
+
       <div id="header">
         <div class="header__left">
           <a href="mainafterlogin.php" class="logo">
@@ -110,11 +116,7 @@
         <div class="model-innerafter">
           <span class="ti-close"></span>
         </div>
-        <div class="body-start">
-        <div>
-          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
-          </div>
-        </div>
+        <div class="body-start">Chào khách hàng</div>
         <hr />
         <div class="body-after">
           <div>
@@ -131,37 +133,104 @@
 
     <script src="../../asset/js/mainafterlogin.js"></script>
 
-    <div class="bannermw">
-        <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
+    <!-- content -->
+    <div class="content">
+        
+            <div class="breadcrumbs">
+                <ul class="items"> 
+                    <li class="item Home"> 
+                        <a href="" title="Trang chủ">Trang chủ /</a>
+                    </li>  
+                    <li class="item Account"> Tài khoản /</li>  
+                    <li class="item Account Information"> 
+                        <p>Thông tin tài khoản</p> 
+                    </li> 
+                </ul>
+            </div>
+            <div class="page-main">
+                    <div class="columns">
+                        <div class="column-main">
+                            <div class="page-title-wrapper">
+                                <h2>Thông tin tài khoản</h2>
+                                <p class="p1">Bạn có thể cập nhật thông tin của mình ở trang này</p>
+                            </div>
+                            <div class="block-account-information">
+                                <div class="login-information">
+                                    <h3>Thông tin đăng nhập</h3>
+                                    <div class="box-information">
+                                        <p>Email:</p>
+                                    </div>
+                                    <div class="box-information">
+                                        <p>Số điện thoại:</p>
+                                    </div>
+                                </div>
+
+                                <div class="personal-information">
+                                    <h3>Thông tin cá nhân</h3>
+
+                                    <div class="field-group-name">
+                                        <div class="field-group-1">
+                                            <p class="p2">Họ</p>
+                                            <input type="text">
+                                        </div>
+
+                                        <div class="field-group-2">
+                                            <p class="p2">Tên</p>
+                                            <input type="text">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="field-group">
+                                            <p class="p2">Email</p>
+                                            <input type="email">
+                                    </div>
+
+                                    <div class="field-group">
+                                            <p class="p2">Số điện thoại</p>
+                                            <input type="number">
+                                    </div>
+
+                                    <div class="field-group">
+                                                <p class="p2">Giới tính</p>
+                                                <input type="checkbox" name="sex" id="cb1"> Nam
+                                                <input type="checkbox" name="sex" id="cb2"> Nữ
+                                    </div>
+                                    <button>CẬP NHẬT THÔNG TIN</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar sidebar-main">
+                            <div class="account-page-title">
+                                <h1 class="ti-user">Tài khoản của bạn</h1>
+                            </div>
+                            <div class="block-collapsible-nav">
+                                <div class="block-title">
+                                    <h2>Toàn Nguyễn</h2>
+                                </div>
+                                <div class="block-content block-collapsible-nav-content">
+                                <ul class="nav items">
+                                    <li class="nav item current"><strong>Thông tin tài khoản</strong></li>
+                                    <li class="nav item"><a href="">Hạng hội viên</a></li>
+                                    <li class="nav item"><a href="">Lịch sử mua hàng</a></li>
+                                    <li class="nav item"><a href="">Địa chỉ giao hàng</a></li>
+                                    <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
+                                    <li class="nav item"><a href="">Sản phẩm yêu thích</a></li>
+                                    <li class="nav item"><a href="">Ưu đãi của bạn</a></li>
+                                    <li class="nav item"><span class="delimiter"></span></li>
+                                    <li class="nav item"><a href="">Đăng xuất</a></li>
+                                </ul>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
     </div>
-    <?php
-        include("../../config/config.php");
-        //buoc 2 viet truy van
-        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
-        //buoc 3 thuc thi cau lenh
-        $result = mysqli_query($conn, $query);
-        //buoc 4 lay du lieu
-        if(mysqli_num_rows($result) >0){
-            echo'<div class="maincontent">
-                <div class="product_list">';
-            while ($row = mysqli_fetch_assoc($result)){
-                if ($row["idloaisanpham"]==1){
-                    echo'<div>
-                    <a href="infoItemLayout.php?ID='.$row["idsanpham"].'">
-                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
-                        <p class="title_product">'.$row["tensanpham"].'</p>
-                        <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
-                    </a>
-                    </div>';
-                }
-            }
-            echo'</div>
-             </div>';
-        }
-    ?>
+    
+<!-- footer -->
 
 <div class="footer">
-
 <div class="information">
 
     <img src="../../asset/img/logo-routine.png" alt="" class="logo">
