@@ -1,10 +1,11 @@
 <?php
-
 session_start();
 if (!isset($_SESSION["admin"])) {
     header("location: ../../../index.php");
     exit;
-}else{$ID= $_SESSION["admin"];}
+} else {
+    $ID = $_SESSION["admin"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +22,9 @@ if (!isset($_SESSION["admin"])) {
     <div class="container">
         <div class="header">
             <div class="header__list">
-            <a href="../admin/main.php?ID=<?php echo $ID ?>" class="header__list-items" ><b>Tổng quan</b></a>
+                <a href="../admin/main.php?ID=<?php echo $ID ?>" class="header__list-items"><b>Tổng quan</b></a>
                 <a href="../khachhang/khachhang.php?ID=ID" class="header__list-items"><b>Khách hàng</b></a>
-                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items"id="main"><b>Tài khoản</b></a>
+                <a href="../taikhoan/taikhoan.php?ID=ID" class="header__list-items" id="main"><b>Tài khoản</b></a>
                 <a href="../sanpham/sanpham.php?ID=ID" class="header__list-items"><b>Sản phẩm</b></a>
                 <a href="../danhmuc/danhmuc.php?ID=ID" class="header__list-items"><b>Danh mục Sản phẩm</b></a>
                 <a href="../donhang/donhang.php?ID=ID" class="header__list-items"><b>Đơn hàng</b></a>
@@ -39,27 +40,26 @@ if (!isset($_SESSION["admin"])) {
             <div class="body-header">
                 <h1>Sửa thông tin tài khoản</h1>
             </div>
-            <?php 
-      include("../../../config/config.php");
-      $id_user=$_GET["ID"];
-      $Fullname="";
-      $Password="";
-      $Email="";
-      $Permission="";
-      
-      $query = "SELECT * FROM user WHERE id_user='".$id_user."'";
-      $result=mysqli_query($conn, $query);
-      if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {
-            $FullName = $row["Fullname"];
-            $Email = $row["Email"];
-            $Permission = $row["Permission"];
-            // $id_user=$row["Id_user"];
-            $Password= md5($row["Password"]);
-        }
-      }
-    
-      ?>
+            <?php
+            include("../../../config/config.php");
+            $id_user = $_GET["ID"];
+            $Fullname = "";
+            $Password = "";
+            $Email = "";
+            $Permission = "";
+
+            $query = "SELECT * FROM user WHERE id_user='" . $id_user . "'";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $FullName = $row["Fullname"];
+                    $Email = $row["Email"];
+                    $Permission = $row["Permission"];
+                    // $id_user=$row["Id_user"];
+                    $Password = md5($row["Password"]);
+                }
+            }
+            ?>
             <form method="POST">
                 <table class="tlb-info">
                     <div class="user-info">
@@ -107,31 +107,34 @@ if (!isset($_SESSION["admin"])) {
                 </table>
         </div>
         <div class="tlb-submit"><input type="submit" value="Sửa" class="btn-update" colspan="2" name="txtSua" /></div>
-        </form>
-    </div>
+            </form>
+        </div>
     </div>
     <?php
-include("../../../config/config.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$Fullname =$_POST['txtName'];
-$Email =$_POST['txtEmail'];
-$query="UPDATE user SET Fullname='".$Fullname."',Email='".$Email."' WHERE id_user='".$id_user."'";
-$result = mysqli_query($conn, $query);
-if ($result>0) {
-    echo"<script>
-            alert('Cập nhật dữ liệu thành công');
-            window.location.href='taikhoan.php';
-        </script>";
-    }
-        else {
-            echo"<script>
-            alert('Lỗi Cập nhật dữ liệu ');
-            window.location.href='taikhoan.php';
-        </script>";
+    include("../../../config/config.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $Fullname = $_POST['txtName'];
+        $Email = $_POST['txtEmail'];
+        $query = "UPDATE user SET Fullname='" . $Fullname . "', Email='" . $Email . "' WHERE id_user='" . $id_user . "'";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            // Cập nhật thông tin trong bảng khach_hang nếu user là khách hàng
+            if ($Permission == 'Customer') {
+                $query_khachhang = "UPDATE khach_hang SET ten='" . $Fullname . "', email='" . $Email . "' WHERE id='" . $id_user . "'";
+                mysqli_query($conn, $query_khachhang);
+            }
+            echo "<script>
+                alert('Cập nhật dữ liệu thành công');
+                window.location.href='taikhoan.php';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Lỗi Cập nhật dữ liệu');
+                window.location.href='taikhoan.php';
+            </script>";
         }
-
-}
-?>
+    }
+    ?>
 </body>
 
 </html>

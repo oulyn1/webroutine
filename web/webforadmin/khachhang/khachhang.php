@@ -40,7 +40,6 @@
                 include("xulykh.php");
             ?>
                 </div>
-            <div class="createskh"><a href="create_customer.php">Thêm Khách Hàng Mới</a></div>
         </div>
     </div>
 </body>
