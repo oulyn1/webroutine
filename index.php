@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
       </div>
       <div class="header__right">
-        <a class="search" href="">
+        <a class="search" href="web/webforcustomer/timkiem.php">
           <i class="ti-search"></i>
           <span class="search__title">Tìm kiếm</span>
         </a>

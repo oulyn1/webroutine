@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quần áo thời trang nam</title>
+    <title>Sản phẩm</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
@@ -59,7 +59,7 @@
                 </ul>
             </div>
             <div class="header__right">
-                <a class="search" href="">
+                <a class="search" href="timkiem.php">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>

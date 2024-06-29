@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quần áo thời trang nam</title>
+    <title>Sản phẩm</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="stylesheet" href="../../asset/css/timkiem.css">
 </head>
 <body>
     <div id="main">
@@ -59,7 +60,7 @@
                 </ul>
             </div>
             <div class="header__right">
-                <a class="search" href="timkiem.php">
+                <a class="search" href="#bannermw">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>
@@ -189,35 +190,48 @@
             </div>
         </div>
     </div>
+    
 
-    <div class="bannermw">
-        <img src="../../asset/img/bannerman.png" alt="" class="img-bannermw">
+    <div class="bannermw" id="bannermw">
     </div>
-    <?php
+
+    <form method="POST">
+        <div class="Search" id="Search">
+            <label for="txtSearch">Nhập thông tin tìm kiếm: </label>
+            <input type="text" name = "txtSearch" id="txtSearch" name="txtSearch" class="txtSearch">
+            <input type="submit" value = "Tìm kiếm" id="btnSearch" name="btnSearch">
+        </div>
+   </form>
+
+
+   <?php
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $keysearch=$_POST['txtSearch'];
             include("../../config/config.php");
+            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
             //buoc 2 viet truy van
-            $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);
             //buoc 4 lay du lieu
             if(mysqli_num_rows($result) >0){
-                echo'<div class="maincontent">
+                echo'<div class="maincontent" id="content">
                     <div class="product_list">';
                 while ($row = mysqli_fetch_assoc($result)){
-                    if ($row["idloaisanpham"]==1){
                         echo'<div>
-                        <a href="">
+                        <a href="infoItemLayout.php?ID='.$row["idsanpham"].'">
                             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                             <p class="title_product">'.$row["tensanpham"].'</p>
                             <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
                         </a>
                         </div>';
-                    }
+                    
                 }
                 echo'</div>
-                 </div>';
+                </div>';
             }
+        }
     ?>
+
 
 <div class="footer">
 
