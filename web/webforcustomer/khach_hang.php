@@ -137,15 +137,7 @@
     <div class="content">
         
             <div class="breadcrumbs">
-                <ul class="items"> 
-                    <li class="item Home"> 
-                        <a href="" title="Trang chủ">Trang chủ /</a>
-                    </li>  
-                    <li class="item Account"> Tài khoản /</li>  
-                    <li class="item Account Information"> 
-                        <p>Thông tin tài khoản</p> 
-                    </li> 
-                </ul>
+
             </div>
             <div class="page-main">
                     <div class="columns">
@@ -170,15 +162,9 @@
 
                                     <div class="field-group-name">
                                         <div class="field-group-1">
-                                            <p class="p2">Họ</p>
+                                            <p class="p2">Họ và tên</p>
                                             <input type="text">
                                         </div>
-
-                                        <div class="field-group-2">
-                                            <p class="p2">Tên</p>
-                                            <input type="text">
-                                        </div>
-
                                     </div>
 
                                     <div class="field-group">
@@ -217,7 +203,6 @@
                                     <li class="nav item"><a href="">Địa chỉ giao hàng</a></li>
                                     <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
                                     <li class="nav item"><a href="">Sản phẩm yêu thích</a></li>
-                                    <li class="nav item"><a href="">Ưu đãi của bạn</a></li>
                                     <li class="nav item"><span class="delimiter"></span></li>
                                     <li class="nav item"><a href="">Đăng xuất</a></li>
                                 </ul>   

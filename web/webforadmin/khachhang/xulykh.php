@@ -6,7 +6,7 @@ if (isset($_POST['txtTimkiem'])) {
     $timkiem = $_POST['txtTimkiem'];
 }
 
-$sql = "SELECT * FROM khach_hang";
+$sql = "SELECT * FROM khach_hang,user WHERE khach_hang.id=user.Id_user";
 if ($timkiem != "") {
     $sql .= " WHERE ten LIKE '%$timkiem%' OR email LIKE '%$timkiem%' OR so_dien_thoai LIKE '%$timkiem%' OR dia_chi LIKE '%$timkiem%'";
 }
@@ -32,7 +32,6 @@ if (mysqli_num_rows($result) > 0) {
             <td>' . $row["email"] . '</td>
             <td>' . $row["so_dien_thoai"] . '</td>
             <td>' . $row["dia_chi"] . '</td>
-            <td><a href="editkh.php?id=' . $row["id"] . '">Sửa</a> | <a href="delete_customer.php?id=' . $row["id"] . '">Xóa</a></td>
         </tr>';
     }
     echo '</tbody> 
