@@ -178,7 +178,7 @@ body {
 .column-main {
     padding-left: 40px;
     width: 70%;
-    margin-top: 90px;
+    margin-top: 60px;
     padding-bottom: 100px;
     min-height: 300px;
     float: right;
@@ -239,7 +239,7 @@ h3{
 }
 
 .block-account-information {
-    -webkit-flex-wrap: wrap;
+   
     display: flex;
     margin: 0 -30px;
 }
@@ -275,7 +275,7 @@ h3{
 
 .block-collapsible-nav .block-title {
     display: flex;
-    -webkit-flex-wrap: wrap;
+  
     align-items: flex-start;
     justify-content: space-between;
     padding: 26px 0 31px;
@@ -335,7 +335,7 @@ li {
 }
 
 .block-account-information .field-group-name {
-    -webkit-flex-wrap: wrap;
+ 
     display: flex;
     justify-content: space-between; 
 }
@@ -343,21 +343,20 @@ li {
 .block-account-information .field-group {
     width: 50%;
     margin-bottom: 25px;
-    -webkit-flex-grow: 1;
+ 
 
 }
 
 .block-account-information .field-group-1 {
     width: 50%;
     margin-bottom: 25px;
-    -webkit-flex-grow: 1;
+   
 
 }
 
 .block-account-information .field-group-2 {
     width: 50%;
     margin-bottom: 25px;
-    -webkit-flex-grow: 1;
 
 }
 
