@@ -117,7 +117,7 @@ if (!isset($_SESSION["admin"])) {
         $Email = $_POST['txtEmail'];
         $query = "UPDATE user SET Fullname='" . $Fullname . "', Email='" . $Email . "' WHERE id_user='" . $id_user . "'";
         $result = mysqli_query($conn, $query);
-        if ($result) {
+        if ($result > 0) {
             // Cập nhật thông tin trong bảng khach_hang nếu user là khách hàng
             if ($Permission == 'Customer') {
                 $query_khachhang = "UPDATE khach_hang SET ten='" . $Fullname . "', email='" . $Email . "' WHERE id='" . $id_user . "'";

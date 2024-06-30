@@ -104,7 +104,7 @@ if (!isset($_SESSION["admin"])) {
             if (mysqli_num_rows($result) == 0) {
                 $query = "INSERT INTO user (Fullname, Password, Email, Permission) VALUES ('$Fullname', '$Password', '$Email', '$Permission')";
                 $result = mysqli_query($conn, $query);
-                if ($result) {
+                if ($result > 0) {
                     // Lấy ID của user vừa thêm
                     $user_id = mysqli_insert_id($conn);
                     if ($Permission == 'Customer') {
