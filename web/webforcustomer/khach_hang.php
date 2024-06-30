@@ -135,26 +135,7 @@
 
     <!-- content -->
 
-    <?php
-// Include file cấu hình kết nối CSDL và thực hiện truy vấn
-            include("../../config/config.php");
-
-            // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
-            $user_id = $row['id']; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
-            $sql = "SELECT ten, email FROM khach_hang WHERE id = $user_id";
-
-            // Thực thi truy vấn và lấy kết quả
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $ten = $row['ten'];
-                $email = $row['email'];
-            } else {
-                // Xử lý khi không tìm thấy thông tin người dùng
-                $ten = "Không có thông tin";
-                $email = "Không có thông tin";
-            }
-?>
+  
 
     <div class="content">
         
@@ -172,7 +153,7 @@
                                 <div class="login-information">
                                     <h3>Thông tin đăng nhập</h3>
                                     <div class="box-information">
-                                        <p>Email:<?php echo $email; ?></p>
+                                        <p>Email:<?php echo $Email; ?></p>
                                     </div>
                                     <div class="box-information">
                                         <p>Số điện thoại:</p>

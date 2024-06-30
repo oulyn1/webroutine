@@ -27,9 +27,9 @@ if (mysqli_num_rows($result) > 0) {
     <tbody>';
     while($row = mysqli_fetch_assoc($result)) {
         echo '<tr>
-            <td>' . $row["id"] . '</td>
-            <td>' . $row["ten"] . '</td>
-            <td>' . $row["email"] . '</td>
+            <td>' . $row["Id_user"] . '</td>
+            <td>' . $row["Fullname"] . '</td>
+            <td>' . $row["Email"] . '</td>
             <td>' . $row["so_dien_thoai"] . '</td>
             <td>' . $row["dia_chi"] . '</td>
         </tr>';
