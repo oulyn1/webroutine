@@ -152,15 +152,16 @@ if (!isset($_SESSION["customer"])) {
             include("../../config/config.php");
 
             // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
-            $user_id = $row['id']; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
-            $sql = "SELECT ten, email FROM khach_hang WHERE id = $user_id";
+            $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
+            $sql = "SELECT * FROM user,khach_hang WHERE user.Id_user= $user_id AND khach_hang.id=$user_id";
 
             // Thực thi truy vấn và lấy kết quả
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $ten = $row['ten'];
-                $email = $row['email'];
+                while($row = mysqli_fetch_assoc($result)){
+                $ten = $row['Fullname'];
+                $email = $row['Email'];
+              }
             } else {
                 // Xử lý khi không tìm thấy thông tin người dùng
                 $ten = "Không có thông tin";

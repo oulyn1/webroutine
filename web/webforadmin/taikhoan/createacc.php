@@ -53,7 +53,8 @@ if (!isset($_SESSION["admin"])) {
                             <tr>
                                 <td class="info-name"><label for="Email">Email</label></td>
                                 <td>
-                                    <input type="email" class="info-name-property" id="Email" name="txtEmail" required />
+                                    <input type="email" class="info-name-property" id="Email" name="txtEmail"
+                                        required />
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +62,8 @@ if (!isset($_SESSION["admin"])) {
                                     <label for="Password">Mật khẩu</label>
                                 </td>
                                 <td>
-                                    <input type="password" class="info-name-property" id="Password" name="Password" required />
+                                    <input type="password" class="info-name-property" id="Password" name="Password"
+                                        required />
                                 </td>
                             </tr>
                             <tr>
@@ -69,7 +71,8 @@ if (!isset($_SESSION["admin"])) {
                                     <label for="Password2">Nhập lại mật khẩu</label>
                                 </td>
                                 <td>
-                                    <input type="password" class="info-name-property" id="Password2" name="Password2" required />
+                                    <input type="password" class="info-name-property" id="Password2" name="Password2"
+                                        required />
                                 </td>
                             </tr>
                             <tr>
@@ -86,12 +89,13 @@ if (!isset($_SESSION["admin"])) {
                         </tbody>
                 </table>
         </div>
-        <div class="tlb-add"><input type="submit" value="Thêm tài khoản" class="btn-add" colspan="2" name="txtSua" /></div>
-            </form>
+        <div class="tlb-add"><input type="submit" value="Thêm tài khoản" class="btn-add" colspan="2" name="txtSua" />
         </div>
+        </form>
+    </div>
     </div>
     <?php
-    include("../../../config/config.php");
+    include ("../../../config/config.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Fullname = $_POST['txtName'];
         $Email = $_POST['txtEmail'];
@@ -109,7 +113,7 @@ if (!isset($_SESSION["admin"])) {
                     $user_id = mysqli_insert_id($conn);
                     if ($Permission == 'Customer') {
                         // Thêm thông tin vào bảng khach_hang
-                        $query_khachhang = "INSERT INTO khach_hang (id, ten, email) VALUES ('$user_id', '$Fullname', '$Email')";
+                        $query_khachhang = "INSERT INTO khach_hang (id, so_dien_thoai, dia_chi) VALUES ('$user_id', '', '')";
                         mysqli_query($conn, $query_khachhang);
                     }
                     echo "<script>

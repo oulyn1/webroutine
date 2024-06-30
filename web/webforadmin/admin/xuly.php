@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location: ../../../index.php");
+    exit;
+}else{$ID= $_SESSION["admin"];}
+?>
+<?php
 include("../../../config/config.php");
 $id_user = $_POST['txtID'];
 $Fullname =$_POST['txtName'];
@@ -9,13 +17,13 @@ $result = mysqli_query($conn, $query);
 if ($result>0) {
     echo"<script>
             alert('Cập nhật dữ liệu thành công');
-            window.location.href='main.php';
+            window.location.href='main.php?ID=".$ID."';
         </script>";
     }
         else {
             echo"<script>
             alert('Lỗi Cập nhật dữ liệu ');
-            window.location.href='main.php';
+            window.location.href='main.php?ID=".$ID."';
         </script>";
         }
 }

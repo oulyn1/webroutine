@@ -21,7 +21,6 @@ if (mysqli_num_rows($result) > 0) {
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Địa chỉ</th>
-                <th>Cập Nhật</th>
             </tr>
         </thead>
     <tbody>';
