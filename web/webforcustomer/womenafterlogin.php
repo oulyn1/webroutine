@@ -59,7 +59,7 @@
             </ul>
             </div>
             <div class="header__right">
-                <a class="search" href="">
+                <a class="search" href="timkiem.php">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>

@@ -63,7 +63,7 @@
             </ul>
         </div>
         <div class="header__right">
-          <a class="search" href="">
+          <a class="search" href="timkiem.php">
             <i class="ti-search"></i>
             <span class="search__title">Tìm kiếm</span>
           </a>
@@ -110,104 +110,20 @@
                 </p>
 
                 <div class="modal__items__quantity">
-                    <div class="title">Chọn số lượng: </div>
-
-                    <div class="quantity__selector">
-                        <button type="button" id="decrease" class="quantity__btn">-</button>
-                        <input type="number" id="quantity" min="1" max="10" value="1" readonly>
-                        <button type="button" id="increase" class="quantity__btn">+</button>
-                    </div>
+                    <div class="title">Số lượng: </div>
                 </div>
 
                 <p class="modal__items__price">392.000<u>đ</u></p>
               </div>
-            </div>
 
-            <div class="modal__items">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-            <div class="modal__items__details">
-              <p class="modal__items__name">
-                Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-              </p>
-
-              <div class="modal__items__quantity">
-                  <div class="title">Chọn số lượng: </div>
-
-                  <div class="quantity__selector">
-                      <button type="button" id="decrease" class="quantity__btn">-</button>
-                      <input type="number" id="quantity" min="1" max="10" value="1" readonly>
-                      <button type="button" id="increase" class="quantity__btn">+</button>
-                  </div>
-              </div>
-
-              <p class="modal__items__price">392.000<u>đ</u></p>
+              <span class="ti-close"></span>
             </div>
           </div>
 
-          <div class="modal__items">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-            <div class="modal__items__details">
-              <p class="modal__items__name">
-                Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-              </p>
-
-              <div class="modal__items__quantity">
-                  <div class="title">Chọn số lượng: </div>
-
-                  <div class="quantity__selector">
-                      <button type="button" id="decrease" class="quantity__btn">-</button>
-                      <input type="number" id="quantity" min="1" max="10" value="1" readonly>
-                      <button type="button" id="increase" class="quantity__btn">+</button>
-                  </div>
-              </div>
-
-              <p class="modal__items__price">392.000<u>đ</u></p>
-            </div>
-          </div><div class="modal__items">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-            <div class="modal__items__details">
-              <p class="modal__items__name">
-                Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-              </p>
-
-              <div class="modal__items__quantity">
-                  <div class="title">Chọn số lượng: </div>
-
-                  <div class="quantity__selector">
-                      <button type="button" id="decrease" class="quantity__btn">-</button>
-                      <input type="number" id="quantity" min="1" max="10" value="1" readonly>
-                      <button type="button" id="increase" class="quantity__btn">+</button>
-                  </div>
-              </div>
-
-              <p class="modal__items__price">392.000<u>đ</u></p>
-            </div>
-          </div><div class="modal__items">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-            <div class="modal__items__details">
-              <p class="modal__items__name">
-                Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-              </p>
-
-              <div class="modal__items__quantity">
-                  <div class="title">Chọn số lượng: </div>
-
-                  <div class="quantity__selector">
-                      <button type="button" id="decrease" class="quantity__btn">-</button>
-                      <input type="number" id="quantity" min="1" max="10" value="1" readonly>
-                      <button type="button" id="increase" class="quantity__btn">+</button>
-                  </div>
-              </div>
-
-              <p class="modal__items__price">392.000<u>đ</u></p>
-            </div>
-          </div>
-          </div>
         </div>
 
         <div class="modal__buttons">
-          <button class="continue__shopping">TIẾP TỤC MUA SẮM</button>
-          <button class="checkout">THANH TOÁN</button>
+          <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
         </div>
           
           

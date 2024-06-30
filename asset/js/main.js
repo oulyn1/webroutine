@@ -42,6 +42,7 @@ btn.onclick = function() {
     shopping.style.display = "block";
     document.body.style.overflow = "hidden";
 }
+
 span.onclick = function() {
     shopping.style.display = "none";
     document.body.style.overflow = "";

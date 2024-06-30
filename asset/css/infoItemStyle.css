@@ -230,7 +230,6 @@ ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
     margin: 30px 0;
 }
 
@@ -329,32 +328,13 @@ ul li a {
 }
 
 .modal__items .modal__items__details .modal__items__name{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 16px;
 }
 
 .modal__items .modal__items__quantity .title {
     font-size: 14px;
-}
-
-.quantity__selector {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.quantity__selector .quantity__btn {
-    width: 24px;
-    height: 24px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-}
-
-.quantity__selector input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ddd;
-    margin: 0 5px;
+    margin-bottom: 20px;
 }
 
 .modal__items .modal__items__details .modal__items__price {
@@ -364,29 +344,32 @@ ul li a {
 
 .modal__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.modal__buttons .continue__shopping, .checkout {
+.modal__buttons .button-check-out {
     width: 48%;
     padding: 10px 0;
-    border: none;
     cursor: pointer;
     font-size: 16px;
     border-radius: 10px;
     font-weight: bold;
-}
-
-.modal__buttons .continue__shopping {
-    background-color: #f1f1f1;
-    color: #333;
-}
-
-.modal__buttons .checkout {
     background-color: #000;
     color: #fff;
+    width: 80%;
+    text-decoration: none;
+    text-align: center;
 }
 
-.modal__buttons .continue__shopping:hover, .checkout:hover {
+.modal__buttons .button-check-out:hover {
     opacity: 0.7;
 }
+
+.item_sp .modal__items .ti-close {
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+

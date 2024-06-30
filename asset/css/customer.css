@@ -125,7 +125,7 @@ html{
     color: rgb(182, 180, 180);
 }
 
-.ti-user, .ti-heart, .ti-shopping-cart{
+.ti-user, .ti-heart, .ti-shopping-cart {
     text-decoration: none;
     color: #000;
     font-weight: bold;
@@ -233,7 +233,7 @@ html{
 .item-title .ti-heart{
     font-size: 1.5rem;
 }
-.model{
+.model {
     position: fixed;
     z-index: 100;
     top: 0;
@@ -244,14 +244,14 @@ html{
     display: none;
 }
 
-.model-overlay{
+.model-overlay {
     position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.model-body{
+.model-body {
     background-color: white;
     margin: auto;
     position: relative;
@@ -262,7 +262,7 @@ html{
     animation: modalAnimation ease 0.5s;
 }
 
-.model-inner{
+.model-inner {
     text-align: center;
 }
 
@@ -437,6 +437,7 @@ html{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 .body-after div{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -446,13 +447,16 @@ html{
     text-decoration: none;
     color: #000;
 }
+
 .body-start{
     margin-bottom: 20px;
     font-weight: bold;
 }
+
 .body-after a:hover, .body-end :hover{
     text-decoration:underline;
 }
+
 .body-end{
     margin-top: 20px;
 }
