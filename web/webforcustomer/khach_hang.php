@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION["customer"])) {
-  header("location: ../../../index.php");
+  header("location: ../../index.php");
   exit;
 } else {
   $ID = $_SESSION["customer"];

@@ -28,11 +28,3 @@ span.onclick = function() {
     shopping.style.display = "none";
 }
 
-var btn2 = document.getElementById("add-to-cart");
-var span2 = document.getElementsByClassName("ti-close")[1];
-btn2.onclick = function() {
-    shopping.style.display = "block";
-}
-span2.onclick = function() {
-    shopping.style.display = "none";
-}
