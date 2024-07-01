@@ -111,7 +111,7 @@ if (!isset($_SESSION["customer"])) {
               <b>Giỏ hàng</b>
             </p>
             <span class="ti-close"></span>
-          </div>
+          </div><div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
           <?php
               include("../../config/config.php");
               $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
@@ -119,13 +119,13 @@ if (!isset($_SESSION["customer"])) {
               if(mysqli_num_rows($result) > 0){
               while ($row = mysqli_fetch_assoc($result)){
                 $gia=$row["giasanpham"]*$row["SoLuong"];
-                 echo'<div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+                 echo'
             <div class="modal__items">
               
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
-                  Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
+                  '.$row["tensanpham"].'
                 </p>
 
                 <div class="modal__items__quantity">
@@ -136,11 +136,10 @@ if (!isset($_SESSION["customer"])) {
               </div>
 
               <a href="xoasp.php" class="ti-close"></a>
-            </div>
-          </div>';       
+            </div>';       
               }}
                ?>
-          
+          </div>
 
         </div>
         <?php 
