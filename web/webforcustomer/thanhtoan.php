@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["customer"])) {
+  header("location: ../../../index.php");
+  exit;
+} else {
+  $ID = $_SESSION["customer"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +54,28 @@
     </div>
 
     <!-- content -->
+     
+    <?php
+// Include file cấu hình kết nối CSDL và thực hiện truy vấn
+            include("../../config/config.php");
+
+            // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
+            $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
+            $sql = "SELECT * FROM user,khach_hang WHERE user.Id_user= $user_id AND khach_hang.id=$user_id";
+
+            // Thực thi truy vấn và lấy kết quả
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)){
+                $ten = $row['Fullname'];
+                $email = $row['Email'];
+              }
+            } else {
+                // Xử lý khi không tìm thấy thông tin người dùng
+                $ten = "Không có thông tin";
+                $email = "Không có thông tin";
+            }
+?>
 
     <div class="cart-container">
         <div class="title">
@@ -68,8 +100,7 @@
             <h3>Thông tin giao hàng</h3>
             <form>
                 <div class="form-group">
-                    <input type="text" value="Nguyễn">
-                    <input type="text" value="Bách">
+                    <input type="text" value="<?php echo $ten?>">
                     <input type="text" value="0862011329">
                 </div>
                 <div class="form-group">
@@ -77,7 +108,7 @@
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder="Số nhà, đường *">
-                    <input type="text" value="bachne23040@gmail.com">
+                    <input type="text" value="<?php echo $email?>">
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder="Ghi chú đơn hàng">
