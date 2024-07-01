@@ -112,6 +112,24 @@ if (!isset($_SESSION["customer"])) {
             <span class="ti-close"></span>
           </div>
 
+
+          <?php
+            include("../../config/config.php");
+            if ($_SERVER["REQUEST_METHOD"]=="POST") {
+              $IDSP = $_GET ["ID"];
+              $SL = $_POST ["sl"];
+              //buoc 2 viet truy van
+              $query = "INSERT INTO giohang(IDUser, IDSanPham, SoLuong) VALUES ('".$ID."','".$IDSP."','".$SL."')";
+              //buoc 3 thuc thi cau lenh
+              $result = mysqli_query($conn, $query);
+              //buoc 4 lay du lieu
+              if(mysqli_num_rows($result) >0) {
+                echo "Them thanh cong";
+              }
+            }
+            
+          ?>
+
           <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
             <div class="modal__items">
               <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
@@ -173,7 +191,7 @@ if (!isset($_SESSION["customer"])) {
   //buoc 4 lay du lieu
   if(mysqli_num_rows($result) >0){
       while ($row = mysqli_fetch_assoc($result)){
-        echo'<form action="">
+        echo'<form action="addtocart.php" method="POST">
     <div class="main__content">
         <div class="image__content">
             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image__item">
@@ -194,13 +212,13 @@ if (!isset($_SESSION["customer"])) {
 
                 <div class="quantity__selector">
                     <button type="button" id="decrease">-</button>
-                    <input type="number" id="quantity" min="1" max="'.$row["soluong"].'" value="1" readonly>
+                    <input type="number" name="sl" id="quantity" min="1" max="'.$row["soluong"].'" value="1" readonly>
                     <button type="button" id="increase">+</button>
                 </div>
 
                 <div class="add">
-                    <div action="" class="add__tocart" id="add-to-cart">
-                        <input type="button" value="THÊM VÀO GIỎ HÀNG">
+                    <div class="add__tocart" id="add-to-cart">
+                        <input type="submit" value="THÊM VÀO GIỎ HÀNG">
                     </div>
                     <div>
                       <a class="ti-heart" href=""></a>
