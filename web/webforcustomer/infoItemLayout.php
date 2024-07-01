@@ -111,25 +111,6 @@ if (!isset($_SESSION["customer"])) {
             </p>
             <span class="ti-close"></span>
           </div>
-
-
-          <?php
-            include("../../config/config.php");
-            if ($_SERVER["REQUEST_METHOD"]=="POST") {
-              $IDSP = $_GET ["ID"];
-              $SL = $_POST ["sl"];
-              //buoc 2 viet truy van
-              $query = "INSERT INTO giohang(IDUser, IDSanPham, SoLuong) VALUES ('".$ID."','".$IDSP."','".$SL."')";
-              //buoc 3 thuc thi cau lenh
-              $result = mysqli_query($conn, $query);
-              //buoc 4 lay du lieu
-              if(mysqli_num_rows($result) >0) {
-                echo "Them thanh cong";
-              }
-            }
-            
-          ?>
-
           <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
             <div class="modal__items">
               <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
@@ -191,7 +172,7 @@ if (!isset($_SESSION["customer"])) {
   //buoc 4 lay du lieu
   if(mysqli_num_rows($result) >0){
       while ($row = mysqli_fetch_assoc($result)){
-        echo'<form action="addtocart.php" method="POST">
+        echo'<form action="" method="POST">
     <div class="main__content">
         <div class="image__content">
             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image__item">
@@ -247,6 +228,29 @@ if (!isset($_SESSION["customer"])) {
       }
   }
 ?>
+<?php
+            include("../../config/config.php");
+            if ($_SERVER["REQUEST_METHOD"]=="POST") {
+              $IDSP = $_GET ["ID"];
+              $SL = $_POST ["sl"];
+              $sql="SELECT * FROM giohang WHERE IDUser='$ID' AND IDSanPham='$IDSP'";
+              $result=mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) == 0){
+              //buoc 2 viet truy van
+              $query = "INSERT INTO giohang(IDUser, IDSanPham, SoLuong) VALUES ('".$ID."','".$IDSP."','".$SL."')";
+              //buoc 3 thuc thi cau lenh
+              $result = mysqli_query($conn, $query);
+              }
+              else{
+                while ($row = mysqli_fetch_assoc($result)){
+                  $SLmoi=$row["SoLuong"]+$SL;
+                $sql="UPDATE giohang SET SoLuong='".$SLmoi."' WHERE IDUser='$ID' AND IDSanPham='$IDSP'";
+                $result=mysqli_query($conn, $sql);
+              }
+            }
+          }
+            
+          ?>
 <!-- <div class="size">
                     <input type="radio" id="size-s" name="size" value="S">
                     <label for="size-s">S</label>
