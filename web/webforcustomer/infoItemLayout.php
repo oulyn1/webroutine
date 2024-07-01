@@ -6,6 +6,7 @@ if (!isset($_SESSION["customer"])) {
   exit;
 } else {
   $ID = $_SESSION["customer"];
+  $IDSP=$_GET["ID"];
 }
 ?>
 
@@ -111,31 +112,48 @@ if (!isset($_SESSION["customer"])) {
             </p>
             <span class="ti-close"></span>
           </div>
-          <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+          <?php
+              include("../../config/config.php");
+              $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+              $result=mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) > 0){
+              while ($row = mysqli_fetch_assoc($result)){
+                $gia=$row["giasanpham"]*$row["SoLuong"];
+                 echo'<div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
             <div class="modal__items">
-              <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
                   Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
                 </p>
 
                 <div class="modal__items__quantity">
-                    <div class="title">Số lượng: </div>
+                    <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
 
-                <p class="modal__items__price">392.000<u>đ</u></p>
+                <p class="modal__items__price">'.$gia.'<u>đ</u></p>
               </div>
 
-              <span class="ti-close"></span>
+              <a href="xoasp.php" class="ti-close"></a>
             </div>
-          </div>
-
-        </div>
-
-        <div class="modal__buttons">
-          <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
-        </div>
+          </div>';       
+              }}
+               ?>
           
+
+        </div>
+        <?php 
+         include("../../config/config.php");
+         $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+         $result=mysqli_query($conn, $sql);
+         if(mysqli_num_rows($result) > 0){
+          echo '<div class="modal__buttons">
+          <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
+        </div>';
+         }
+        
+        ?>  
           
           
       </div>
@@ -172,7 +190,7 @@ if (!isset($_SESSION["customer"])) {
   //buoc 4 lay du lieu
   if(mysqli_num_rows($result) >0){
       while ($row = mysqli_fetch_assoc($result)){
-        echo'<form action="" method="POST">
+        echo'<form action="addtocart.php?ID='.$IDSP.'" method="POST">
     <div class="main__content">
         <div class="image__content">
             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image__item">
@@ -199,7 +217,7 @@ if (!isset($_SESSION["customer"])) {
 
                 <div class="add">
                     <div class="add__tocart" id="add-to-cart">
-                        <input type="submit" value="THÊM VÀO GIỎ HÀNG">
+                        <input type="submit" value="THÊM VÀO GIỎ HÀNG" name="add">
                     </div>
                     <div>
                       <a class="ti-heart" href=""></a>
@@ -228,29 +246,6 @@ if (!isset($_SESSION["customer"])) {
       }
   }
 ?>
-<?php
-            include("../../config/config.php");
-            if ($_SERVER["REQUEST_METHOD"]=="POST") {
-              $IDSP = $_GET ["ID"];
-              $SL = $_POST ["sl"];
-              $sql="SELECT * FROM giohang WHERE IDUser='$ID' AND IDSanPham='$IDSP'";
-              $result=mysqli_query($conn, $sql);
-              if(mysqli_num_rows($result) == 0){
-              //buoc 2 viet truy van
-              $query = "INSERT INTO giohang(IDUser, IDSanPham, SoLuong) VALUES ('".$ID."','".$IDSP."','".$SL."')";
-              //buoc 3 thuc thi cau lenh
-              $result = mysqli_query($conn, $query);
-              }
-              else{
-                while ($row = mysqli_fetch_assoc($result)){
-                  $SLmoi=$row["SoLuong"]+$SL;
-                $sql="UPDATE giohang SET SoLuong='".$SLmoi."' WHERE IDUser='$ID' AND IDSanPham='$IDSP'";
-                $result=mysqli_query($conn, $sql);
-              }
-            }
-          }
-            
-          ?>
 <!-- <div class="size">
                     <input type="radio" id="size-s" name="size" value="S">
                     <label for="size-s">S</label>
