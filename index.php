@@ -6,6 +6,7 @@ if (isset($_SESSION["admin"])) {
   header("location:web/webforcustomer/mainafterlogin.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
