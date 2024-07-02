@@ -209,15 +209,14 @@ if (!isset($_SESSION["customer"])) {
 
                 <div class="field-group">
                   <p class="p2">Số điện thoại</p>
-                  <input type="number">
+                  <input type="number" id="phone" name="phone" value="<?php echo $so_dien_thoai; ?>">
                 </div>
 
                 <div class="field-group">
-                  <p class="p2">Giới tính</p>
-                  <input type="checkbox" name="sex" id="cb1"> Nam
-                  <input type="checkbox" name="sex" id="cb2"> Nữ
+                  <p class="p2">Địa chỉ</p>
+                  <input type="text" id="address" name="address" value="<?php echo $dia_chi; ?>">
                 </div>
-                <button>CẬP NHẬT THÔNG TIN</button>
+                <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
               </div>
             </div>
           </div>
@@ -228,7 +227,7 @@ if (!isset($_SESSION["customer"])) {
             </div>
             <div class="block-collapsible-nav">
               <div class="block-title">
-                <h2>Toàn Nguyễn</h2>
+                <h2><?php echo $ten ?></h2>
               </div>
               <div class="block-content block-collapsible-nav-content">
                 <ul class="nav items">
