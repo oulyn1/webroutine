@@ -45,8 +45,12 @@
                             <td><input type="text" class="info-name-property" id="thanh_pho" name="thanh_pho" required></td>
                         </tr>
                         <tr>
+                            <td class="info-name"><label for="hinhanh">Hình ảnh:</label></td>
+                            <td><input type="file" class="info-name-property" id="hinhanh" name="hinhanh" required></td>
+                        </tr>
+                        <tr>
                             <td class="info-name"><label for="mo_ta">Mô tả:</label></td>
-                            <td><textarea id="mo_ta" name="mo_ta" required></textarea></td>
+                            <td><input type="text" class="info-name-property" id="mo_ta" name="mo_ta" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,19 +64,30 @@
         $ten = $_POST['ten'];
         $dia_chi = $_POST['dia_chi'];
         $thanh_pho = $_POST['thanh_pho'];
+        $hinhanh = $_POST['hinhanh'];
         $mo_ta = $_POST['mo_ta'];
 
-        $sql = "INSERT INTO tbl_cuahang (ten, dia_chi, thanh_pho, mo_ta) VALUES ('$ten', '$dia_chi', '$thanh_pho', '$mo_ta')";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "<script>
-                    alert('Thêm cửa hàng thành công');
-                    window.location.href='danhmuc.php';
-                  </script>";
-        } else {
-            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        if (!$conn) {
+            echo 'Kết nối không thành công' . mysqli_connect_error();
         }
-    }
+        else {
+            $query = "INSERT INTO cua_hang VALUES (' ' ,'".$ten."' , '".$dia_chi."' , '".$thanh_pho."','".$hinhanh."' ,'".$mo_ta."')";
+            $result = mysqli_query($conn, $query);
+            if ($result > 0) {
+                echo "  <script>
+                            alert('Thêm sản phẩm thành công');
+                            window.location.href='cua_hang.php';
+                        </script>";
+            }
+            else {
+                echo "  <script>
+                            alert('Lỗi thêm sản phẩm ');
+                            window.location.href='cua_hang.php';
+                        </script>";
+            }
+        }
+    
+}
     ?>
 </body>
 </html>

@@ -1,29 +1,4 @@
-<?php
-include("../../../config/config.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
-    $target_dir = "../../../asset/img/";
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $image_path = "asset/img/" . basename($_FILES["image"]["name"]);
-            $query = "INSERT INTO slider_images (image_path) VALUES ('$image_path')";
-            if (mysqli_query($conn, $query)) {
-                header("Location: slider.php?success=1");
-            } else {
-                header("Location: slider.php?error=1");
-            }
-        } else {
-            header("Location: slider.php?error=1");
-        }
-    } else {
-        header("Location: slider.php?error=1");
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -66,6 +41,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
                                         <td class="info-name"><label for="Image">Hình ảnh</label></td>
                                         <td><input type="file" class="info-name-property" id="Image" name="image" required /></td>
                                     </tr>
+                                    <?php
+                                    include("../../../config/config.php");
+
+                                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                                        $target_dir = "../../../asset/img/";
+                                        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+                                        // Kiểm tra file ảnh
+                                        $check = getimagesize($_FILES["image"]["tmp_name"]);
+                                        if ($check !== false) {
+                                            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                                                $image_path = basename($_FILES["image"]["name"]);
+                                                $sql = "INSERT INTO slider_images (image_path) VALUES ('$image_path')";
+                                                if (mysqli_query($conn, $sql)) {
+                                                    echo "Hình ảnh đã được tải lên thành công.";
+                                                } else {
+                                                    echo "Đã có lỗi xảy ra: " . mysqli_error($conn);
+                                                }
+                                            } else {
+                                                echo "Đã xảy ra lỗi khi tải lên hình ảnh.";
+                                            }
+                                        } else {
+                                            echo "File không phải là hình ảnh.";
+                                        }
+                                    }
+                                    ?>
                                 </tbody>
                             </div>
                         </table>
