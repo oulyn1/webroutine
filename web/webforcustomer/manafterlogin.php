@@ -73,6 +73,30 @@
         </div>
       </div>
 
+      <div class="model" id="modal-signin">
+      <div class="model-overlay"></div>
+      <div class="modal-after">
+        <div class="model-innerafter">
+          <span class="ti-close"></span>
+        </div>
+        <div class="body-start">
+        <div>
+          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
+          </div>
+        </div>
+        <hr />
+        <div class="body-after">
+          <div>
+            <a href=""><p>Theo dõi đơn hàng</p></a>
+          </div>
+          <div>
+            <a href=""><p>Sản phẩm yêu thích</p></a>
+          </div>
+        </div>
+        <hr />
+        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
+      </div>
+    </div>
 
       <div class="model" id="modal-love">
       <div class="model-overlay"></div>
@@ -104,30 +128,6 @@
       </div>
     </div>
 
-    <div class="model" id="modal-signin">
-      <div class="model-overlay"></div>
-      <div class="modal-after">
-        <div class="model-innerafter">
-          <span class="ti-close"></span>
-        </div>
-        <div class="body-start">
-        <div>
-          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
-          </div>
-        </div>
-        <hr />
-        <div class="body-after">
-          <div>
-            <a href=""><p>Theo dõi đơn hàng</p></a>
-          </div>
-          <div>
-            <a href=""><p>Sản phẩm yêu thích</p></a>
-          </div>
-        </div>
-        <hr />
-        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
-      </div>
-    </div>
 
     <script src="../../asset/js/mainafterlogin.js"></script>
 
