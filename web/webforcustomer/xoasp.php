@@ -13,15 +13,15 @@
         
         $result = mysqli_query($conn, $query);
         if ($result > 0) {
-            echo"<script>
-            alert('Xóa sản phẩm thành công');
-            window.location.href='infoItemLayout.php?ID=".$row["IDSanPham"]."';
-        </script>";
+            echo'<script>
+            alert("Xóa sản phẩm thành công");
+            window.location.href="infoItemLayout.php?ID='.$ID.'";
+        </script>';
         }else{
-            echo "<script>
-            alert('Lỗi xóa sản phẩm');
-            window.location.href='infoItemLayout.php?ID=".$row["IDSanPham"]."';
-        </script>";
+            echo'<script>
+            alert("Xóa sản phẩm lỗi");
+            window.location.href="infoItemLayout.php?ID='.$ID.'";
+        </script>';
         }
      ?>
 </body>
