@@ -15,7 +15,7 @@ if (isset($_GET['ID'])) {
         $dia_chi = $row['dia_chi'];
         $thanh_pho = $row['thanh_pho'];
         $hinhanh = $row['hinhanh'];
-        $mo_ta = $row['mo_ta'];
+        $sdt = $row['sdt'];
     } else {
         echo "Không tìm thấy cửa hàng.";
         exit();
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dia_chi_moi = $_POST['dia_chi'];
     $thanh_pho_moi = $_POST['thanh_pho'];
     $hinhanh = $_POST['hinhanh'];
-    $mo_ta_moi = $_POST['mo_ta'];
+    $sdt = $_POST['sdt'];
 
     // Cập nhật thông tin cửa hàng trong database
     $query_update = "UPDATE cua_hang SET 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         dia_chi = '$dia_chi_moi', 
                         thanh_pho = '$thanh_pho_moi', 
                         hinhanh = '$hinhanh',
-                        mo_ta = '$mo_ta_moi' 
+                        sdt = '$sdt' 
                     WHERE idcuahang = $id";
 
     if (mysqli_query($conn, $query_update)) {
@@ -107,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td><input type="file" class="info-name-property" id="hinhanh" name="hinhanh" value="<?php echo $hinhanh; ?>" required></td>
                         </tr>
                         <tr>
-                            <td class="info-name"><label for="mo_ta">Mô tả:</label></td>
-                            <td><input type="text" class="info-name-property" id="mo_ta" name="mo_ta" value="<?php echo $mo_ta; ?>" required></td>
+                            <td class="info-name"><label for="mo_ta">Số điện thoại:</label></td>
+                            <td><input type="text" class="info-name-property" id="sdt" name="sdt" value="<?php echo $sdt; ?>" required></td>
                         </tr>
                     </tbody>
                 </table>

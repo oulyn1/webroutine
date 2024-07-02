@@ -38,36 +38,10 @@
                             <div class="user-info">
                                 <tbody>
                                     <tr>
-                                        <td class="info-name"><label for="Image">Hình ảnh</label></td>
-                                        <td><input type="file" class="info-name-property" id="Image" name="image" required /></td>
+                                        <td class="info-name"><label for="image">Hình ảnh</label></td>
+                                        <td><input type="file" class="info-name-property" id="image" name="image" required /></td>
                                     </tr>
-                                    <?php
-                                    include("../../../config/config.php");
 
-                                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-                                        $target_dir = "../../../asset/img/";
-                                        $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-                                        // Kiểm tra file ảnh
-                                        $check = getimagesize($_FILES["image"]["tmp_name"]);
-                                        if ($check !== false) {
-                                            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-                                                $image_path = basename($_FILES["image"]["name"]);
-                                                $sql = "INSERT INTO slider_images (image_path) VALUES ('$image_path')";
-                                                if (mysqli_query($conn, $sql)) {
-                                                    echo "Hình ảnh đã được tải lên thành công.";
-                                                } else {
-                                                    echo "Đã có lỗi xảy ra: " . mysqli_error($conn);
-                                                }
-                                            } else {
-                                                echo "Đã xảy ra lỗi khi tải lên hình ảnh.";
-                                            }
-                                        } else {
-                                            echo "File không phải là hình ảnh.";
-                                        }
-                                    }
-                                    ?>
                                 </tbody>
                             </div>
                         </table>
@@ -77,5 +51,32 @@
             </div>
         </div>
     </div>
+    <?php
+    include("../../../config/config.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $image= $_POST['image'];
+
+        if (!$conn) {
+            echo 'Kết nối không thành công' . mysqli_connect_error();
+        }
+        else {
+            $query = "INSERT INTO slider_images VALUES (' ','".$image."')";
+            $result = mysqli_query($conn, $query);
+            if ($result > 0) {
+                echo "  <script>
+                            alert('Thêm sản phẩm thành công');
+                            window.location.href='slider.php';
+                        </script>";
+            }
+            else {
+                echo "  <script>
+                            alert('Lỗi thêm sản phẩm ');
+                            window.location.href='slider.php';
+                        </script>";
+            }
+        }
+    
+}
+    ?>
 </body>
 </html>

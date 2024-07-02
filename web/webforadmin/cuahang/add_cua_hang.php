@@ -49,8 +49,8 @@
                             <td><input type="file" class="info-name-property" id="hinhanh" name="hinhanh" required></td>
                         </tr>
                         <tr>
-                            <td class="info-name"><label for="mo_ta">Mô tả:</label></td>
-                            <td><input type="text" class="info-name-property" id="mo_ta" name="mo_ta" required></td>
+                            <td class="info-name"><label for="sdt">Số điện thoại:</label></td>
+                            <td><input type="text" class="info-name-property" id="sdt" name="sdt" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -65,13 +65,13 @@
         $dia_chi = $_POST['dia_chi'];
         $thanh_pho = $_POST['thanh_pho'];
         $hinhanh = $_POST['hinhanh'];
-        $mo_ta = $_POST['mo_ta'];
+        $sdt = $_POST['sdt'];
 
         if (!$conn) {
             echo 'Kết nối không thành công' . mysqli_connect_error();
         }
         else {
-            $query = "INSERT INTO cua_hang VALUES (' ' ,'".$ten."' , '".$dia_chi."' , '".$thanh_pho."','".$hinhanh."' ,'".$mo_ta."')";
+            $query = "INSERT INTO cua_hang VALUES (' ' ,'".$ten."' , '".$dia_chi."' , '".$thanh_pho."','".$hinhanh."' ,'".$sdt."')";
             $result = mysqli_query($conn, $query);
             if ($result > 0) {
                 echo "  <script>

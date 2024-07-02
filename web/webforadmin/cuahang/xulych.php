@@ -21,7 +21,7 @@
                                         <th>Địa chỉ</th>
                                         <th>Thành phố</th>
                                         <th>Hình ảnh</th>
-                                        <th>Mô tả</th>
+                                        <th>Số điện thoại</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
@@ -32,8 +32,8 @@
                                     <td>' . $row["ten"] . '</td>
                                     <td>' . $row["dia_chi"] . '</td>
                                     <td>' . $row["thanh_pho"] . '</td>
-                                    <td>' . $row["hinhanh"] . '</td>
-                                    <td>' . $row["mo_ta"] . '</td>
+                                    <td ><img src="../../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '"style="width:350px">    </td>
+                                    <td>' . $row["sdt"] . '</td>
                                     <td>
                                         <a href="suacuahang.php?ID=' . $row["idcuahang"] . '"><i class="ti-pencil-alt"></i></a>
                                         <a onclick="return confirm(\'Bạn có muốn xóa cửa hàng không?\');" href="xoacuahang.php?ID=' . $row["idcuahang"] . '"><i class="ti-trash"></i></a>

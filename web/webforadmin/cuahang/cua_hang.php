@@ -15,8 +15,9 @@ if (!isset($_SESSION["admin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/table.css" />
+    <link rel="stylesheet" href="../../../asset/css/sanpham.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-    <title>Thống kê</title>
+    <title>Danh sách cửa hàng</title>
 </head>
 
 <body>
