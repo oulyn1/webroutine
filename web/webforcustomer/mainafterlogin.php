@@ -82,7 +82,7 @@ if (!isset($_SESSION["customer"])) {
             </ul>
         </div>
         <div class="header__right">
-          <a class="search" href="timkiem.php">
+          <a class="search" href="timkiemafterlogin.php">
             <i class="ti-search"></i>
             <span class="search__title">Tìm kiếm</span>
           </a>

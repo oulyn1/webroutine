@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quần áo thời trang nữ</title>
+    <title>Sản phẩm</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="stylesheet" href="../../asset/css/timkiem.css">
 </head>
 <body>
     <div id="main">
         <div id="header">
             <div class="header__left">
-                <a href="mainafterlogin.php" class="logo">
+                <a href="../../index.php" class="logo">
                     <img src="../../asset/img/logo-routine.png" alt="" class="logo__img">
                 </a>
                 <ul id="nav">
                 <li>
-                    <a href="manafterlogin.php">NAM</a>
+                    <a href="../webforcustomer/man.php">NAM</a>
                     <?php
                     include("../../config/config.php");
                     //buoc 2 viet truy van
@@ -29,7 +30,7 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==1){
-                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/aonam.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';
@@ -37,7 +38,7 @@
                     ?>
                 </li>
                 <li>
-                    <a href="womenafterlogin.php">NỮ</a>
+                    <a href="../webforcustomer/women.php">NỮ</a>
                     <?php
                     include("../../config/config.php");
                     //buoc 2 viet truy van
@@ -49,17 +50,17 @@
                       echo'<ul class="subnav">';
                       while ($row = mysqli_fetch_assoc($result)){
                         if($row["idloaisanpham"]==2){
-                          echo'<li><a href="../webforcustomer/aonamafterlogin.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
+                          echo'<li><a href="../webforcustomer/aonam.php?IDDM='.$row["iddanhmuccon"].'&IDLSP='.$row["idloaisanpham"].'">'.$row["tendanhmuccon"].'</a></li>';
                         }
                       }
                       echo'</ul>';
                     }
                     ?>
                 </li>
-            </ul>
+                </ul>
             </div>
             <div class="header__right">
-                <a class="search" href="timkiemafterlogin.php">
+                <a class="search" href="#bannermw">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>
@@ -68,7 +69,8 @@
                 <span class="ti-shopping-cart" id="openshopping" href=""></span>
             </div>
         </div>
-      
+
+
         <div class="model" id="modal-signin">
       <div class="model-overlay"></div>
       <div class="modal-after">
@@ -93,8 +95,7 @@
         <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
       </div>
     </div>
-
-        <div class="model" id="modal-love">
+    <div class="model" id="modal-love">
       <div class="model-overlay"></div>
       <div class="modal-right">
         <div class="modal-love">
@@ -123,38 +124,49 @@
         </div>
       </div>
     </div>
-
     
 
-    <script src="../../asset/js/mainafterlogin.js"></script>
-
-    <div class="bannermw">
-        <img src="../../asset/img/bannerwoman.png" alt="" class="img-bannermw">
+    <div class="bannermw" id="bannermw">
     </div>
 
-    <?php
-        include("../../config/config.php");
-        //buoc 2 viet truy van
-        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC";
-        //buoc 3 thuc thi cau lenh
-        $result = mysqli_query($conn, $query);
-        //buoc 4 lay du lieu
-        if(mysqli_num_rows($result) >0){
-            echo'<div class="maincontent">
-                <div class="product_list">';
-            while ($row = mysqli_fetch_assoc($result)){
-                if ($row["idloaisanpham"]==2){
-                    echo'<div>
-                    <a href="infoItemLayout.php?ID='.$row["idsanpham"].'">
-                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
-                        <p class="title_product">'.$row["tensanpham"].'</p>
-                        <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
-                    </a>
-                    </div>';
+    <form method="POST">
+        <div class="Search" id="Search">
+            <label for="txtSearch">Nhập thông tin tìm kiếm: </label>
+            <input type="text" name = "txtSearch" id="txtSearch" name="txtSearch" class="txtSearch">
+            <input type="submit" value = "Tìm kiếm" id="btnSearch" name="btnSearch">
+        </div>
+   </form>
+
+
+   <?php
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $keysearch=$_POST['txtSearch'];
+            include("../../config/config.php");
+            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
+            //buoc 2 viet truy van
+            //buoc 3 thuc thi cau lenh
+            $result = mysqli_query($conn, $query);
+            //buoc 4 lay du lieu
+            if(mysqli_num_rows($result) >0){
+                echo'<div class="maincontent" id="content">
+                    <div class="product_list">';
+                while ($row = mysqli_fetch_assoc($result)){
+                        echo'<div>
+                        <a href="infoItemLayout.php?ID='.$row["idsanpham"].'">
+                            <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
+                            <p class="title_product">'.$row["tensanpham"].'</p>
+                            <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
+                        </a>
+                        </div>';
+                    
                 }
+                echo'</div>
+                </div>';
+            }else{
+                echo'<div class="maincontent" id="content">
+                Hiện chưa có sản phẩm này vui lòng tìm kiếm sản phẩm khác!
+                </div>';
             }
-            echo'</div>
-             </div>';
         }
     ?>
 
@@ -231,5 +243,8 @@
     <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
 </div>
 </div>
+
+
+    <script src="../../asset/js/main.js"></script>
 </body>
 </html>
