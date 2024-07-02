@@ -171,20 +171,34 @@ if (!isset($_SESSION["customer"])) {
             <p class="ti-shopping-cart"></p>
             <p class="">Giỏ hàng</p>
         </div>
-
-        <div class="cart-item">
-            <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="">
-            <div class="item-details">
-                <p class="item-name">Áo Polo Nam Vải Gân Phối Bo Nẹp Trang Trí Form Fitted - 10F23POL017</p>
-                
-                <div class="item-quantity">
-                    Số lượng: 
-                </div>
-                <p class="item-price">
-                    <span class="price">260.000 đ</span>
-                </p>
-            </div>
-        </div>
+        <?php
+          include("../../config/config.php");
+          $tongtien= 0;
+          $query = "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
+          AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          //buoc 3 thuc thi cau lenh
+          $result = mysqli_query($conn, $query);
+          //buoc 4 lay du lieu
+          if(mysqli_num_rows($result) >0){
+            while ($row = mysqli_fetch_assoc($result)){
+              $giamoi=$row["giasanpham"]*$row["SoLuong"];
+              $tongtien= $tongtien+$giamoi;
+              echo'<div class="cart-item">
+                  <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
+                  <div class="item-details">
+                      <p class="item-name">'.$row["tensanpham"].'</p>
+                      
+                      <div class="item-quantity">
+                          Số lượng: '.$row["SoLuong"].'
+                      </div>
+                      <p class="item-price">
+                          <span class="price">'.number_format($giamoi,0,',','.').' <u>đ</u></span>
+                      </p>
+                  </div>
+              </div>';
+            }
+          }
+        ?>
         <div class="shopping-info">
             <h3>Thông tin giao hàng</h3>
             <form>
@@ -206,7 +220,7 @@ if (!isset($_SESSION["customer"])) {
         </div>
         <div class="total-price">
             <p>Tổng tiền:</p>
-            <p>260.000 đ</p>
+            <p><?php echo''.number_format($tongtien,0,',','.').' <u>đ</u>'; ?></p>
         </div>
         <div class="cart-buttons">
             <button class="checkout">THANH TOÁN</button>
