@@ -80,7 +80,6 @@ if (!isset($_SESSION["customer"])) {
           </a>
           <span class="ti-user" id="openlogin" href=""></span>
           <span class="ti-heart" id="openlove" href=""></span>
-          <span class="ti-shopping-cart" id="openshopping" href=""></span>
         </div>
       </div>
 

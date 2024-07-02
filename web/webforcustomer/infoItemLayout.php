@@ -152,7 +152,7 @@ if (!isset($_SESSION["customer"])) {
                     <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
 
-                <p class="modal__items__price">'.$gia.'<u>đ</u></p>
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
 
               <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
