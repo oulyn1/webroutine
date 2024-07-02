@@ -250,6 +250,7 @@ if (!isset($_SESSION["customer"])) {
         }
         $sql = "DELETE FROM giohang WHERE IDUser = '$ID'";
         mysqli_query($conn, $sql);
+        header("Location:camon.php");
       }
     ?>
 
