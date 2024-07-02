@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="block-content block-collapsible-nav-content">
                                 <ul class="nav items">
-                                    <li class="nav item"><a>Thông tin tài khoản</a></li>
+                                    <li class="nav item"><a href="">Thông tin tài khoản</a></li>
                                     <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
                                     <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
                                     <li class="nav item"><span class="delimiter"></span></li>
