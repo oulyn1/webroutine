@@ -91,7 +91,11 @@ if (!isset($_SESSION["customer"])) {
         <div class="model-innerafter">
           <span class="ti-close"></span>
         </div>
-        <div class="body-start">Chào khách hàng</div>
+        <div>
+          <div class="body-start">
+          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
+          </div>
+        </div>
         <hr />
         <div class="body-after">
           <div>
