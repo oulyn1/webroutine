@@ -277,11 +277,10 @@ if (!isset($_SESSION["customer"])) {
               <div class="block-content block-collapsible-nav-content">
                 <ul class="nav items">
                   <li class="nav item current"><strong>Thông tin tài khoản</strong></li>
-                  <li class="nav item"><a href="">Hạng hội viên</a></li>
                   <li class="nav item"><a href="">Lịch sử mua hàng</a></li>
                   <li class="nav item"><a href="">Địa chỉ giao hàng</a></li>
                   <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
-                  <li class="nav item"><a href="">Sản phẩm yêu thích</a></li>
+                  <li class="nav item"><a href="favoriteList.php">Sản phẩm yêu thích</a></li>
                   <li class="nav item"><span class="delimiter"></span></li>
                   <li class="nav item"><a href="">Đăng xuất</a></li>
                 </ul>
