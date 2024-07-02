@@ -221,10 +221,37 @@ if (!isset($_SESSION["customer"])) {
             <p>Tổng tiền:</p>
             <p><?php echo''.number_format($tongtien,0,',','.').' <u>đ</u>'; ?></p>
         </div>
+        <form method="POST">
         <div class="cart-buttons">
-            <button class="checkout">THANH TOÁN</button>
+            <input type="submit" class="checkout" value="THANH TOÁN">
         </div>
+        </form>
     </div>
+
+    <?php
+      if($_SERVER['REQUEST_METHOD'] == "POST"){
+        include("../../config/config.php");
+        $code= rand(0,9999);
+        $query = "INSERT INTO tbl_donhang(iduser, madon, tinhtrang) VALUES ('$ID','$code',1)";
+        $result = mysqli_query($conn, $query);
+        if ($result > 0) {
+          $queryC= "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
+          AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          $resultC = mysqli_query($conn, $queryC);
+          //buoc 4 lay du lieu
+          if(mysqli_num_rows($resultC) >0){
+            while ($rowC = mysqli_fetch_assoc($resultC)){
+              $idsanpham= $rowC["idsanpham"];
+              $soluong= $rowC["SoLuong"];
+              $queryCT = "INSERT INTO tbl_chitietdonhang(idsanpham, madon, soluongCT) VALUES ('.$idsanpham.','$code','$soluong')";
+              mysqli_query($conn, $queryCT);
+            }
+          }
+        }
+        $sql = "DELETE FROM giohang WHERE IDUser = '$ID'";
+        mysqli_query($conn, $sql);
+      }
+    ?>
 
     <!-- footer -->
 

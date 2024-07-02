@@ -41,41 +41,44 @@ if (!isset($_SESSION["admin"])) {
             </div>
             <div class="body">
                 <div class="body-headersanpham">
-                    <h1>Quản lý đơn hàng</h1>
+                    <h1>Chi tiết đơn hàng</h1>
                     <div class="tbl_hienthi">
                     <?php
                         include("../../../config/config.php");
                         //buoc 2 viet truy van
-                        $query = "SELECT * FROM tbl_donhang,user 
-                        WHERE user.id_user=tbl_donhang.iduser ORDER BY iddonhang DESC";
+                        $query = "SELECT * FROM tbl_chitietdonhang,tbl_sanpham 
+                        WHERE tbl_chitietdonhang.idsanpham=tbl_sanpham.idsanpham
+                        AND tbl_chitietdonhang.madon='$_GET[CODE]' ORDER BY idctdh DESC";
                         //buoc 3 thuc thi cau lenh
                         $result = mysqli_query($conn, $query);
+                        $tongtien= 0;
                         //buoc 4 lay du lieu
                         if(mysqli_num_rows($result) >0){
                             echo '<table id="tblMain">
                                     <thead>
                                         <th>ID</th>
                                         <th>Mã đơn hàng</th>
-                                        <th>Tên khách hàng</th>
-                                        <th>Tình trạng</th>
-                                        <th>Quản lý</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
                                     </thead>
                                     <tbody>';
                             while ($row = mysqli_fetch_assoc($result)){
-                                if($row["tinhtrang"]==1){
-                                    $status="Đơn hàng mới";
-                                }else{
-                                    $status="Đã xử lý";
-                                }
+                                $thanhtien=$row["giasanpham"]*$row["soluongCT"];
+                                $tongtien+= $thanhtien;
                                 echo'<tr>
-                                        <td>'.$row["iddonhang"].'</td>
+                                        <td>'.$row["idctdh"].'</td>
                                         <td>'.$row["madon"].'</td>
-                                        <td>'.$row["Fullname"].'</td>
-                                        <td><a class="thea" href="capnhatdon.php?CODE='.$row["madon"].'">'.$status.'</a></td>
-                                        <td><a class="thea" href="chitietdonhang.php?CODE='.$row["madon"].'">Xem đơn hàng</a></td>
+                                        <td>'.$row["tensanpham"].'</td>
+                                        <td>'.$row["soluongCT"].'</td>
+                                        <td>'.$row["giasanpham"].'</td>
+                                        <td>'.$thanhtien.'</td>
                                     </tr>';
                                     }
-                    
+                                echo'<tr>
+                                        <td colspan="6" style="text-align: center; font-weight: bold;">Tổng tiền: '.$tongtien.'</td>
+                                    </tr>'; 
                             echo'  </tbody>
                                 </table>';
                             
