@@ -153,7 +153,7 @@ if (!isset($_SESSION["customer"])) {
 
             // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
             $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
-            $sql = "SELECT * FROM user,khach_hang WHERE user.Id_user= $user_id AND khach_hang.id=$user_id";
+            $sql = "SELECT * FROM user WHERE user.Id_user= $user_id ";
 
             // Thực thi truy vấn và lấy kết quả
             $result = mysqli_query($conn, $sql);
