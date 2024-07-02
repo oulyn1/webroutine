@@ -248,12 +248,13 @@ ul li a {
     position: relative;
     display: inline-block;
     padding-bottom: 5px;
+    margin-left: 40%;
 }
 
 .product-description h2::after {
     content: '';
     display: block;
-    width: 100px;
+    width: 100%;
     height: 2px;
     background-color: #ccc;
     margin: 10px auto 0 auto;
