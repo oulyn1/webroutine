@@ -371,4 +371,131 @@ ul li a {
     font-weight: bold;
     font-size: 12px;
 }
-
+.rating {
+    display: flex;
+    justify-content: center;
+    direction: rtl; /* Thêm dòng này để đảo ngược thứ tự ngôi sao */
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: left;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+  
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #E3B386;
+    transition: color 0.3s;
+  }
+  .danhgia{
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+  }
+  .danhgia p{
+    cursor: pointer;
+    padding: 12px;
+    background-color: #E3B386;
+    color: #000;
+    font-weight: bold;
+  }
+  .danhgia p:hover{
+    color: #E3B386;
+    background-color: #000;
+  }
+  .modal{
+    position: fixed;
+    top: 0;
+    right:0;
+    left: 0;
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000000000000000;
+  }
+  .modal.open{
+    display: flex;
+  }
+  .modal-container{
+    background-color: #fff;
+    width: 500px;
+    max-width: calc(100%-32px);
+    min-height: 579px;
+    position: relative;
+    animation: modalAnimation ease 0.5s;
+  }
+  .modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 16px;
+    color: #fff;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  .modal-close:hover{
+    opacity: 1;
+  }
+  .modal.open{
+    display: flex;
+  }
+  .modal-header {
+    display: flex;
+    background-color: #E3B386;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+  }
+  .modal-header i{
+    margin-right: 16px;
+  }
+  .modal-body{
+    padding: 16px;
+  }
+  .modal-label{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  textarea,
+  input.modal-input {
+    padding: 15px;
+    width: 100%;
+    border: 1px #ccc solid;
+    margin-bottom:24px ;
+  }
+  .modal-btn {
+    background-color: #E3B386;
+    border: none;
+    color: #fff;
+    width: 100%;
+    height: 55px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .modal-btn:hover {
+    opacity: 0.8;
+  }
+  textarea{
+    resize: vertical;
+  }
+  .label{
+    display: flex;
+    justify-content: center;
+  }

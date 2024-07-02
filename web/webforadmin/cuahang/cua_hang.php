@@ -33,6 +33,7 @@ if (!isset($_SESSION["admin"])) {
                 <a href="../thongke/thongke.php?ID=ID" class="header__list-items"><b>Thống Kê</b></a>
                 <a href="../slider/slider.php?ID=ID" class="header__list-items"><b>Slider</b></a>
                 <a href="../cuahang/cua_hang.php?ID=ID" class="header__list-items"id="main"><b>Cửa hàng</b></a>
+                <a href="../danhgia/danhgia.php" class="header__list-items"><b>Đánh giá</b></a>
             </div>
             <div class="header__list2">
                 <form method="POST">
