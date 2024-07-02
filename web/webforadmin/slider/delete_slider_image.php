@@ -11,12 +11,16 @@ if (isset($_GET["id"])) {
         unlink("../../../" . $row["image_path"]);
         $query = "DELETE FROM slider_images WHERE id=$id";
         if (mysqli_query($conn, $query)) {
-            header("Location: slider.php?success=1");
-        } else {
-            header("Location: slider.php?error=1");
-        }
+            echo "<script>
+            alert('Xóa dữ liệu thành công');
+            window.location.href='taikhoan.php';
+        </script>";
     } else {
-        header("Location: slider.php?error=1");
-    }
+        echo "<script>
+            alert('Lỗi xóa dữ liệu');
+            window.location.href='taikhoan.php';
+        </script>";
+}
+}
 }
 ?>

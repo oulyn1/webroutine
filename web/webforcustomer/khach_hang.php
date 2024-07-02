@@ -1,11 +1,42 @@
 <?php
+include("../../config/config.php");
 
+// Kiểm tra nếu người dùng đã đăng nhập
 session_start();
 if (!isset($_SESSION["customer"])) {
-  header("location: ../../index.php");
-  exit;
+    header("location: ../../index.php");
+    exit;
 } else {
-  $ID = $_SESSION["customer"];
+    $ID = $_SESSION["customer"];
+}
+
+// Khởi tạo các biến để tránh lỗi Undefined variable
+$ten = "";
+$email = "";
+$so_dien_thoai = "";
+$dia_chi = "";
+
+// Nếu người dùng submit form cập nhật
+if (isset($_POST['update'])) {
+    $ten = $_POST['ten'];
+    $email = $_POST['email'];
+    $so_dien_thoai = $_POST['so_dien_thoai'];
+    $dia_chi = $_POST['dia_chi'];
+
+    // Câu lệnh SQL để cập nhật thông tin khách hàng
+    $query_update_user = "UPDATE user SET Fullname='$ten', Email='$email' WHERE Id_user=$ID";
+    $query_update_khachhang = "UPDATE khach_hang SET ten='$ten', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
+
+    // Thực thi câu lệnh cập nhật
+    $result_update_user = mysqli_query($conn, $query_update_user);
+    $result_update_khachhang = mysqli_query($conn, $query_update_khachhang);
+
+    if ($result_update_user && $result_update_khachhang) {
+        echo "<script>alert('Cập nhật thông tin thành công');</script>";
+        // Cập nhật lại thông tin hiển thị trên trang
+    } else {
+        echo "<script>alert('Lỗi khi cập nhật thông tin');</script>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -198,7 +229,7 @@ if (!isset($_SESSION["customer"])) {
 
             // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
             $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
-            $sql = "SELECT * FROM user WHERE user.Id_user= $user_id ";
+            $sql = "SELECT * FROM khach_hang,user WHERE user.Id_user= $user_id AND khach_hang.id=user.Id_user";
 
             // Thực thi truy vấn và lấy kết quả
             $result = mysqli_query($conn, $sql);
@@ -233,36 +264,34 @@ if (!isset($_SESSION["customer"])) {
                                         <p>Email:<?php echo $email; ?></p>
                                     </div>
                                     <div class="box-information">
-                                        <p>Số điện thoại:</p>
+                                        <p>Số điện thoại: <?php echo $so_dien_thoai ?></p>
                                     </div>
                                 </div>
 
-              <div class="personal-information">
-                <h3>Thông tin cá nhân</h3>
-
-                <div class="field-group-name">
-                  <div class="field-group-1">
-                    <p class="p2">Họ và tên</p>
-                    <input type="text" value="<?php echo $ten; ?>">
-                  </div>
+                                <div class="personal-information">
+                    <h3>Thông tin cá nhân</h3>
+                    <form method="post" action="">
+                        <div class="field-group-name">
+                            <div class="field-group-1">
+                                <p class="p2">Họ và tên</p>
+                                <input type="text" name="ten" value="<?php echo $ten; ?>">
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <p class="p2">Email</p>
+                            <input type="email" name="email" value="<?php echo $email; ?>">
+                        </div>
+                        <div class="field-group">
+                            <p class="p2">Số điện thoại</p>
+                            <input type="number" name="so_dien_thoai" value="<?php echo $so_dien_thoai; ?>">
+                        </div>
+                        <div class="field-group">
+                            <p class="p2">Địa chỉ</p>
+                            <input type="text" name="dia_chi" value="<?php echo $dia_chi; ?>">
+                        </div>
+                        <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
+                    </form>
                 </div>
-
-                <div class="field-group">
-                  <p class="p2">Email</p>
-                  <input type="email" value="<?php echo $email; ?>">
-                </div>
-
-                <div class="field-group">
-                  <p class="p2">Số điện thoại</p>
-                  <input type="number" id="phone" name="phone" value="<?php echo $so_dien_thoai; ?>">
-                </div>
-
-                <div class="field-group">
-                  <p class="p2">Địa chỉ</p>
-                  <input type="text" id="address" name="address" value="<?php echo $dia_chi; ?>">
-                </div>
-                <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
-              </div>
             </div>
           </div>
 
