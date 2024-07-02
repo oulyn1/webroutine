@@ -319,6 +319,7 @@ li {
     color: black;
     font-size: 14px;
     display: block;
+    font-weight: 300;
 }
 
 .block-collapsible-nav-content .nav.items .nav.item strong {
