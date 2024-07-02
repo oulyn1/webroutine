@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location: ../../../index.php");
+    exit;
+} else {
+    $ID = $_SESSION["admin"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +14,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
+    <link rel="stylesheet" href="../../../asset/css/table.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <title>Thống kê</title>
 </head>
