@@ -14,12 +14,10 @@
         $result = mysqli_query($conn, $query);
         if ($result > 0) {
             echo'<script>
-            alert("Xóa sản phẩm thành công");
             window.location.href="infoItemLayout.php?ID='.$ID.'";
         </script>';
         }else{
             echo'<script>
-            alert("Xóa sản phẩm lỗi");
             window.location.href="infoItemLayout.php?ID='.$ID.'";
         </script>';
         }

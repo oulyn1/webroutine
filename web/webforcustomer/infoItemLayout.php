@@ -22,7 +22,7 @@ if (!isset($_SESSION["customer"])) {
     <link rel="stylesheet" href="../../asset/css/footer.css">
 </head>
 <body>
-<div id="header">
+      <div id="header">
         <div class="header__left">
           <a href="mainafterlogin.php" class="logo">
             <img
@@ -155,7 +155,7 @@ if (!isset($_SESSION["customer"])) {
                 <p class="modal__items__price">'.$gia.'<u>đ</u></p>
               </div>
 
-              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close"></a>
+              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
             </div>';       
               }}
                ?>

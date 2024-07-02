@@ -1,0 +1,118 @@
+#header{
+    height: 75px;
+    padding: 10px 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header__left{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    height: 33px;
+    width: 170px;
+    margin-right: 35px;
+}
+
+.logo__img{
+    width: 128px;
+}
+
+#nav{
+    display: inline-block;
+}
+
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav >li{
+    display: inline-block;
+}
+
+#nav li{
+    position: relative;
+    
+}
+
+#nav>li>a{
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#nav li a{
+    text-decoration: none;
+    line-height: 46.5px;
+    padding: 0 24px ;
+    display: block;
+
+}
+
+#nav >li:hover .subnav{
+    display: block;
+}
+
+#nav >li:hover >a,
+#nav .subnav li:hover a{
+    color: black;
+    background-color: #ccc;
+}
+
+#nav .subnav{
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#nav .subnav a{
+    color: black;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down{
+    font-size: 12px;
+}
+
+
+.header__right{
+    width: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search{
+    width: 350px;
+    padding-top: 9px;
+    padding-bottom: 6px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid rgb(182, 180, 180);
+}
+
+.search__title{
+    color: rgb(182, 180, 180);
+}
+
+.ti-user, .ti-heart, .ti-shopping-cart {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
