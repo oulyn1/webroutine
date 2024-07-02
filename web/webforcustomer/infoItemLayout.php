@@ -152,7 +152,7 @@ if (!isset($_SESSION["customer"])) {
                     <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
 
-                <p class="modal__items__price">'.$gia.'<u>đ</u></p>
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
 
               <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
@@ -160,17 +160,17 @@ if (!isset($_SESSION["customer"])) {
               }}
                ?>
           </div>
-
         </div>
-        <?php 
-         include("../../config/config.php");
-         $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
-         $result=mysqli_query($conn, $sql);
-         if(mysqli_num_rows($result) > 0){
-          echo '<div class="modal__buttons">
-          <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
-        </div>';
-         }
+
+        <?php
+          include("../../config/config.php");
+          $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          $result=mysqli_query($conn, $sql);
+          if(mysqli_num_rows($result) > 0){
+            echo '<div class="modal__buttons">
+            <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
+          </div>';
+          }
         
         ?>  
           
@@ -178,7 +178,7 @@ if (!isset($_SESSION["customer"])) {
       </div>
     </div>
 
-    <script src="../../asset/js/mainafterlogin.js"></script>
+
 <?php
   include("../../config/config.php");
   //buoc 2 viet truy van

@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["customer"])) {
+  header("location: ../../index.php");
+  exit;
+} else {
+  $ID = $_SESSION["customer"];
+  $IDSP=$_GET["ID"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +21,7 @@
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
     <link rel="stylesheet" href="../../asset/css/favoriteList.css">
-
+    <link rel="stylesheet" href="../../asset/css/infoItemStyle.css">
 </head>
 <body>
   < id="main">
@@ -125,8 +137,50 @@
               <b>Giỏ hàng</b>
             </p>
             <span class="ti-close"></span>
+          </div><div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+          <?php
+              include("../../config/config.php");
+              $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+              $result=mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) > 0){
+              while ($row = mysqli_fetch_assoc($result)){
+                $gia=$row["giasanpham"]*$row["SoLuong"];
+                 echo'
+            <div class="modal__items">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
+
+                <div class="modal__items__quantity">
+                    <div class="title">Số lượng: '.$row["SoLuong"].'</div>
+                </div>
+
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+
+              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
+            </div>';       
+              }}
+               ?>
           </div>
         </div>
+
+        <?php
+          include("../../config/config.php");
+          $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          $result=mysqli_query($conn, $sql);
+          if(mysqli_num_rows($result) > 0){
+            echo '<div class="modal__buttons">
+            <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
+          </div>';
+          }
+        
+        ?>  
+          
+          
       </div>
     </div>
 
