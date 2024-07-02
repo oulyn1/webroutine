@@ -136,14 +136,16 @@ if (!isset($_SESSION["customer"])) {
             </p>
             <span class="ti-close"></span>
           </div><div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+
           <?php
-              include("../../config/config.php");
-              $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
-              $result=mysqli_query($conn, $sql);
-              if(mysqli_num_rows($result) > 0){
-              while ($row = mysqli_fetch_assoc($result)){
-                $gia=$row["giasanpham"]*$row["SoLuong"];
-                 echo'
+
+            include("../../config/config.php");
+            $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+            $result=mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) > 0){
+            while ($row = mysqli_fetch_assoc($result)){
+              $gia=$row["giasanpham"]*$row["SoLuong"];
+                echo'
             <div class="modal__items">
               
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
@@ -162,7 +164,9 @@ if (!isset($_SESSION["customer"])) {
               <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
             </div>';       
               }}
-               ?>
+
+          ?>
+               
           </div>
         </div>
 
@@ -286,12 +290,12 @@ if (!isset($_SESSION["customer"])) {
 
                 <h5>CÔNG TY</h5>
                 <ul>
-                    <li><a href="">Giới thiệu về ROUTINE</a></li>
-                    <li><a href="">THE 31</a></li>
-                    <li><a href="">Tuyển dụng</a></li>
-                    <li><a href="">Tin thời trang</a></li>
-                    <li><a href="">Hợp tác nhượng quyền</a></li>
-                    <li><a href="">Liên hệ</a></li>
+                    <li><p href="">Giới thiệu về ROUTINE</p></li>
+                    <li><p href="">THE 31</p></li>
+                    <li><p href="">Tuyển dụng</p></li>
+                    <li><p href="">Tin thời trang</p></li>
+                    <li><p href="">Hợp tác nhượng quyền</p></li>
+                    <li><p href="">Liên hệ</p></li>
                 </ul>
 
             </div>
@@ -308,13 +312,13 @@ if (!isset($_SESSION["customer"])) {
 
             <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
             <ul>
-                <li><a href="">Chính sách khách hàng thân thiết</a></li>
-                <li><a href="">Chính sách đổi trả</a></li>
-                <li><a href="">Chính sách bảo hành</a></li>
-                <li><a href="">Chính sách bảo mật</a></li>
-                <li><a href=""> Câu hỏi thường gặp</a></li>
-                <li><a href="">hướng dẫn mua hàng online</a></li>
-                <li><a href="">Hướng dẫn kiểm trra hạng thành viên</a></li>
+                <li><p href="">Chính sách khách hàng thân thiết</p></li>
+                <li><p href="">Chính sách đổi trả</p></li>
+                <li><p href="">Chính sách bảo hành</p></li>
+                <li><p href="">Chính sách bảo mật</p></li>
+                <li><p href=""> Câu hỏi thường gặp</p></li>
+                <li><p href="">hướng dẫn mua hàng online</p></li>
+                <li><p href="">Hướng dẫn kiểm tra hạng thành viên</p></li>
             </ul>
             
         </div>
@@ -338,6 +342,7 @@ if (!isset($_SESSION["customer"])) {
             </ul>
             <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
         </div>
+        
     </div>
 
     <script src="../../asset/js/script.js"></script>
