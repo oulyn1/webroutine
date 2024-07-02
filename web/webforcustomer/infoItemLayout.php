@@ -185,8 +185,6 @@ if (!isset($_SESSION["customer"])) {
           
       </div>
     </div>
-
-
 <?php
   include("../../config/config.php");
   //buoc 2 viet truy van
@@ -251,7 +249,50 @@ if (!isset($_SESSION["customer"])) {
 </form>';  
       }
   }
+  $query="SELECT * FROM user WHERE Id_user=$ID";
+  $result = mysqli_query($conn, $query);
+  if(mysqli_num_rows($result) >0){
+    while ($row = mysqli_fetch_assoc($result)){
+      $name=$row["Fullname"];
+      $email=$row["Email"];
+    }}
 ?>
+<div class="danhgia">
+    <p class="js-buy-ticket">Gửi đánh giá của bạn</p>
+  </div>
+
+  <div class="modal js-modal">
+    <div class="modal-container js-modal-container">
+      <div class="modal-close js-modal-close">
+        <i class="ti-close"></i>
+      </div>
+      <div class="modal-header">
+          <p>Đánh giá</p>
+      </div>
+      <form action="danhgia.php?ID=<?php echo $IDSP ?>" method="POST" class="modal-body">
+        <div class="label">Bạn cảm thấy sản phẩm này như thế nào?</div>
+        <div class="rating">
+          <input value="5" name="rating" id="star5" type="radio">
+          <label for="star5"></label>
+          <input value="4" name="rating" id="star4" type="radio">
+          <label for="star4"></label>
+          <input value="3" name="rating" id="star3" type="radio">
+          <label for="star3"></label>
+          <input value="2" name="rating" id="star2" type="radio">
+          <label for="star2"></label>
+          <input value="1" name="rating" id="star1" type="radio">
+          <label for="star1"></label>
+        </div>
+        <div class="label"><label for="mota" class="modal-label"> Chia sẻ cảm nhận của bạn về sản phẩm </label></div>
+        <div class="textarea"><textarea name="txtmota" id="mota" class="modal-input" cols="26" rows="10"></textarea></div>
+        
+          <input id="ticket-email"type="text" class="modal-input" placeholder="Tên" value="<?php echo $name?>"/>
+          <input id="ticket-email"type="email" class="modal-input" placeholder="Enter email" value="<?php echo $email?>"/>
+        
+        <input type="submit" class="modal-btn" name="add" value="Gửi">
+      </form>
+    </div>
+  </div>
 <!-- <div class="size">
                     <input type="radio" id="size-s" name="size" value="S">
                     <label for="size-s">S</label>
