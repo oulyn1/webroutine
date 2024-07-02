@@ -195,7 +195,7 @@ if (!isset($_SESSION["customer"])) {
   if(mysqli_num_rows($result) >0){
       while ($row = mysqli_fetch_assoc($result)){
         echo'<form action="addtocart.php?ID='.$IDSP.'" method="POST">
-    <div class="main__content">
+        <div class="main__content">
         <div class="image__content">
             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image__item">
         </div>
@@ -383,7 +383,7 @@ if (!isset($_SESSION["customer"])) {
             </ul>
             <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
         </div>
-        
+
     </div>
 
     <script src="../../asset/js/script.js"></script>

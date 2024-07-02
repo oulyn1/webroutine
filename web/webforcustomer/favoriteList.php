@@ -188,69 +188,105 @@ if (!isset($_SESSION["customer"])) {
     <script src="../../asset/js/mainafterlogin.js"></script>
 
     <!-- content -->
+
+  
+
+  <?php
+    include("../../config/config.php");
+    //buoc 2 viet truy van
+    $query = "SELECT * FROM tbl_sanpham WHERE idsanpham='$_GET[ID]' ORDER BY idsanpham DESC limit 1";
+    //buoc 3 thuc thi cau lenh
+    $result = mysqli_query($conn, $query);
+    //buoc 4 lay du lieu
+    if(mysqli_num_rows($result) >0){
+      while ($row = mysqli_fetch_assoc($result)){
+        $gia=$row["giasanpham"]*$row["SoLuong"];
+                echo'
+            <div class="modal__items">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
+
+                <div class="modal__items__quantity">
+                    <div class="title">Số lượng: '.$row["SoLuong"].'</div>
+                </div>
+
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+
+              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
+            </div>';
+      }
+    }
+  ?>
+
     <div class="content">
-        
-            <div class="breadcrumbs">
+      <div class="breadcrumbs"></div>
 
-            </div>
-            <div class="page-main">
-                    <div class="columns">
-                        <div class="column-main">
-                            <div class="page-title-wrapper">
-                                <h1 class="page-title">Sản phẩm yêu thích</h1>
-                                <p class="des">Bạn có thể cập nhật thông tin của mình ở trang này</p>
+      <div class="page-main">
+        <div class="columns">
+            <div class="column-main">
+                <div class="page-title-wrapper">
+                    <h1 class="page-title">Sản phẩm yêu thích</h1>
+                    <p class="des">Bạn có thể cập nhật thông tin của mình ở trang này</p>
+                </div>
+
+                <div class="items">
+                    <div class="items-container">
+                        <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
+                        <div class="items__details">
+                            <p class="items__name">
+                            Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
+                            </p>
+
+                            <div class="items__quantity">
+                                <div class="title">Số lượng: </div>
                             </div>
 
-                            <div class="items">
-                                <div class="items-container">
-                                    <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-                                    <div class="items__details">
-                                        <p class="items__name">
-                                        Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-                                        </p>
+                            <p class="items__price">392.000<u>đ</u></p>
 
-                                        <div class="items__quantity">
-                                            <div class="title">Số lượng: </div>
-                                        </div>
-
-                                        <p class="items__price">392.000<u>đ</u></p>
-
-                                        <div class="button-add">
-                                            <a href="infoItemLayout.php" class="button">THÊM VÀO GIỎ HÀNG</a>
-                                        </div>
-                                    </div>
-
-                                    <span class="ti-close"></span>
-
-                                    
-                                </div>
-
+                            <div class="button-add">
+                                <a href="infoItemLayout.php" class="button">THÊM VÀO GIỎ HÀNG</a>
                             </div>
                         </div>
 
-                        <div class="sidebar sidebar-main">
-                            <div class="account-page-title">
-                                <h1 class="ti-user">Tài khoản của bạn</h1>
-                            </div>
-                            <div class="block-collapsible-nav">
-                                <div class="block-title">
-                                    <h2>Toàn Nguyễn</h2>
-                                </div>
-                                <div class="block-content block-collapsible-nav-content">
-                                <ul class="nav items">
-                                    <li class="nav item"><a href="">Thông tin tài khoản</a></li>
-                                    <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
-                                    <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
-                                    <li class="nav item"><span class="delimiter"></span></li>
-                                    <li class="nav item"><a href="">Đăng xuất</a></li>
-                                </ul>   
-                                </div>
-                            </div>
-                        </div>
+                        <span class="ti-close"></span>
+
+                        
                     </div>
+
+                </div>
             </div>
+
+            <div class="sidebar sidebar-main">
+                <div class="account-page-title">
+                  <h1 class="ti-user"></h1>
+                  <h1>Tài khoản của bạn</h1>
+                </div>
+                <div class="block-collapsible-nav">
+                    <div class="block-title">
+                        <h2>Toàn Nguyễn</h2>
+                    </div>
+                    <div class="block-content block-collapsible-nav-content">
+                    <ul class="nav items">
+                        <li class="nav item"><a href="khach_hang.php">Thông tin tài khoản</a></li>
+                        <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
+                        <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
+                        <li class="nav item"><span class="delimiter"></span></li>
+                        <li class="nav item"><a href="">Đăng xuất</a></li>
+                    </ul>   
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
-    
+
+
+
 <!-- footer -->
 
 <div class="footer">

@@ -244,14 +244,13 @@ h3{
 }
 
 .account-page-title {
-    display: block;
+    display: flex;
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
     color: #000;
     margin-bottom: 35px;
     position: relative;
-    margin-left: -25px;
 }
 
 .block-collapsible-nav {
@@ -306,6 +305,7 @@ li {
     color: black;
     font-size: 14px;
     display: block;
+    font-weight: 300;
 }
 
 .block-collapsible-nav-content .nav.items .nav.item strong {

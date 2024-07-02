@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
+    <link rel="stylesheet" href="../../asset/css/cuahang.css">
 </head>
 <body>
   <div id="main">
@@ -133,22 +134,31 @@
     <!-- content -->
 
     <div class="content">
-        <div class="content-main">
-            <h1>Danh sách cửa hàng</h1>
-            <?php
-            if(mysqli_num_rows($result) >0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='store'>";
-                    echo "<h2>" . $row["ten"] . "</h2>";
-                    echo "<p>" . $row["dia_chi"] . ", " . $row["thanh_pho"] . "</p>";
-                    echo "<p>" . $row["mo_ta"] . "</p>";
-                    echo "<img src='path/to/your/images/" . $row["hinh_anh"] . "' alt='" . $row["ten"] . "'>";
-                    echo "</div>";
-                }
-            } else {
-                echo "Không có cửa hàng nào.";
-            }
-            ?>
+        <h1 class="h1ct">Danh sách cửa hàng</h1>
+        <div class="store-list">
+            <div class="store-item">
+                <img src="../../asset/imgcuahang/123.png" alt="Routine AEON MALL HÀ ĐÔNG">
+                <h3>ROUTINE AEON MALL HÀ ĐÔNG</h3>
+                <p>Lô số T231, tầng 2, TTTM Aeon Mall Hà Đông, phố Hoàng Văn Thụ, Phường Dương Nội, Quận Hà Đông</p>
+                <p>024 66817917</p>
+                <p class="store-tag">CỬA HÀNG NỮ</p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/tzAPnvM84UjWYG8aA">Xem bản đồ</a></p>
+            </div>
+            <div class="store-item">
+                <img src="../../asset/imgcuahang/456.png" alt="Routine AEON MALL LONG BIÊN">
+                <h3>ROUTINE AEON MALL LONG BIÊN</h3>
+                <p>Lô T240-1, tầng 2, TTTM Aeon Mall Long Biên, số 27 đường Cổ Linh, Phường Long Biên, Quận Long Biên</p>
+                <p>024 66875934</p>
+                <p class="store-tag">CỬA HÀNG NỮ</p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="#">Xem bản đồ</a></p>
+            </div>
+            <div class="store-item">
+                <img src="../../asset/imgcuahang/789.png" alt="Routine CẦU GIẤY">
+                <h3>ROUTINE CẦU GIẤY</h3>
+                <p>133 Cầu Giấy, Phường Quan Hoa, Quận Cầu Giấy</p>
+                <p>024 66884889</p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="#">Xem bản đồ</a></p>
+            </div>
         </div>
     </div>
 

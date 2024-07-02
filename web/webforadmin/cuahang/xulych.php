@@ -9,7 +9,7 @@
                     $sql = "SELECT * FROM cua_hang";
                     if ($timkiem != "") {
                         $sql .= " WHERE ten LIKE '%$timkiem%' OR dia_chi LIKE '%$timkiem%' OR thanh_pho LIKE '%$timkiem%' OR mo_ta LIKE '%$timkiem%'";
-                    }
+                        }
 
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
@@ -20,6 +20,7 @@
                                         <th>Tên cửa hàng</th>
                                         <th>Địa chỉ</th>
                                         <th>Thành phố</th>
+                                        <th>Hình ảnh</th>
                                         <th>Mô tả</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -31,6 +32,7 @@
                                     <td>' . $row["ten"] . '</td>
                                     <td>' . $row["dia_chi"] . '</td>
                                     <td>' . $row["thanh_pho"] . '</td>
+                                    <td>' . $row["hinhanh"] . '</td>
                                     <td>' . $row["mo_ta"] . '</td>
                                     <td>
                                         <a href="suacuahang.php?ID=' . $row["idcuahang"] . '"><i class="ti-pencil-alt"></i></a>
