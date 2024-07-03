@@ -140,7 +140,7 @@ if (isset($_POST['update'])) {
           </div>
         </div>
         <hr />
-        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
+        <div class="body-end"><a href=" ../webforadmin/logout.php">Đăng xuất</a></div>
       </div>
     </div>
     
@@ -314,7 +314,7 @@ if (isset($_POST['update'])) {
                   <li class="nav item"><a href="cuahang_khachhang.php">Danh sách cửa hàng</a></li>
                   <li class="nav item"><a href="favoriteList.php">Sản phẩm yêu thích</a></li>
                   <li class="nav item"><span class="delimiter"></span></li>
-                  <li class="nav item"><a href=".../webforadmin/logout.php">Đăng xuất</a></li>
+                  <li class="nav item"><a href="../webforadmin/logout.php">Đăng xuất</a></li>
                 </ul>
               </div>
             </div>
