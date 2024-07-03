@@ -102,7 +102,7 @@ if (!isset($_SESSION["customer"])) {
             <a href=""><p>Theo dõi đơn hàng</p></a>
           </div>
           <div>
-            <a href=""><p>Sản phẩm yêu thích</p></a>
+            <a href="favoriteList.php"><p>Sản phẩm yêu thích</p></a>
           </div>
         </div>
         <hr />
@@ -121,6 +121,36 @@ if (!isset($_SESSION["customer"])) {
             </p>
             <span class="ti-close"></span>
           </div>
+
+          <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+
+          <?php
+
+            include("../../config/config.php");
+            $sql="SELECT * FROM yeuthich,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
+            $result=mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) > 0){
+            while ($row = mysqli_fetch_assoc($result)){
+                echo' <div class="modal__items">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
+
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+
+              <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
+            </div> ';       
+              }
+            }
+
+          ?>
+               
+          </div>
+
         </div>
       </div>
     </div>
@@ -135,7 +165,9 @@ if (!isset($_SESSION["customer"])) {
               <b>Giỏ hàng</b>
             </p>
             <span class="ti-close"></span>
-          </div><div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+          </div>
+
+          <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
 
           <?php
 
@@ -145,8 +177,7 @@ if (!isset($_SESSION["customer"])) {
             if(mysqli_num_rows($result) > 0){
             while ($row = mysqli_fetch_assoc($result)){
               $gia=$row["giasanpham"]*$row["SoLuong"];
-                echo'
-            <div class="modal__items">
+              echo' <div class="modal__items">
               
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
@@ -159,11 +190,12 @@ if (!isset($_SESSION["customer"])) {
                 </div>
 
                 <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
-              </div>
 
-              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
-            </div>';       
-              }}
+              </div>
+                <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
+              </div>';       
+              }
+            }
 
           ?>
                
@@ -207,7 +239,7 @@ if (!isset($_SESSION["customer"])) {
             <h2 class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></h2>
             
             <div class="select__size">
-                <p class="size__title">Chọn size: '.$row["size"].'</p>               
+                <p class="size__title">Chọn size: '.$row["size"].'</p>         
             </div>
 
             <div class="box__tocart">
@@ -224,7 +256,7 @@ if (!isset($_SESSION["customer"])) {
                         <input type="submit" value="THÊM VÀO GIỎ HÀNG" name="add">
                     </div>
                     <div>
-                      <a class="ti-heart" href=""></a>
+                      <a class="ti-heart" href="addtofavo.php?ID='.$IDSP.'" method="POST"></a>
                     </div>
                 </div>
             </div>

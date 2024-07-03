@@ -91,3 +91,7 @@ body {
 .h1ct{
     margin-top: 75px;
 }
+
+.column-main .page-title-wrapper p {
+    text-align: center;
+}
