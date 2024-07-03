@@ -50,7 +50,7 @@ if (isset($_POST['update'])) {
   <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="../../asset/css/footer.css">
   <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
-  <link rel="stylesheet" href="../../asset/css/kh.css">
+  
   <link rel="stylesheet" href="../../asset/css/infoItemStyle.css">
   <link rel="stylesheet" href="../../asset/css/favoriteList.css">
 </head>
