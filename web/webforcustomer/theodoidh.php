@@ -6,12 +6,11 @@ if (!isset($_SESSION["customer"])) {
   exit;
 } else {
   $ID = $_SESSION["customer"];
-  $IDSP=$_GET["ID"];
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,38 +189,88 @@ if (!isset($_SESSION["customer"])) {
             <div class="tracking-form">
                 <h2>Theo dõi đơn hàng</h2>
                 <p>Nhập thông tin để theo dõi đơn hàng của bạn</p>
-                <form>
+                <form method="POST">
                     <label for="order-id">Mã đơn hàng: *</label>
-                    <input type="text" id="order-id" name="order-id" value="RT000080044">
-                    
-                    <label for="phone-number">Số điện thoại đặt hàng *</label>
-                    <input type="text" id="phone-number" name="phone-number" value="0862011329">
-                    
+                    <input type="text" id="order-id" name="order-id">
                     <button type="submit">KIỂM TRA</button>
                 </form>
             </div>
             <div class="order-details">
                 <div>
-                    <h2>Đơn hàng #RT000080044</h2>
+                    <?php
+                    include("../../config/config.php");
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $madon=$_POST["order-id"];
+                        $sql = "SELECT * FROM tbl_donhang WHERE iduser='$ID' AND iddonhang='$madon'";
+                        $result=mysqli_query($conn,$sql);
+                        if(mysqli_num_rows($result) > 0){
+                            if (mysqli_num_rows($result) > 0){
+                                while ($row = mysqli_fetch_assoc($result)){  
+                                if($row["tinhtrang"]==1){
+                                echo '<h2>Đơn hàng #'.$madon.'</h2>
+                                <p>Ngày mua: '.$row["ngaydat"].'</p>
                     <h3 style="padding-top: 10px; padding-bottom: 10px;">Theo dõi đơn hàng</h3>
                     <ul>
                         <li class="completed">Đặt hàng thành công</li>
                         <li class="completed">Tiếp nhận & chờ xử lý</li>
                         <li>Đã xử lý đơn hàng</li>
                     </ul>
-                    <h3>Đơn hàng gồm có</h3>
-                    <div class="product">
-                        <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="Áo POLO NAM">
-                        <div class="product-details">
-                            <p><strong>ÁO POLO NAM PREMIUM 100% COTTON PHỐI SỌC FORM FITTED - 10S24POLO04P</strong></p>
-                            <p>SL: 1</p>
-                            <p class="price">589.000 đ</p>
-                        </div>
-                    </div>
-                    <div class="btnhuydon"><a href="" class="button">Hủy Đơn</a></div>
+                    <h3>Đơn hàng gồm có</h3>';
+                    $sqlsanpham="SELECT * FROM tbl_sanpham,tbl_chitietdonhang,tbl_donhang 
+                                WHERE tbl_sanpham.idsanpham=tbl_chitietdonhang.idsanpham 
+                                AND tbl_donhang.iddonhang=tbl_chitietdonhang.madon";
+                                $result2=mysqli_query($conn,$sqlsanpham);
+                                if (mysqli_num_rows($result2) > 0){
+                                    while ($row = mysqli_fetch_assoc($result2)){
+                                        echo '<div class="product">
+                                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'"">
+                                        <div class="product-details">
+                                            <p><strong>'.$row["tensanpham"].'</strong></p>
+                                            <p>SL: '.$row["soluongCT"].'</p>
+                                            <p class="price">'.$row["giasanpham"].' đ</p>
+                                        </div>
+                                    </div>';
+                                    }}
+                                    echo '<div class="btnhuydon"><a href="huydon.php?ID='.$madon.'" class="button">Hủy Đơn</a></div>';
+                                }else
+                                    {
+                                        echo '<h2>Đơn hàng #'.$madon.'</h2>
+                                    <p>Ngày mua: '.$row["ngaydat"].'</p>
+                                    <h3 style="padding-top: 10px; padding-bottom: 10px;">Theo dõi đơn hàng</h3>
+                                    <ul>
+                                        <li class="completed">Đặt hàng thành công</li>
+                                        <li class="completed">Tiếp nhận & chờ xử lý</li>
+                                        <li class="completed">Đã xử lý đơn hàng</li>
+                                    </ul>
+                                    <h3>Đơn hàng gồm có</h3>';
+                                    $sqlsanpham2="SELECT * FROM tbl_sanpham,tbl_chitietdonhang,tbl_donhang 
+                                WHERE tbl_sanpham.idsanpham=tbl_chitietdonhang.idsanpham 
+                                AND tbl_donhang.iddonhang=tbl_chitietdonhang.madon";
+                                $result3=mysqli_query($conn,$sqlsanpham2);
+                                if (mysqli_num_rows($result3) > 0){
+                                    while ($row = mysqli_fetch_assoc($result3)){
+                                        echo '<div class="product">
+                                        <img src="../../asset/img/'.$row["hinhanhsanpham"].'"">
+                                        <div class="product-details">
+                                            <p><strong>'.$row["tensanpham"].'</strong></p>
+                                            <p>SL: '.$row["soluongCT"].'</p>
+                                            <p class="price">'.$row["giasanpham"].' đ</p>
+                                        </div>
+                                    </div>';
+                                    }}
+                                }
+                            }
+                        }
+                        }
+                        else{
+                            echo 'Không tìm thấy đơn hàng'  ;
+                        }
+                    }
+                     ?>
                 </div>
             </div>
         </div>
+        
     </div>
     <script src="../../asset/js/script.js"></script>
     <script src="../../asset/js/mainafterlogin.js"></script>
