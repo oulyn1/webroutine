@@ -110,7 +110,7 @@ if (!isset($_SESSION["admin"])) {
         </form>
     </div>
     <div class="footer">
-        <a href="">Đổi mật khẩu</a>
+        <a href="../../doimatkhau.php?ID=<?php echo $_SESSION["admin"] ?>">Đổi mật khẩu</a>
     </div>
     </div>
 </body>
