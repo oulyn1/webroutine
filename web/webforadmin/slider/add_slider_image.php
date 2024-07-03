@@ -33,7 +33,7 @@
             <div class="body-headersanpham">
                 <h2>Thêm Slider mới</h2>
                 <div class="tbl_them">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST">
                         <table class="tlb-info">
                             <div class="user-info">
                                 <tbody>
@@ -60,7 +60,7 @@
             echo 'Kết nối không thành công' . mysqli_connect_error();
         }
         else {
-            $query = "INSERT INTO slider_images VALUES (' ','".$image."')";
+            $query = "INSERT INTO slider_images(`image`) VALUES ('$image')";
             $result = mysqli_query($conn, $query);
             if ($result > 0) {
                 echo "  <script>
