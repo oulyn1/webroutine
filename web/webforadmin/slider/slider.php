@@ -61,7 +61,7 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>
                                 <td>' .$row["id"] . '</td>
-                                <td ><img src="../../../asset/slider/' . $row["image"] . '" alt="">    </td>
+                                <td ><img src="../../../asset/slider/' . $row["image"] . '" alt=""style="width:400px">    </td>
                                 <td><a class="thea" href="edit_slider_image.php?ID=' . $row["id"] . '"><i class="ti-pencil-alt"></i></a></td>
                                 <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa hình ảnh này không?\');" href="delete_slider_image.php?id=' . $row["id"] . '"><i class="ti-trash"></i></a></td>
                             </tr>';

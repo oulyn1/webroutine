@@ -15,9 +15,9 @@ if (isset($_SESSION["admin"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Routine hãy mặc theo cách của bạn</title>
   <link rel="stylesheet" href="asset/css/customer.css" />
-  <link rel="stylesheet" href="asset/js/script.js">
   <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css" />
   <link rel="stylesheet" href="asset/css/footer.css">
+  <!-- <link rel="stylesheet" href="asset/css/slier123.css"> -->
 </head>
 <?php
 session_start();
@@ -118,35 +118,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
         <!-- slider -->
-        <div id="slider">
-          <div class="slider-wrapper">
-            <div class="slider-img">
-              <?php
-              // Mảng chứa đường dẫn tới các hình ảnh slider
-              $slider_images = [
-                "asset/img/sld1.jpg",
-                "asset/img/sld2.webp",
-                "asset/img/sld3.webp",
-                "asset/img/sld4.webp",
-                "asset/img/sld5.webp"
-              ];
+    <div id="slider">
+    <div class="slider-wrapper">
+        <div class="slider-img">
+            <?php
+            include("config/config.php");
+            $query = "SELECT * FROM slider_images";
+            $result = mysqli_query($conn, $query);
 
-              // Hiển thị từng hình ảnh trong slider
-              foreach ($slider_images as $index => $image) {
-                echo '<img src="' . $image . '" alt="Slide ' . ($index + 1) . '" />';
-              }
-              ?>
-            </div>
-            <div class="slider-nav">
-              <?php
-              // Tạo các liên kết điều hướng slider
-              foreach ($slider_images as $index => $image) {
-                echo '<a href="#img-slider' . ($index + 1) . '" class="slider-nav-link"></a>';
-              }
-              ?>
-            </div>
-          </div>
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    echo '<img src="asset/slider/' . $row["image"] . '" alt="">';
+                  
+                }
+            } else {
+                echo "Không có cửa hàng nào.";
+            }
+            ?>
+
         </div>
+    </div>
+</div>
 
     <div id="banner">
       <a href="web/webforcustomer/man.php"><img src="asset/img/banner1.webp" alt="" /></a>
