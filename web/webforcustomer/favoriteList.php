@@ -260,7 +260,31 @@ if (!isset($_SESSION["customer"])) {
 
                 </div>
             </div>
+            <?php
+              // Include file cấu hình kết nối CSDL và thực hiện truy vấn
+                          include("../../config/config.php");
 
+                          // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
+                          $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
+                          $sql = "SELECT * FROM khach_hang,user WHERE user.Id_user= $user_id AND khach_hang.id=user.Id_user";
+
+                          // Thực thi truy vấn và lấy kết quả
+                          $result = mysqli_query($conn, $sql);
+                          if (mysqli_num_rows($result) > 0) {
+                              while($row = mysqli_fetch_assoc($result)){
+                              $ten = $row['Fullname'];
+                              $email = $row['Email'];
+                              $phone= $row["so_dien_thoai"];
+                              $address= $row["dia_chi"];
+                            }
+                          } else {
+                              // Xử lý khi không tìm thấy thông tin người dùng
+                              $ten = "Không có thông tin";
+                              $email = "Không có thông tin";
+                              $phone= "";
+                              $address= "";
+                          }
+              ?>
             <div class="sidebar sidebar-main">
                 <div class="account-page-title">
                   <h1 class="ti-user"></h1>
@@ -268,15 +292,15 @@ if (!isset($_SESSION["customer"])) {
                 </div>
                 <div class="block-collapsible-nav">
                     <div class="block-title">
-                        <h2>Toàn Nguyễn</h2>
+                        <h2><?php echo $ten?></h2>  
                     </div>
                     <div class="block-content block-collapsible-nav-content">
                     <ul class="nav items">
                         <li class="nav item"><a href="khach_hang.php">Thông tin tài khoản</a></li>
-                        <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
-                        <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
+                        <li class="nav item"><a href="cuahang_khachhang.php">Danh sách cửa hàng</a></li>
+                        <li class="nav item"><strong>Sản phẩm yêu thích</strong></li>
                         <li class="nav item"><span class="delimiter"></span></li>
-                        <li class="nav item"><a href="">Đăng xuất</a></li>
+                        <li class="nav item"><a href="../webforadmin/logout.php">Đăng xuất</a></li>
                     </ul>   
                     </div>
                 </div>

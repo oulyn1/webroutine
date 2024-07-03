@@ -50,9 +50,9 @@ if (isset($_POST['update'])) {
   <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="../../asset/css/footer.css">
   <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
-  <link rel="stylesheet" href="../../asset/css/kh.css">
+  
   <link rel="stylesheet" href="../../asset/css/infoItemStyle.css">
-
+  <link rel="stylesheet" href="../../asset/css/favoriteList.css">
 </head>
 
 <body>
@@ -140,7 +140,7 @@ if (isset($_POST['update'])) {
           </div>
         </div>
         <hr />
-        <div class="body-end"><a href="../webforadmin/logout.php">Đăng xuất</a></div>
+        <div class="body-end"><a href=" ../webforadmin/logout.php">Đăng xuất</a></div>
       </div>
     </div>
     
@@ -301,8 +301,9 @@ if (isset($_POST['update'])) {
 
           <div class="sidebar sidebar-main">
             <div class="account-page-title">
-              <h1 class="ti-user">Tài khoản của bạn</h1>
-            </div>
+                  <h1 class="ti-user"></h1>
+                  <h1>Tài khoản của bạn</h1>
+                </div>
             <div class="block-collapsible-nav">
               <div class="block-title">
                 <h2><?php echo $ten ?></h2>
@@ -310,12 +311,10 @@ if (isset($_POST['update'])) {
               <div class="block-content block-collapsible-nav-content">
                 <ul class="nav items">
                   <li class="nav item current"><strong>Thông tin tài khoản</strong></li>
-                  <li class="nav item"><a href="">Lịch sử mua hàng</a></li>
-                  <li class="nav item"><a href="">Địa chỉ giao hàng</a></li>
-                  <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
+                  <li class="nav item"><a href="cuahang_khachhang.php">Danh sách cửa hàng</a></li>
                   <li class="nav item"><a href="favoriteList.php">Sản phẩm yêu thích</a></li>
                   <li class="nav item"><span class="delimiter"></span></li>
-                  <li class="nav item"><a href="">Đăng xuất</a></li>
+                  <li class="nav item"><a href="../webforadmin/logout.php">Đăng xuất</a></li>
                 </ul>
               </div>
             </div>

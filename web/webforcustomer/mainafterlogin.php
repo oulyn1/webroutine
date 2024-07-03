@@ -15,6 +15,7 @@ if (!isset($_SESSION["customer"])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Routine hãy mặc theo cách của bạn</title>
+    <!-- <link rel="stylesheet" href="../../asset/css/slier123.css"> -->
     <link
       rel="stylesheet"
       href="../../asset/css/customer.css?v= <?php echo time(); ?>"
@@ -94,23 +95,27 @@ if (!isset($_SESSION["customer"])) {
       </div>
 
       <div id="slider">
-        <div class="slider-wrapper">
-          <div class="slider-img">
-            <img src="../../asset/img/sld1.jpg" alt="img1" id="img-slider1" />
-            <img src="../../asset/img/sld2.webp" alt="img2" id="img-slider2" />
-            <img src="../../asset/img/sld3.webp" alt="img3" id="img-slider3" />
-            <img src="../../asset/img/sld4.webp" alt="img4" id="img-slider4" />
-            <img src="../../asset/img/sld5.webp" alt="img5" id="img-slider5" />
-          </div>
-          <div class="slider-nav">
-            <a href="#img-slider1"></a>
-            <a href="#img-slider2"></a>
-            <a href="#img-slider3"></a>
-            <a href="#img-slider4"></a>
-            <a href="#img-slider5"></a>
-          </div>
+    <div class="slider-wrapper">
+        <div class="slider-img">
+            <?php
+            include("config/config.php");
+            $query = "SELECT * FROM slider_images";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    echo '<img src="../../asset/slider/' . $row["image"] . '" alt="">';
+                  
+                }
+            } else {
+                echo "Không có cửa hàng nào.";
+            }
+            ?>
+
         </div>
-      </div>
+    </div>
+</div>
 
       <div id="banner">
         <a href="manafterlogin.php"><img src="../../asset/img/banner1.webp" alt="" /></a>

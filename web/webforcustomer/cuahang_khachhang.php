@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["customer"])) {
+  header("location: ../../index.php");
+  exit;
+} else {
+  $ID = $_SESSION["customer"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +19,11 @@
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
+    <link rel="stylesheet" href="../../asset/css/favoriteList.css"> 
     <link rel="stylesheet" href="../../asset/css/cuahang.css">
 </head>
 <body>
-  <div id="main">
+  < id="main">
 
   <!-- header -->
 
@@ -68,7 +80,7 @@
             </ul>
         </div>
         <div class="header__right">
-          <a class="search" href="">
+          <a class="search" href="timkiemafterlogin.php">
             <i class="ti-search"></i>
             <span class="search__title">Tìm kiếm</span>
           </a>
@@ -77,13 +89,14 @@
           <span class="ti-shopping-cart" id="openshopping" href=""></span>
         </div>
       </div>
+
       <div class="model" id="modal-signin">
       <div class="model-overlay"></div>
       <div class="modal-after">
         <div class="model-innerafter">
           <span class="ti-close"></span>
         </div>
-        <div class="body-start"><a href="khach_hang.php"> Chào khách hàng </a></div>
+        <div class="body-start">Chào khách hàng</div>
         <hr />
         <div class="body-after">
           <div>
@@ -123,8 +136,50 @@
               <b>Giỏ hàng</b>
             </p>
             <span class="ti-close"></span>
+          </div><div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+          <?php
+              include("../../config/config.php");
+              $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+              $result=mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) > 0){
+              while ($row = mysqli_fetch_assoc($result)){
+                $gia=$row["giasanpham"]*$row["SoLuong"];
+                 echo'
+            <div class="modal__items">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
+
+                <div class="modal__items__quantity">
+                    <div class="title">Số lượng: '.$row["SoLuong"].'</div>
+                </div>
+
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+
+              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
+            </div>';       
+              }}
+               ?>
           </div>
         </div>
+
+        <?php
+          include("../../config/config.php");
+          $sql="SELECT * FROM giohang,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          $result=mysqli_query($conn, $sql);
+          if(mysqli_num_rows($result) > 0){
+            echo '<div class="modal__buttons">
+            <a href="../webforcustomer/thanhtoan.php" class="button-check-out">THANH TOÁN</a>
+          </div>';
+          }
+        
+        ?>  
+          
+          
       </div>
     </div>
 
@@ -133,9 +188,19 @@
 
     <!-- content -->
 
+
     <div class="content">
-        <h1 class="h1ct">Danh sách cửa hàng</h1>
-        <div class="store-list">
+      <div class="breadcrumbs"></div>
+
+      <div class="page-main">
+        <div class="columns">
+            <div class="column-main">
+                <div class="page-title-wrapper">
+                    <h1 class="page-title">Danh sách cửa hàng</h1>
+                    <p class="des">Danh sách các cửa hàng của Routine</p>
+                </div>
+
+                <div class="store-list">
             <?php
             include("../../config/config.php");
             $query = "SELECT * FROM cua_hang";
@@ -156,12 +221,61 @@
             }
             ?>
         </div>
+            </div>
+            <?php
+                // Include file cấu hình kết nối CSDL và thực hiện truy vấn
+                            include("../../config/config.php");
+
+                            // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
+                            $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
+                            $sql = "SELECT * FROM khach_hang,user WHERE user.Id_user= $user_id AND khach_hang.id=user.Id_user";
+
+                            // Thực thi truy vấn và lấy kết quả
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)){
+                                $ten = $row['Fullname'];
+                                $email = $row['Email'];
+                                $phone= $row["so_dien_thoai"];
+                                $address= $row["dia_chi"];
+                            }
+                            } else {
+                                // Xử lý khi không tìm thấy thông tin người dùng
+                                $ten = "Không có thông tin";
+                                $email = "Không có thông tin";
+                                $phone= "";
+                                $address= "";
+                            }
+                ?>
+            <div class="sidebar sidebar-main">
+                <div class="account-page-title">
+                  <h1 class="ti-user"></h1>
+                  <h1>Tài khoản của bạn</h1>
+                </div>
+                <div class="block-collapsible-nav">
+                    <div class="block-title">
+                        <h2><?php echo $ten?></h2>
+                    </div>
+                    <div class="block-content block-collapsible-nav-content">
+                    <ul class="nav items">
+                        <li class="nav item"><a href="khach_hang.php">Thông tin tài khoản</a></li>
+                        <li class="nav item"><strong>Danh sách cửa hàng</strong></li>
+                        <li class="nav item"><a href="favoriteList.php">Sản phẩm yêu thích</a></li>
+                        <li class="nav item"><span class="delimiter"></span></li>
+                        <li class="nav item"><a href="../webforadmin/logout.php">Đăng xuất</a></li>
+                    </ul>   
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
+
+
 
 <!-- footer -->
 
 <div class="footer">
-
 <div class="information">
 
     <img src="../../asset/img/logo-routine.png" alt="" class="logo">
@@ -173,44 +287,44 @@
 
 </div>
 
-<div class="about">
+      <div class="about">
 
-    <div class="company">
+        <div class="company">
 
-        <h5>CÔNG TY</h5>
+            <h5>CÔNG TY</h5>
+            <ul>
+                <li><p href="">Giới thiệu về ROUTINE</p></li>
+                <li><p href="">THE 31</p></li>
+                <li><p href="">Tuyển dụng</p></li>
+                <li><p href="">Tin thời trang</p></li>
+                <li><p href="">Hợp tác nhượng quyền</p></li>
+                <li><p href="">Liên hệ</p></li>
+            </ul>
+
+        </div>
+
+        <div class="social">
+
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+
+        </div>
+
+        </div>
+
+        <div class="policy">
+
+        <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
         <ul>
-            <li><a href="">Giới thiệu về ROUTINE</a></li>
-            <li><a href="">THE 31</a></li>
-            <li><a href="">Tuyển dụng</a></li>
-            <li><a href="">Tin thời trang</a></li>
-            <li><a href="">Hợp tác nhượng quyền</a></li>
-            <li><a href="">Liên hệ</a></li>
+            <li><p href="">Chính sách khách hàng thân thiết</p></li>
+            <li><p href="">Chính sách đổi trả</p></li>
+            <li><p href="">Chính sách bảo hành</p></li>
+            <li><p href="">Chính sách bảo mật</p></li>
+            <li><p href=""> Câu hỏi thường gặp</p></li>
+            <li><p href="">hướng dẫn mua hàng online</p></li>
+            <li><p href="">Hướng dẫn kiểm tra hạng thành viên</p></li>
         </ul>
 
-    </div>
-
-    <div class="social">
-
-        <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
-
-    </div>
-
-</div>
-
-<div class="policy">
-
-    <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
-    <ul>
-        <li><a href="">Chính sách khách hàng thân thiết</a></li>
-        <li><a href="">Chính sách đổi trả</a></li>
-        <li><a href="">Chính sách bảo hành</a></li>
-        <li><a href="">Chính sách bảo mật</a></li>
-        <li><a href=""> Câu hỏi thường gặp</a></li>
-        <li><a href="">hướng dẫn mua hàng online</a></li>
-        <li><a href="">Hướng dẫn kiểm trra hạng thành viên</a></li>
-    </ul>
-    
-</div>
+      </div>
 
 <div class="store">
 
