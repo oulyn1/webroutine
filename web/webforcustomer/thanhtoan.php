@@ -229,11 +229,14 @@ if (isset($_POST['update'])) {
                       <p class="item-price">
                           <span class="price">'.number_format($giamoi,0,',','.').' <u>đ</u></span>
                       </p>
+
+                      
                   </div>
               </div>';
             }
           }
         ?>
+        
         <?php
         // Truy vấn thông tin người dùng
         $sql = "SELECT * FROM khach_hang, user WHERE user.Id_user = $ID AND khach_hang.id = user.Id_user";
