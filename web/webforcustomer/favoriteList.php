@@ -273,8 +273,8 @@ if (!isset($_SESSION["customer"])) {
                     <div class="block-content block-collapsible-nav-content">
                     <ul class="nav items">
                         <li class="nav item"><a href="khach_hang.php">Thông tin tài khoản</a></li>
-                        <li class="nav item"><a href="">Danh sách cửa hàng</a></li>
-                        <li class="nav item"><strong href="">Sản phẩm yêu thích</strong></li>
+                        <li class="nav item"><a href="cuahang_khachhang.php">Danh sách cửa hàng</a></li>
+                        <li class="nav item"><strong>Sản phẩm yêu thích</strong></li>
                         <li class="nav item"><span class="delimiter"></span></li>
                         <li class="nav item"><a href="">Đăng xuất</a></li>
                     </ul>   
