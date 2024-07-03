@@ -61,6 +61,7 @@ if (!isset($_SESSION["admin"])) {
                                         <th>Tên khách hàng</th>
                                         <th>Số điện thoại</th>
                                         <th>Địa chỉ</th>
+                                        <th>Ngày đặt</th>
                                         <th>Tình trạng</th>
                                         <th>Quản lý</th>
                                     </thead>
@@ -71,7 +72,8 @@ if (!isset($_SESSION["admin"])) {
                                         <td>'.$row["madon"].'</td>
                                         <td>'.$row["Fullname"].'</td>
                                         <td>'.$row["so_dien_thoai"].'</td>
-                                        <td>'.$row["dia_chi"].'</td>';
+                                        <td>'.$row["dia_chi"].'</td>
+                                        <td>'.$row["ngaydat"].'</td>';
                                 if($row["tinhtrang"]==1){
                                     $status="Đơn hàng mới";
                                     echo'<td><a class="thea" href="capnhatdon.php?CODE='.$row["madon"].'">'.$status.'</a></td>';

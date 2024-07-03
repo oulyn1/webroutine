@@ -177,8 +177,10 @@ if (isset($_POST['update'])) {
     <?php
       if($_SERVER['REQUEST_METHOD'] == "POST"){
         include("../../config/config.php");
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $code= rand(0,9999);
-        $query = "INSERT INTO tbl_donhang(iduser, madon, tinhtrang) VALUES ('$ID','$code',1)";
+        $ngaydat = date('Y-m-d H:i:s');
+        $query = "INSERT INTO tbl_donhang(iduser, madon, ngaydat, tinhtrang) VALUES ('$ID','$code','$ngaydat',1)";
         $result = mysqli_query($conn, $query);
         if ($result > 0) {
           $queryC= "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
