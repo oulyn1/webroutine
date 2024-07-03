@@ -63,16 +63,18 @@ if (!isset($_SESSION["admin"])) {
                                     </thead>
                                     <tbody>';
                             while ($row = mysqli_fetch_assoc($result)){
-                                if($row["tinhtrang"]==1){
-                                    $status="Đơn hàng mới";
-                                }else{
-                                    $status="Đã xử lý";
-                                }
                                 echo'<tr>
                                         <td>'.$row["iddonhang"].'</td>
                                         <td>'.$row["madon"].'</td>
-                                        <td>'.$row["Fullname"].'</td>
-                                        <td><a class="thea" href="capnhatdon.php?CODE='.$row["madon"].'">'.$status.'</a></td>
+                                        <td>'.$row["Fullname"].'</td>';
+                                if($row["tinhtrang"]==1){
+                                    $status="Đơn hàng mới";
+                                    echo'<td><a class="thea" href="capnhatdon.php?CODE='.$row["madon"].'">'.$status.'</a></td>';
+                                }else{
+                                    $status="Đã xử lý";
+                                    echo'<td>'.$status.'</td>';
+                                }
+                                echo'
                                         <td><a class="thea" href="chitietdonhang.php?CODE='.$row["madon"].'">Xem đơn hàng</a></td>
                                     </tr>';
                                     }
