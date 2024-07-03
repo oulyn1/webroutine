@@ -14,7 +14,7 @@ if (!isset($_SESSION["customer"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quần áo thời trang nam</title>
+    <title>Danh sách cửa hàng</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
@@ -100,7 +100,7 @@ if (!isset($_SESSION["customer"])) {
         <hr />
         <div class="body-after">
           <div>
-            <a href=""><p>Theo dõi đơn hàng</p></a>
+            <a href="theodoidh.php"><p>Theo dõi đơn hàng</p></a>
           </div>
           <div>
             <a href=""><p>Sản phẩm yêu thích</p></a>

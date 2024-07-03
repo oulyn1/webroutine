@@ -87,7 +87,7 @@
         <hr />
         <div class="body-after">
           <div>
-            <a href=""><p>Theo dõi đơn hàng</p></a>
+            <a href="theodoidh.php"><p>Theo dõi đơn hàng</p></a>
           </div>
           <div>
             <a href=""><p>Sản phẩm yêu thích</p></a>

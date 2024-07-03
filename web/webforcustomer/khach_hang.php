@@ -129,7 +129,7 @@ if (isset($_POST['update'])) {
         <hr />
         <div class="body-after">
           <div>
-            <a href="">
+            <a href="theodoidh.php">
               <p>Theo dõi đơn hàng</p>
             </a>
           </div>
