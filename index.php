@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="product_list">';
             while ($row = mysqli_fetch_assoc($result)){
                     echo'<div>
-                    <a href="">
+                    <a href="web/canhbao.php">
                         <img src="asset/img/'.$row["hinhanhsanpham"].'" alt="">
                         <p class="title_product">'.$row["tensanpham"].'</p>
                         <p class="price_product">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></p>
