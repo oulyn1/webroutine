@@ -25,7 +25,7 @@ if (isset($_POST['update'])) {
 
     // Câu lệnh SQL để cập nhật thông tin khách hàng
     $query_update_user = "UPDATE user SET Fullname='$ten', Email='$email' WHERE Id_user=$ID";
-    $query_update_khachhang = "UPDATE khach_hang SET ten='$ten', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
+    $query_update_khachhang = "UPDATE khach_hang SET so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
 
     // Thực thi câu lệnh cập nhật
     $result_update_user = mysqli_query($conn, $query_update_user);
@@ -237,11 +237,15 @@ if (isset($_POST['update'])) {
                 while($row = mysqli_fetch_assoc($result)){
                 $ten = $row['Fullname'];
                 $email = $row['Email'];
+                $phone= $row["so_dien_thoai"];
+                $address= $row["dia_chi"];
               }
             } else {
                 // Xử lý khi không tìm thấy thông tin người dùng
                 $ten = "Không có thông tin";
                 $email = "Không có thông tin";
+                $phone= "";
+                $address= "";
             }
 ?>
 
@@ -264,7 +268,7 @@ if (isset($_POST['update'])) {
                                         <p>Email:<?php echo $email; ?></p>
                                     </div>
                                     <div class="box-information">
-                                        <p>Số điện thoại: <?php echo $so_dien_thoai ?></p>
+                                        <p>Số điện thoại: <?php echo $phone ?></p>
                                     </div>
                                 </div>
 
@@ -283,11 +287,11 @@ if (isset($_POST['update'])) {
                         </div>
                         <div class="field-group">
                             <p class="p2">Số điện thoại</p>
-                            <input type="number" name="so_dien_thoai" value="<?php echo $so_dien_thoai; ?>">
+                            <input type="number" name="so_dien_thoai" value="<?php echo $phone; ?>">
                         </div>
                         <div class="field-group">
                             <p class="p2">Địa chỉ</p>
-                            <input type="text" name="dia_chi" value="<?php echo $dia_chi; ?>">
+                            <input type="text" name="dia_chi" value="<?php echo $address; ?>">
                         </div>
                         <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
                     </form>

@@ -47,8 +47,9 @@ if (!isset($_SESSION["admin"])) {
                     <?php
                         include("../../../config/config.php");
                         //buoc 2 viet truy van
-                        $query = "SELECT * FROM tbl_donhang,user 
-                        WHERE user.id_user=tbl_donhang.iduser ORDER BY iddonhang DESC";
+                        $query = "SELECT * FROM tbl_donhang,user,khach_hang 
+                        WHERE user.id_user=tbl_donhang.iduser
+                        AND khach_hang.id=tbl_donhang.iduser ORDER BY iddonhang DESC";
                         //buoc 3 thuc thi cau lenh
                         $result = mysqli_query($conn, $query);
                         //buoc 4 lay du lieu
@@ -58,6 +59,8 @@ if (!isset($_SESSION["admin"])) {
                                         <th>ID</th>
                                         <th>Mã đơn hàng</th>
                                         <th>Tên khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
                                         <th>Tình trạng</th>
                                         <th>Quản lý</th>
                                     </thead>
@@ -66,7 +69,9 @@ if (!isset($_SESSION["admin"])) {
                                 echo'<tr>
                                         <td>'.$row["iddonhang"].'</td>
                                         <td>'.$row["madon"].'</td>
-                                        <td>'.$row["Fullname"].'</td>';
+                                        <td>'.$row["Fullname"].'</td>
+                                        <td>'.$row["so_dien_thoai"].'</td>
+                                        <td>'.$row["dia_chi"].'</td>';
                                 if($row["tinhtrang"]==1){
                                     $status="Đơn hàng mới";
                                     echo'<td><a class="thea" href="capnhatdon.php?CODE='.$row["madon"].'">'.$status.'</a></td>';

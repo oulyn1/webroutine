@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
                     $userId = mysqli_insert_id($conn);
 
                     // Thêm vào bảng khach_hang và lấy thông tin từ bảng user
-                    $updateKhachHangQuery = "INSERT INTO khach_hang (id, ten, email) SELECT Id_user, Fullname, Email FROM user WHERE Id_user = '$userId'";
+                    $updateKhachHangQuery = "INSERT INTO khach_hang (id) SELECT Id_user FROM user WHERE Id_user = '$userId'";
                     $resultUpdateKhachHang = mysqli_query($conn, $updateKhachHangQuery);
 
                     if ($resultUpdateKhachHang) {
