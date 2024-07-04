@@ -134,7 +134,7 @@ if (isset($_POST['update'])) {
             </a>
           </div>
           <div>
-            <a href="">
+            <a href="favoriteList.php">
               <p>Sản phẩm yêu thích</p>
             </a>
           </div>
@@ -155,6 +155,36 @@ if (isset($_POST['update'])) {
             </p>
             <span class="ti-close"></span>
           </div>
+
+          <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+
+            <?php
+
+              include("../../config/config.php");
+              $sql="SELECT * FROM yeuthich,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
+              $result=mysqli_query($conn, $sql);
+              if(mysqli_num_rows($result) > 0){
+              while ($row = mysqli_fetch_assoc($result)){
+                  echo' <div class="modal__items">
+                
+                <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+                <div class="modal__items__details">
+                  <p class="modal__items__name">
+                    '.$row["tensanpham"].'
+                  </p>
+
+                  <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+                </div>
+
+                <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
+              </div> ';       
+                }
+              }
+
+            ?>
+                
+          </div>
+
         </div>
       </div>
     </div>
