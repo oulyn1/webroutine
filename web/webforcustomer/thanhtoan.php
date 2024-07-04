@@ -302,9 +302,6 @@ if (isset($_POST['update'])) {
                 <div class="form-group">
                     <input type="text" value="<?php echo $email?>"placeholder="Nhập Địa Chỉ Email">
                 </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Ghi chú đơn hàng">
-                </div>
             </form>
         </div>
         <div class="total-price">
