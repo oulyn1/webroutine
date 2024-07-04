@@ -17,6 +17,7 @@ if (isset($_SESSION["admin"])) {
   <link rel="stylesheet" href="asset/css/customer.css" />
   <link rel="stylesheet" href="asset/css/themify-icons-font/themify-icons/themify-icons.css" />
   <link rel="stylesheet" href="asset/css/footer.css">
+  <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon">
   <!-- <link rel="stylesheet" href="asset/css/slier123.css"> -->
 </head>
 <?php
