@@ -21,6 +21,7 @@ if (!isset($_SESSION["customer"])) {
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
     <link rel="stylesheet" href="../../asset/css/favoriteList.css"> 
     <link rel="stylesheet" href="../../asset/css/cuahang.css">
+    <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
   < id="main">

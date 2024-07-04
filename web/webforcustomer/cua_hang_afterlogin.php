@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
     <link rel="stylesheet" href="../../asset/css/cuahang.css">
+    <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div id="main">

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../asset/css/admin.css" />
     <link rel="stylesheet" href="../asset/css/themify-icons-font/themify-icons/themify-icons.css">
-    <title>Admin</title>
+    <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
+    <title>Đổi mật khẩu</title>
 </head>
 
 <body>

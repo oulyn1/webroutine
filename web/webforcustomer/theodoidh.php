@@ -19,6 +19,7 @@ if (!isset($_SESSION["customer"])) {
     <link rel="stylesheet" href="../../asset/css/customer.css">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/footer.css">
+    <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
       <div id="header">
