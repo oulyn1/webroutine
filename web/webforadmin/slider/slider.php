@@ -35,7 +35,7 @@
                 <h1>Quản lý Slider</h1>
                 
             </div>
-            <div class="tbl_hienthi">
+            <div class="tablesql">
                 <?php
                 include("../../../config/config.php");
 
@@ -53,8 +53,7 @@
                     echo '<table id="tblMain">
                         <thead>
                             <th>STT</th>
-                            <th>Hình ảnh</th>
-                            <th>Sửa</th>
+                            <th>Hình ảnh</th>   
                             <th>Xóa</th>
                         </thead>
                         <tbody>';
@@ -62,7 +61,6 @@
                         echo '<tr>
                                 <td>' .$row["id"] . '</td>
                                 <td ><img src="../../../asset/slider/' . $row["image"] . '" alt=""style="width:400px">    </td>
-                                <td><a class="thea" href="edit_slider_image.php?ID=' . $row["id"] . '"><i class="ti-pencil-alt"></i></a></td>
                                 <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa hình ảnh này không?\');" href="delete_slider_image.php?id=' . $row["id"] . '"><i class="ti-trash"></i></a></td>
                             </tr>';
                     }

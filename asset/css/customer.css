@@ -443,7 +443,7 @@ html{
     margin-bottom: 5px;
 }
 
-.body-after a, .body-end a{
+.body-after a, .body-end a, .body-start a{
     text-decoration: none;
     color: #000;
 }
@@ -453,7 +453,7 @@ html{
     font-weight: bold;
 }
 
-.body-after a:hover, .body-end :hover{
+.body-after a:hover, .body-end :hover,.body-start a:hover{
     text-decoration:underline;
 }
 

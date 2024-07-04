@@ -91,7 +91,9 @@ if (!isset($_SESSION["customer"])) {
         </div>
         <div class="body-start">
         <div>
-          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
+            <a href="khach_hang.php">
+              <p> Chào khách hàng </p>
+            </a>
           </div>
         </div>
         <hr />

@@ -155,7 +155,9 @@ if (!isset($_SESSION["customer"])) {
         </div>
         <div class="body-start">
           <div>
-          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
+            <a href="khach_hang.php">
+              <p> Chào khách hàng </p>
+            </a>
           </div>
         </div>
         <hr />
@@ -315,7 +317,7 @@ if (!isset($_SESSION["customer"])) {
                     <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
                 </li>
             </ul>
-            <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
+            <a href="cua_hang_afterlogin.php">XEM TẤT CẢ CỬA HÀNG</a>
         </div>
 
 

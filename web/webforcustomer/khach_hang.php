@@ -125,7 +125,13 @@ if (isset($_POST['update'])) {
         <div class="model-innerafter">
           <span class="ti-close"></span>
         </div>
-        <div class="body-start">Chào khách hàng</div>
+        <div class="body-start">
+          <div>
+            <a href="khach_hang.php">
+              <p> Chào khách hàng </p>
+            </a>
+          </div>
+        </div>
         <hr />
         <div class="body-after">
           <div>
@@ -393,7 +399,7 @@ if (isset($_POST['update'])) {
             <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
           </li>
         </ul>
-        <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
+        <a href="cua_hang_afterlogin.php">XEM TẤT CẢ CỬA HÀNG</a>
       </div>
     </div>
 </body>

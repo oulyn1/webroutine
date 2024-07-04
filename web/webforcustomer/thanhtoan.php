@@ -121,8 +121,10 @@ if (isset($_POST['update'])) {
           <span class="ti-close"></span>
         </div>
         <div class="body-start">
-        <div>
-          <a href="khach_hang.php"><p> Chào khách hàng </p></a>
+          <div>
+            <a href="khach_hang.php">
+              <p> Chào khách hàng </p>
+            </a>
           </div>
         </div>
         <hr />
