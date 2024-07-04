@@ -94,6 +94,66 @@ if (!isset($_SESSION["admin"])) {
                             echo 'Không có dữ liệu sản phẩm';
                         }
                     ?>
+                    <?php
+                        if($_SERVER['REQUEST_METHOD'] == "POST"){
+                            $keysearch=$_POST['txtTimkiem'];
+                            include("../../../config/config.php");
+                            //buoc 2 viet truy van
+                            $query = "SELECT * FROM tbl_donhang,user,khach_hang 
+                            WHERE user.id_user=tbl_donhang.iduser
+                            AND khach_hang.id=tbl_donhang.iduser
+                            AND iddonhang LIKE '%".$keysearch."%'";
+                            //buoc 3 thuc thi cau lenh
+                            $result = mysqli_query($conn, $query);
+                            echo '
+                                    <script type="text/javascript">
+                                        var table = document.getElementById("tblMain");
+                                        table.style.display ="none";
+                                    </script>
+                                    ';
+                            //buoc 4 lay du lieu
+                            if(mysqli_num_rows($result) >0){
+                                echo '<table>
+                                    <thead>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Ngày đặt</th>
+                                        <th>Tình trạng</th>
+                                        <th>Hủy đơn</th>
+                                        <th>Quản lý</th>
+                                    </thead>
+                                    <tbody>';
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    echo'<tr>
+                                            <td>'.$row["iddonhang"].'</td>
+                                            <td>'.$row["Fullname"].'</td>
+                                            <td>'.$row["so_dien_thoai"].'</td>
+                                            <td>'.$row["dia_chi"].'</td>
+                                            <td>'.$row["ngaydat"].'</td>';
+                                    if($row["tinhtrang"]==1){
+                                        $status="Đơn hàng mới";
+                                        echo'<td><a class="thea" href="capnhatdon.php?CODE='.$row["iddonhang"].'">'.$status.'</a></td>
+                                        <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa sản phẩm không?\');" href="huydonhang.php?ID='.$row["iddonhang"].'">Hủy</a></td>';
+                                    }else{
+                                        $status="Đã xử lý";
+                                        echo'<td>'.$status.'</td>
+                                        <td style="text-decoration-line: line-through;">Hủy đơn</td>';
+                                    }
+                                    echo'
+                                            <td><a class="thea" href="chitietdonhang.php?CODE='.$row["iddonhang"].'">Xem đơn hàng</a></td>
+                                        </tr>';
+                                        }
+                        
+                                echo'  </tbody>
+                                    </table>';
+                                    
+                                }else{
+                                    echo 'Không có dữ liệu đơn hàng';
+                                }
+                            }
+                    ?>
                 </div>
             </div>
         </div>
