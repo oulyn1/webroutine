@@ -70,7 +70,7 @@ if (!isset($_SESSION["admin"])) {
                     }
                 }
                 ?>
-                <h2>Sửa sản phẩm</h2>
+                <h1>Sửa sản phẩm</h1>
                 <div class="tbl_them">
                     <form method="POST">
                         <table class="tlb-info">

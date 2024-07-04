@@ -460,6 +460,122 @@ html{
 .body-end{
     margin-top: 20px;
 }
+.divall{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    height: 90%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #fff;
+}
+
+.tracking-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-form h2, .order-details h2, .order-details h3 {
+    margin-top: 0;
+}
+
+.tracking-form p {
+    color: #777;
+    padding: inherit;
+}
+
+.tracking-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.tracking-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.button,
+.tracking-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.order-details {
+    flex: 2;
+    min-width: 680px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-details ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-details ul li.completed {
+    color: green;
+}
+
+.order-details ul li span {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.product img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details .price {
+    font-weight: bold;
+    color: #000;
+}
+.btnhuydon{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.btnhuydon a{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.btnhuydon a:hover{
+    opacity: 0.6;
+}
 
 @keyframes modalAnimation{
     from{

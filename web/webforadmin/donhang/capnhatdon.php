@@ -1,7 +1,7 @@
 <?php
     include("../../../config/config.php");
     if(isset($_GET['CODE'])){
-        $sql = "UPDATE tbl_donhang SET tinhtrang=0  WHERE madon='$_GET[CODE]' ";
+        $sql = "UPDATE tbl_donhang SET tinhtrang=0  WHERE iddonhang='$_GET[CODE]' ";
         $resultA = mysqli_query($conn, $sql);
         $query = "SELECT * FROM tbl_chitietdonhang,tbl_sanpham WHERE tbl_chitietdonhang.idsanpham=tbl_sanpham.idsanpham
                                                                AND madon='$_GET[CODE]'";

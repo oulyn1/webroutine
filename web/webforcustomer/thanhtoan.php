@@ -49,6 +49,7 @@ if (isset($_POST['update'])) {
     <link rel="stylesheet" href="../../asset/css/customer.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../../asset/css/infoItemStyle.css">
 </head>
 <body>
 <div id="main">
@@ -130,10 +131,10 @@ if (isset($_POST['update'])) {
         <hr />
         <div class="body-after">
           <div>
-            <a href=""><p>Theo dõi đơn hàng</p></a>
+            <a href="theodoidh.php"><p>Theo dõi đơn hàng</p></a>
           </div>
           <div>
-            <a href=""><p>Sản phẩm yêu thích</p></a>
+            <a href="favoriteList.php"><p>Sản phẩm yêu thích</p></a>
           </div>
         </div>
         <hr />
@@ -152,6 +153,36 @@ if (isset($_POST['update'])) {
             </p>
             <span class="ti-close"></span>
           </div>
+
+          <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
+
+          <?php
+
+            include("../../config/config.php");
+            $sql="SELECT * FROM yeuthich,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
+            $result=mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) > 0){
+            while ($row = mysqli_fetch_assoc($result)){
+                echo' <div class="modal__items">
+              
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
+
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+
+              <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
+            </div> ';       
+              }
+            }
+
+          ?>
+               
+          </div>
+
         </div>
       </div>
     </div>
@@ -179,8 +210,10 @@ if (isset($_POST['update'])) {
     <?php
       if($_SERVER['REQUEST_METHOD'] == "POST"){
         include("../../config/config.php");
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $code= rand(0,9999);
-        $query = "INSERT INTO tbl_donhang(iduser, madon, tinhtrang) VALUES ('$ID','$code',1)";
+        $ngaydat = date('Y-m-d H:i:s');
+        $query = "INSERT INTO tbl_donhang(iduser, iddonhang, ngaydat, tinhtrang) VALUES ('$ID','$code','$ngaydat',1)";
         $result = mysqli_query($conn, $query);
         if ($result > 0) {
           $queryC= "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
@@ -231,11 +264,14 @@ if (isset($_POST['update'])) {
                       <p class="item-price">
                           <span class="price">'.number_format($giamoi,0,',','.').' <u>đ</u></span>
                       </p>
+
+                      
                   </div>
               </div>';
             }
           }
         ?>
+        
         <?php
         // Truy vấn thông tin người dùng
         $sql = "SELECT * FROM khach_hang, user WHERE user.Id_user = $ID AND khach_hang.id = user.Id_user";

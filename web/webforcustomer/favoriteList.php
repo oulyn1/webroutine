@@ -107,7 +107,7 @@ if (!isset($_SESSION["customer"])) {
         <hr />
         <div class="body-after">
           <div>
-            <a href=""><p>Theo dõi đơn hàng</p></a>
+            <a href="theodoidh.php"><p>Theo dõi đơn hàng</p></a>
           </div>
           <div>
             <a href=""><p>Sản phẩm yêu thích</p></a>
@@ -197,37 +197,7 @@ if (!isset($_SESSION["customer"])) {
 
   
 
-  <?php
-    include("../../config/config.php");
-    //buoc 2 viet truy van
-    $query = "SELECT * FROM tbl_sanpham WHERE idsanpham='$_GET[ID]' ORDER BY idsanpham DESC limit 1";
-    //buoc 3 thuc thi cau lenh
-    $result = mysqli_query($conn, $query);
-    //buoc 4 lay du lieu
-    if(mysqli_num_rows($result) >0){
-      while ($row = mysqli_fetch_assoc($result)){
-        $gia=$row["giasanpham"]*$row["SoLuong"];
-                echo'
-            <div class="modal__items">
-              
-              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
-              <div class="modal__items__details">
-                <p class="modal__items__name">
-                  '.$row["tensanpham"].'
-                </p>
-
-                <div class="modal__items__quantity">
-                    <div class="title">Số lượng: '.$row["SoLuong"].'</div>
-                </div>
-
-                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
-              </div>
-
-              <a href="xoasp.php?ID='.$row["IDSanPham"].'" class="ti-close" style="text-decoration: none; color: black;"></a>
-            </div>';
-      }
-    }
-  ?>
+  
 
     <div class="content">
       <div class="breadcrumbs"></div>
@@ -241,28 +211,30 @@ if (!isset($_SESSION["customer"])) {
                 </div>
 
                 <div class="items">
-                    <div class="items-container">
-                        <img src="../../asset/img/ao-polo-nam-27-10s24pol004p_bright_white_1__2_jpg.png" alt="" class="image">
-                        <div class="items__details">
-                            <p class="items__name">
-                            Áo Thun Nam Tay Ngắn Cổ Tròn Phối Rib Trơn Form Loose
-                            </p>
 
-                            <div class="items__quantity">
-                                <div class="title">Số lượng: </div>
+              <?php
+                include("../../config/config.php");
+                //buoc 2 viet truy van
+                $query = "SELECT * FROM tbl_sanpham,yeuthich WHERE yeuthich.IDUser='$ID'
+                AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
+                //buoc 3 thuc thi cau lenh
+                $result = mysqli_query($conn, $query);
+                //buoc 4 lay du lieu
+                if(mysqli_num_rows($result) >0){
+                  while ($row = mysqli_fetch_assoc($result)){
+                    echo' <div class="items-container">
+                            <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
+                            <div class="items__details">
+                                <p class="items__name">'.$row["tensanpham"].'</p>
+                                
+                                <p class="items__price">
+                                    <span class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></span>
+                                </p>
                             </div>
-
-                            <p class="items__price">392.000<u>đ</u></p>
-
-                            <div class="button-add">
-                                <a href="infoItemLayout.php" class="button">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <span class="ti-close"></span>
-
-                        
-                    </div>
+                          </div> ';
+                  }
+                }
+              ?>
 
                 </div>
             </div>

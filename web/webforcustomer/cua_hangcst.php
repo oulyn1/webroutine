@@ -75,34 +75,15 @@
         <div class="model-overlay" >
 
         </div>
-        <div class="model-body">
-            <div class="model-inner">
-                <span class="ti-close"></span>
-                <div class="auth">
-                    <h2>Đăng nhập</h2>
-                    <p>Đăng nhập thành viên Routine để nhận nhiều những chương trình ưu đãi hấp dẫn</p>
-                </div>
-                <div class="auth-form">
-                    <div class="auth-group">
-                        <p>Email</p>
-                        <input type="text" placeholder="Email">
-                    </div>
-                    <div class="auth-group">
-                        <p>Mật khẩu</p>
-                        <input type="password" placeholder="Mật khẩu">
-                    </div>
-                </div>
-                <div class="auht-control">
-                    <div class="forgot">
-                        <a href="">Quên mật khẩu?</a>
-                    </div>
-                    <button class="btn">ĐĂNG NHẬP</button>
-                </div>
-                <div class="auth-switch">
-                    <p>Bạn chưa có tài khoản?</p>
-                    <a href="#modal-signin" id="opensignin">Đăng kí thành viên -></a>
-                </div>
-            </div>
+        <div class="body-start"><a href="khach_hang.php"> Chào khách hàng </a></div>
+        <hr />
+        <div class="body-after">
+          <div>
+            <a href=""><p>Theo dõi đơn hàng</p></a>
+          </div>
+          <div>
+            <a href=""><p>Sản phẩm yêu thích</p></a>
+          </div>
         </div>
     </div>
 

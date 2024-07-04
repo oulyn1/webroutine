@@ -35,7 +35,7 @@ if (!isset($_SESSION["admin"])) {
             </div>
             <div class="header__list2">
                 <form method="POST">
-                    <input type="text" name="txtTimkiem" placeholder="Tìm kiếm...." class="search">
+                    <input type="text" name="txtKeyword" placeholder="Tìm kiếm...." class="search">
                 </form>
                 <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
             </div>

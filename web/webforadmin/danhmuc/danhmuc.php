@@ -97,7 +97,7 @@ if (!isset($_SESSION["admin"])) {
                                     ';
                             //buoc 4 lay du lieu
                             if(mysqli_num_rows($result) >0){
-                                echo '<table id="tblMain">
+                                echo '<table>
                                     <thead>
                                         <th>ID danh mục con</th>
                                         <th>Tên danh mục con</th>

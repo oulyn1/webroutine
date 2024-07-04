@@ -56,7 +56,7 @@ if (!isset($_SESSION["admin"])) {
                     }
                 }
                 ?>
-                <h2>Sửa danh mục con</h2>
+                <h1>Sửa danh mục con</h1>
                 <div class="tbl_them">
                     <form method="POST">
                         <table class="tlb-info">
