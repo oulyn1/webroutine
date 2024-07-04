@@ -99,7 +99,7 @@ if (!isset($_SESSION["customer"])) {
     <div class="slider-wrapper">
         <div class="slider-img">
             <?php
-            include("config/config.php");
+            include("../../config/config.php");
             $query = "SELECT * FROM slider_images";
             $result = mysqli_query($conn, $query);
 
