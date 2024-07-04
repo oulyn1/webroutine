@@ -301,10 +301,12 @@ if (isset($_POST['update'])) {
                                 <div class="login-information">
                                     <h3>Thông tin đăng nhập</h3>
                                     <div class="box-information">
-                                        <p>Email:<?php echo $email; ?></p>
+                                        <p>Email:
+                                          <strong><?php echo $email; ?></strong>
+                                        </p>
                                     </div>
                                     <div class="box-information">
-                                        <p>Số điện thoại: <?php echo $phone ?></p>
+                                        <p>Số điện thoại:  <strong><?php echo $phone; ?></strong></p>
                                     </div>
                                 </div>
 
