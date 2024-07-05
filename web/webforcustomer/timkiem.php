@@ -286,7 +286,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <P>Mã số thuế: 0106486365</P>
     <P></P>
     <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
-    <h3>THAM GIA BẢNG TIN CỦA CHÚNG TÔI</h3>
+   
 
 </div>
 
@@ -306,11 +306,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </div>
 
-    <div class="social">
-
-        <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
-
-    </div>
+    
 
 </div>
 
@@ -332,20 +328,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="store">
 
     <h5>THÔNG TIN CỬA HÀNG</h5>
-    <ul>
-        <li>
-            <h4>CỬA HÀNG THỨU 34</h4>
-            <p>F15 tầng 1 AEON Mall Tân Phú, 30 Bờ Bao Tân Thắng, Phường Sơn Kỳ, TP Hồ Chí Minh</p>
-        </li>
-        <li>
-            <h4>CỬA HÀNG THỨ 33</h4>
-            <p>809 Giải Phóng, Phường Giáp Bát, Quận Hoàng Mai, TP Hà Nội</p>
-        </li>
-        <li>
-            <h4>CỬA HÀNG THỨ 32</h4>
-            <p>192 - 194 Hoa Lan, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh</p>
-        </li>
-    </ul>
+    <?php
+            include("../../config/config.php");
+            $query = "SELECT * FROM cua_hang LIMIT 3";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<ul>
+                <li>
+                    <h4>'. $row["ten"] .'</h4>
+                    <p>' . $row["dia_chi"] . '</p>
+                    <p>' . $row["thanh_pho"] . '</p>
+                </li>
+            </ul>';
+                }
+            } else {
+                echo "Không có cửa hàng nào.";
+            }
+            ?>
     <a href="cua_hangcst.php">XEM TẤT CẢ CỬA HÀNG</a>
 </div>
 </div>
