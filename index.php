@@ -21,7 +21,9 @@ if (isset($_SESSION["admin"])) {
   <!-- <link rel="stylesheet" href="asset/css/slier123.css"> -->
 </head>
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 include ("config/config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'];
