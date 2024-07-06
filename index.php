@@ -346,7 +346,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <h5>THÔNG TIN CỬA HÀNG</h5>
             <?php
-            include("../../config/config.php");
+            include("config/config.php");
             $query = "SELECT * FROM cua_hang LIMIT 3";
             $result = mysqli_query($conn, $query);
 
