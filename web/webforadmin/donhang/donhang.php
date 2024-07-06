@@ -49,7 +49,8 @@ if (!isset($_SESSION["admin"])) {
                         //buoc 2 viet truy van
                         $query = "SELECT * FROM tbl_donhang,user,khach_hang 
                         WHERE user.id_user=tbl_donhang.iduser
-                        AND khach_hang.id=tbl_donhang.iduser";
+                        AND khach_hang.id=tbl_donhang.iduser
+                        ORDER BY tbl_donhang.ngaydat DESC";
                         //buoc 3 thuc thi cau lenh
                         $result = mysqli_query($conn, $query);
                         //buoc 4 lay du lieu
