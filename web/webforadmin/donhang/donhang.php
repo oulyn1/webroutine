@@ -64,6 +64,7 @@ if (!isset($_SESSION["admin"])) {
                                         <th>Tình trạng</th>
                                         <th>Hủy đơn</th>
                                         <th>Quản lý</th>
+                                        <th>Xóa</th>
                                     </thead>
                                     <tbody>';
                             while ($row = mysqli_fetch_assoc($result)){
@@ -84,6 +85,7 @@ if (!isset($_SESSION["admin"])) {
                                 }
                                 echo'
                                         <td><a class="thea" href="chitietdonhang.php?CODE='.$row["iddonhang"].'">Xem đơn hàng</a></td>
+                                        <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa đơn hàng không?\');" href="xoadonhang.php?ID='.$row["iddonhang"].'"><i class="ti-trash"></i></a></td>
                                     </tr>';
                                     }
                     

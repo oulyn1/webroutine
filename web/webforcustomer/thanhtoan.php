@@ -9,36 +9,34 @@ if (!isset($_SESSION["customer"])) {
 } else {
     $ID = $_SESSION["customer"];
 }
-
-// Khởi tạo các biến để tránh lỗi Undefined variable
-$ten = "";
-$email = "";
-$so_dien_thoai = "";
-$dia_chi = "";
-
-// Nếu người dùng submit form cập nhật
-if (isset($_POST['update'])) {
-    $ten = $_POST['ten'];
-    $email = $_POST['email'];
-    $so_dien_thoai = $_POST['so_dien_thoai'];
-    $dia_chi = $_POST['dia_chi'];
-
-    // Câu lệnh SQL để cập nhật thông tin khách hàng
-    $query_update_user = "UPDATE user SET Fullname='$ten', Email='$email' WHERE Id_user=$ID";
-    $query_update_khachhang = "UPDATE khach_hang SET ten='$ten', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
-
-    // Thực thi câu lệnh cập nhật
-    $result_update_user = mysqli_query($conn, $query_update_user);
-    $result_update_khachhang = mysqli_query($conn, $query_update_khachhang);
-
-    if ($result_update_user && $result_update_khachhang) {
-        echo "<script>alert('Cập nhật thông tin thành công');</script>";
-        // Cập nhật lại thông tin hiển thị trên trang
-    } else {
-        echo "<script>alert('Lỗi khi cập nhật thông tin');</script>";
-    }
-}
 ?>
+<?php
+      if($_SERVER['REQUEST_METHOD'] == "POST"){
+        include("../../config/config.php");
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $code= rand(0,9999);
+        $ngaydat = date('Y-m-d H:i:s');
+        $query = "INSERT INTO tbl_donhang(iduser, iddonhang, ngaydat, tinhtrang) VALUES ('$ID','$code','$ngaydat',1)";
+        $result = mysqli_query($conn, $query);
+        if ($result > 0) {
+          $queryC= "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
+          AND tbl_sanpham.idsanpham=giohang.IDSanPham";
+          $resultC = mysqli_query($conn, $queryC);
+          //buoc 4 lay du lieu
+          if(mysqli_num_rows($resultC) >0){
+            while ($rowC = mysqli_fetch_assoc($resultC)){
+              $idsanpham= $rowC["idsanpham"];
+              $soluong= $rowC["SoLuong"];
+              $queryCT = "INSERT INTO tbl_chitietdonhang(idsanpham, madon, soluongCT) VALUES ('.$idsanpham.','$code','$soluong')";
+              mysqli_query($conn, $queryCT);
+            }
+          }
+        }
+        $sql = "DELETE FROM giohang WHERE IDUser = '$ID'";
+        mysqli_query($conn, $sql);
+        header("Location:camon.php?CODE=$code");
+      }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,33 +206,7 @@ if (isset($_POST['update'])) {
 
     <!-- content -->
      
-    <?php
-      if($_SERVER['REQUEST_METHOD'] == "POST"){
-        include("../../config/config.php");
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $code= rand(0,9999);
-        $ngaydat = date('Y-m-d H:i:s');
-        $query = "INSERT INTO tbl_donhang(iduser, iddonhang, ngaydat, tinhtrang) VALUES ('$ID','$code','$ngaydat',1)";
-        $result = mysqli_query($conn, $query);
-        if ($result > 0) {
-          $queryC= "SELECT * FROM tbl_sanpham,giohang WHERE giohang.IDUser='$ID'
-          AND tbl_sanpham.idsanpham=giohang.IDSanPham";
-          $resultC = mysqli_query($conn, $queryC);
-          //buoc 4 lay du lieu
-          if(mysqli_num_rows($resultC) >0){
-            while ($rowC = mysqli_fetch_assoc($resultC)){
-              $idsanpham= $rowC["idsanpham"];
-              $soluong= $rowC["SoLuong"];
-              $queryCT = "INSERT INTO tbl_chitietdonhang(idsanpham, madon, soluongCT) VALUES ('.$idsanpham.','$code','$soluong')";
-              mysqli_query($conn, $queryCT);
-            }
-          }
-        }
-        $sql = "DELETE FROM giohang WHERE IDUser = '$ID'";
-        mysqli_query($conn, $sql);
-        header("Location:camon.php?CODE=$code");
-      }
-    ?>
+    
 
 
     <div class="cart-container">
