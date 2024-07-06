@@ -28,3 +28,8 @@ th {
     text-decoration: none;
     color: blue;
 }
+
+textarea{
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+}

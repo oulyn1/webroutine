@@ -75,8 +75,8 @@ if (!isset($_SESSION["admin"])) {
                                         <td>'.$row["madon"].'</td>
                                         <td>'.$row["tensanpham"].'</td>
                                         <td>'.$row["soluongCT"].'</td>
-                                        <td>'.$row["giasanpham"].'</td>
-                                        <td>'.$thanhtien.'</td>';
+                                        <td>'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></td>
+                                        <td>'.number_format($thanhtien,0,',','.').' <u>đ</u></td>';
                                         $queryB = "SELECT * FROM tbl_donhang WHERE iddonhang='$_GET[CODE]'";
                                         $resultB = mysqli_query($conn, $queryB);
                                         if(mysqli_num_rows($resultB) >0){
@@ -93,7 +93,7 @@ if (!isset($_SESSION["admin"])) {
                                 echo'</tr>';
                                 }
                                 echo'<tr>
-                                        <td colspan="8" style="text-align: center; font-weight: bold;">Tổng tiền: '.$tongtien.'</td>
+                                        <td colspan="8" style="text-align: center; font-weight: bold;">Tổng tiền: '.number_format($tongtien,0,',','.').' <u>đ</u></td>
                                     </tr>'; 
                             echo'  </tbody>
                                 </table>';

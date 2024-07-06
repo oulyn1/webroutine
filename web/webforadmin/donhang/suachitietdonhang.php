@@ -76,8 +76,7 @@ if (!isset($_SESSION["admin"])) {
                                         </tr>
                                         <tr>
                                             <td class="info-name"><label for="Tensp">Tên sản phẩm</label></td>
-                                            <td><input type="text" class="info-name-property" id="Tensp" name="txtTensp"
-                                                    value="<?php echo $Tensp ?>" disabled /></td>
+                                            <td><textarea name="txtTensp" id="Tensp" class="info-name-property" cols="26" rows="3" disabled><?php echo $Tensp ?></textarea></td>
                                         </tr>
                                         <tr>
                                             <td class="info-name"><label for="Soluong">Số lượng</label></td>
@@ -87,12 +86,12 @@ if (!isset($_SESSION["admin"])) {
                                         <tr>
                                             <td class="info-name"><label for="Dongia">Đơn giá</label></td>
                                             <td><input type="text" class="info-name-property" id="Dongia" name="txtDongia"
-                                                    value="<?php echo $Dongia ?>" disabled /></td>
+                                                    value="<?php echo number_format($Dongia,0,',','.')?> đ" disabled /></td>
                                         </tr>
                                         <tr>
                                             <td class="info-name"><label for="Thanhtien">Thành tiền</label></td>
                                             <td><input type="text" class="info-name-property" id="Thanhtien" name="txtThanhtien"
-                                                    value="<?php echo $Soluong*$Dongia ?>" disabled /></td>
+                                                    value="<?php echo number_format($Dongia*$Soluong,0,',','.')?> đ" disabled /></td>
                                         </tr>
                                     </tbody>
                             </table>

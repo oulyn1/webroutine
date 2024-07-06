@@ -78,8 +78,7 @@ if (!isset($_SESSION["admin"])) {
                                 <tbody>
                                     <tr>
                                         <td class="info-name"><label for="Name">Tên sản phẩm</label></td>
-                                        <td><input type="text" class="info-name-property" id="Name" name="txtName"
-                                                value="<?php echo $Name ?>" required /></td>
+                                        <td><textarea name="txtName" id="Name" class="info-name-property" cols="26" rows="3" spellcheck="false" required><?php echo $Name ?></textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="info-name"><label for="Size">Size</label></td>
@@ -147,8 +146,7 @@ if (!isset($_SESSION["admin"])) {
                                     </tr>
                                     <tr>
                                         <td class="info-name"><label for="MieuTa">Miêu tả</label></td>
-                                        <td><input type="text" class="info-name-property" id="MieuTa" name="txtMieuTa"
-                                                value="<?php echo $MieuTa ?>" required /></td>
+                                        <td><textarea name="txtMieuta" id="Mieuta" class="info-name-property" cols="26" rows="6" spellcheck="false" required><?php echo $MieuTa ?></textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="info-name"><label for="Loai">Loại sản phẩm</label></td>
