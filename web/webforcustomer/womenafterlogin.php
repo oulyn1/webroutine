@@ -6,7 +6,6 @@ if (!isset($_SESSION["customer"])) {
   exit;
 } else {
   $ID = $_SESSION["customer"];
-  $IDSP=$_GET["ID"];
 }
 ?>
 

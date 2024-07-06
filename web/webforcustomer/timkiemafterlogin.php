@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (!isset($_SESSION["customer"])) {
+  header("location: ../../index.php");
+  exit;
+} else {
+  $ID = $_SESSION["customer"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
