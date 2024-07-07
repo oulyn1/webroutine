@@ -337,9 +337,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><p>Chính sách đổi trả</p></li>
                 <li><p>Chính sách bảo hành</p></li>
                 <li><p>Chính sách bảo mật</p></li>
-                <li><p> Câu hỏi thường gặp</p></li>
-                <li><p>hướng dẫn mua hàng online</p></li>
-                <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
+                <li><p>Câu hỏi thường gặp</p></li>
+                <li><p>Hướng dẫn mua hàng online</p></li>
+                <li><p>Hướng dẫn kiểm tra hạng thành viên</p></li>
             </ul>
             
         </div>
