@@ -1,29 +1,19 @@
-<?php
-session_start();
-if (isset($_SESSION["admin"])) {
-    header("location:../webforadmin/admin/main.php?ID=".$_SESSION['admin']."");
-}else if(isset($_SESSION["customer"])) {
-  header("location:../webforcustomer/mainafterlogin.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quần áo thời trang nam</title>
+    <title>Tìm kiếm sản phẩm</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
-    <link rel="stylesheet" href="../../asset/css/cuahang.css">
+    <link rel="stylesheet" href="../../asset/css/timkiem.css">
     <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
+session_start();
 include ("../../config/config.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['dangnhap'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
   $query = "SELECT * FROM user WHERE Email='" . $email . "' AND Password='" . $password . "' LIMIT 1";
@@ -106,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
             </div>
             <div class="header__right">
-                <a class="search" href="timkiem_cuahang.php">
+                <a class="search" href="#bannermw">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>
@@ -206,6 +196,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </div>
+
     <div class="model" id="modal-love">
         <div class="model-overlay" >
 
@@ -239,16 +230,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-    <div class="content">
-        <h1 class="h1ct">Danh sách cửa hàng</h1>
-        <div class="store-list">
-            <?php
-            include("../../config/config.php");
-            $query = "SELECT * FROM cua_hang";
-            $result = mysqli_query($conn, $query);
+    
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+    <div class="bannermw" id="bannermw">
+    </div>
+
+    <form method="POST">
+        <div class="Search" id="Search">
+            <label for="txtSearch">Nhập thông tin tìm kiếm: </label>
+            <input type="text" name = "txtSearch" id="txtSearch" name="txtSearch" class="txtSearch">
+            <input type="submit" value = "Tìm kiếm" id="btnSearch" name="btnSearch">
+        </div>
+   </form>
+
+
+   <?php
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $keysearch=$_POST['txtSearch'];
+            include("../../config/config.php");
+            $query = "SELECT * FROM cua_hang WHERE ten LIKE '%$keysearch%' OR thanh_pho LIKE '%$keysearch%' ORDER BY idcuahang DESC";
+            //buoc 2 viet truy van
+            //buoc 3 thuc thi cau lenh
+            $result = mysqli_query($conn, $query);
+            //buoc 4 lay du lieu
+            if(mysqli_num_rows($result) >0){
+                echo'<div class="maincontent" id="content">
+                    <div class="product_list">';
+                while ($row = mysqli_fetch_assoc($result)){
                     echo '<div class="store-item">';
                     echo '<img src="../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '">';
                     echo '<h3>' . $row["ten"] . '</h3>';
@@ -256,13 +264,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<p>' . $row["thanh_pho"] . '</p>';
                     echo '<p>' . $row["sdt"] . '</p>';
                     echo '</div>';
+                    
                 }
-            } else {
-                echo "Không có cửa hàng nào.";
+                echo'</div>
+                </div>';
+            }else{
+                echo'<div class="maincontent" id="content">
+                Hiện chưa có sản phẩm này vui lòng tìm kiếm sản phẩm khác!
+                </div>';
             }
-            ?>
-        </div>
-    </div>
+        }
+    ?>
+
 
 <div class="footer">
 
@@ -273,44 +286,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <P>Mã số thuế: 0106486365</P>
     <P></P>
     <P>Văn phòng: tầng 5 tòa nhà IMC, 62 Trần Quang Khải - Phường Tân Định - Quận 1 - TP Hồ Chí Minh.</P>
-  
+   
 
 </div>
 
 <div class="about">
 
-            <div class="company">
+    <div class="company">
 
-                <h5>CÔNG TY</h5>
-                <ul>
-                    <li><p href="">Giới thiệu về ROUTINE</p></li>
-                    <li><p href="">THE 31</p></li>
-                    <li><p href="">Tuyển dụng</p></li>
-                    <li><p href="">Tin thời trang</p></li>
-                    <li><p href="">Hợp tác nhượng quyền</p></li>
-                    <li><p href="">Liên hệ</p></li>
-                </ul>
+        <h5>CÔNG TY</h5>
+        <ul>
+            <li><p href="">Giới thiệu về ROUTINE</p></li>
+            <li><p href="">THE 31</p></li>
+            <li><p href="">Tuyển dụng</p></li>
+            <li><p href="">Tin thời trang</p></li>
+            <li><p href="">Hợp tác nhượng quyền</p></li>
+            <li><p href="">Liên hệ</p></li>
+        </ul>
 
-            </div>
+    </div>
 
-            
+    
 
-        </div>
+</div>
 
-        <div class="policy">
+<div class="policy">
 
-            <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
-            <ul>
-                <li><p href="">Chính sách khách hàng thân thiết</p></li>
-                <li><p href="">Chính sách đổi trả</p></li>
-                <li><p href="">Chính sách bảo hành</p></li>
-                <li><p href="">Chính sách bảo mật</p></li>
-                <li><p href=""> Câu hỏi thường gặp</p></li>
-                <li><p href="">hướng dẫn mua hàng online</p></li>
-                <li><p href="">Hướng dẫn kiểm tra hạng thành viên</p></li>
-            </ul>
-            
-        </div>
+    <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
+    <ul>
+        <li><p href="">Chính sách khách hàng thân thiết</p></li>
+        <li><p href="">Chính sách đổi trả</p></li>
+        <li><p href="">Chính sách bảo hành</p></li>
+        <li><p href="">Chính sách bảo mật</p></li>
+        <li><p href=""> Câu hỏi thường gặp</p></li>
+        <li><p href="">hướng dẫn mua hàng online</p></li>
+        <li><p href="">Hướng dẫn kiểm trra hạng thành viên</p></li>
+    </ul>
+    
+</div>
 
 <div class="store">
 
