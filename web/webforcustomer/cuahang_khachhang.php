@@ -20,7 +20,8 @@ if (!isset($_SESSION["customer"])) {
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
     <link rel="stylesheet" href="../../asset/css/favoriteList.css"> 
-    <link rel="stylesheet" href="../../asset/css/cuahang.css">
+    <link rel="stylesheet" href="../../asset/css/cuahangkj.css">
+    <link rel="stylesheet" href="../../asset/css/timkiemchkh.css">
     <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -206,27 +207,43 @@ if (!isset($_SESSION["customer"])) {
                     <h1 class="page-title">Danh sách cửa hàng</h1>
                     <p class="des">Danh sách các cửa hàng của Routine</p>
                 </div>
-
+                <form method="POST">
+                <div class="Search" id="Search">
+                    <label for="txtSearch">Tìm kiếm:</label>
+                    <input type="text" name="txtSearch" id="txtSearch" class="txtSearch"placeholder="Nhập cửa hàng bạn muốn tìm kiếm">
+                    <input type="submit" value="Tìm kiếm" id="btnSearch" name="btnSearch">
+                </div>
+            </form>
                 <div class="store-list">
-            <?php
-            include("../../config/config.php");
-            $query = "SELECT * FROM cua_hang";
-            $result = mysqli_query($conn, $query);
+            
+            <div class="store-list">
+                <?php
+                include("../../config/config.php");
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="store-item">';
-                    echo '<img src="../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '">';
-                    echo '<h3>' . $row["ten"] . '</h3>';
-                    echo '<p>' . $row["dia_chi"] . '</p>';
-                    echo '<p>' . $row["thanh_pho"] . '</p>';
-                    echo '<p>' . $row["sdt"] . '</p>';
-                    echo '</div>';
+                if (isset($_POST['btnSearch'])) {
+                    $keysearch = $_POST['txtSearch'];
+                    $query = "SELECT * FROM cua_hang WHERE ten LIKE '%$keysearch%' OR thanh_pho LIKE '%$keysearch%' ORDER BY idcuahang DESC";
+                } else {
+                    $query = "SELECT * FROM cua_hang";
                 }
-            } else {
-                echo "Không có cửa hàng nào.";
-            }
-            ?>
+
+                $result = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="store-item">';
+                        echo '<img src="../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '">';
+                        echo '<h3>' . $row["ten"] . '</h3>';
+                        echo '<p>' . $row["dia_chi"] . '</p>';
+                        echo '<p>' . $row["thanh_pho"] . '</p>';
+                        echo '<p>' . $row["sdt"] . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Không có cửa hàng nào.";
+                }
+                ?>
+            </div>
         </div>
             </div>
             <?php
@@ -318,15 +335,15 @@ if (!isset($_SESSION["customer"])) {
         <div class="policy">
 
         <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
-        <ul>
-            <li><p >Chính sách khách hàng thân thiết</p></li>
-            <li><p >Chính sách đổi trả</p></li>
-            <li><p >Chính sách bảo hành</p></li>
-            <li><p >Chính sách bảo mật</p></li>
-            <li><p >Câu hỏi thường gặp</p></li>
-            <li><p >Hướng dẫn mua hàng online</p></li>
-            <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
-        </ul>
+            <ul>
+                <li><p>Chính sách khách hàng thân thiết</p></li>
+                <li><p>Chính sách đổi trả</p></li>
+                <li><p>Chính sách bảo hành</p></li>
+                <li><p>Chính sách bảo mật</p></li>
+                <li><p>Câu hỏi thường gặp</p></li>
+                <li><p>Hướng dẫn mua hàng online</p></li>
+                <li><p>Hướng dẫn kiểm tra hạng thành viên</p></li>
+            </ul>
 
       </div>
 
