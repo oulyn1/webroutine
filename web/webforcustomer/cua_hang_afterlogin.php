@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../asset/css/footer.css">
     <link rel="stylesheet" href="../../asset/css/thanhtoan.css">
     <link rel="stylesheet" href="../../asset/css/cuahang.css">
+    <link rel="stylesheet" href="../../asset/css/timkiemch.css">
     <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -69,7 +70,7 @@
             </ul>
         </div>
         <div class="header__right">
-                <a class="search" href="timkiem_cuahangafterlogin.php">
+                <a class="search" href="timkiemafterlogin.php">
                     <i class="ti-search"></i>
                     <span class="search__title">Tìm kiếm</span>
                 </a>
@@ -141,29 +142,43 @@
     <!-- content -->
 
     <div class="content">
-        <h1 class="h1ct">Danh sách cửa hàng</h1>
-        <div class="store-list">
-            <?php
-            include("../../config/config.php");
-            $query = "SELECT * FROM cua_hang";
-            $result = mysqli_query($conn, $query);
+            <h1 class="h1ct">Danh sách cửa hàng</h1>
+            <form method="POST">
+                <div class="Search" id="Search">
+                    <label for="txtSearch">Tìm kiếm:</label>
+                    <input type="text" name="txtSearch" id="txtSearch" class="txtSearch"placeholder="Nhập cửa hàng bạn muốn tìm kiếm">
+                    <input type="submit" value="Tìm kiếm" id="btnSearch" name="btnSearch">
+                </div>
+            </form>
+            <div class="store-list">
+                <?php
+                include("../../config/config.php");
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="store-item">';
-                    echo '<img src="../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '">';
-                    echo '<h3>' . $row["ten"] . '</h3>';
-                    echo '<p>' . $row["dia_chi"] . '</p>';
-                    echo '<p>' . $row["thanh_pho"] . '</p>';
-                    echo '<p>' . $row["sdt"] . '</p>';
-                    echo '</div>';
+                if (isset($_POST['btnSearch'])) {
+                    $keysearch = $_POST['txtSearch'];
+                    $query = "SELECT * FROM cua_hang WHERE ten LIKE '%$keysearch%' OR thanh_pho LIKE '%$keysearch%' ORDER BY idcuahang DESC";
+                } else {
+                    $query = "SELECT * FROM cua_hang";
                 }
-            } else {
-                echo "Không có cửa hàng nào.";
-            }
-            ?>
+
+                $result = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="store-item">';
+                        echo '<img src="../../asset/imgcuahang/' . $row["hinhanh"] . '" alt="' . $row["ten"] . '">';
+                        echo '<h3>' . $row["ten"] . '</h3>';
+                        echo '<p>' . $row["dia_chi"] . '</p>';
+                        echo '<p>' . $row["thanh_pho"] . '</p>';
+                        echo '<p>' . $row["sdt"] . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Không có cửa hàng nào.";
+                }
+                ?>
+            </div>
         </div>
-    </div>
 
 <!-- footer -->
 
@@ -204,13 +219,13 @@
 
     <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
     <ul>
-        <li><a href="">Chính sách khách hàng thân thiết</a></li>
-        <li><a href="">Chính sách đổi trả</a></li>
-        <li><a href="">Chính sách bảo hành</a></li>
-        <li><a href="">Chính sách bảo mật</a></li>
-        <li><a href=""> Câu hỏi thường gặp</a></li>
-        <li><a href="">hướng dẫn mua hàng online</a></li>
-        <li><a href="">Hướng dẫn kiểm trra hạng thành viên</a></li>
+        <li><p >Chính sách khách hàng thân thiết</p></li>
+        <li><p >Chính sách đổi trả</p></li>
+        <li><p >Chính sách bảo hành</p></li>
+        <li><p >Chính sách bảo mật</p></li>
+        <li><p >Câu hỏi thường gặp</p></li>
+        <li><p >Hướng dẫn mua hàng online</p></li>
+        <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
     </ul>
     
 </div>

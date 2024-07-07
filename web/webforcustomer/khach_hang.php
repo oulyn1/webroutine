@@ -332,11 +332,11 @@ if (isset($_POST['update'])) {
                         </div>
                         <div class="field-group">
                             <p class="p2">Số điện thoại</p>
-                            <input type="number" name="so_dien_thoai" value="<?php echo $phone; ?>">
+                            <input type="number" name="so_dien_thoai" value="<?php echo $phone; ?>"maxlength="10"placeholder="hãy điền số điện thoại">
                         </div>
                         <div class="field-group">
                             <p class="p2">Địa chỉ</p>
-                            <input type="text" name="dia_chi" value="<?php echo $address; ?>">
+                            <input type="text" name="dia_chi" value="<?php echo $address; ?>"placeholder="Hãy điền địa chỉ">
                         </div>
                         <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
                     </form>
@@ -407,14 +407,14 @@ if (isset($_POST['update'])) {
 
             <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
             <ul>
-                <li><p href="">Chính sách khách hàng thân thiết</p></li>
-                <li><p href="">Chính sách đổi trả</p></li>
-                <li><p href="">Chính sách bảo hành</p></li>
-                <li><p href="">Chính sách bảo mật</p></li>
-                <li><p href=""> Câu hỏi thường gặp</p></li>
-                <li><p href="">hướng dẫn mua hàng online</p></li>
-                <li><p href="">Hướng dẫn kiểm tra hạng thành viên</p></li>
-            </ul>
+                  <li><p >Chính sách khách hàng thân thiết</p></li>
+                  <li><p >Chính sách đổi trả</p></li>
+                  <li><p >Chính sách bảo hành</p></li>
+                  <li><p >Chính sách bảo mật</p></li>
+                  <li><p >Câu hỏi thường gặp</p></li>
+                  <li><p >Hướng dẫn mua hàng online</p></li>
+                  <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
+              </ul>
             
         </div>
 
