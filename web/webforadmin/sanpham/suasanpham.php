@@ -214,7 +214,7 @@ if (!isset($_SESSION["admin"])) {
                         $Color = $_POST['txtColor'];
                         $GiaBan = $_POST['txtGiaBan'];
                         $Image = $_POST['txtImage'];
-                        $MieuTa = $_POST['txtMieuTa'];
+                        $MieuTa = $_POST['txtMieuta'];
                         $Loai = $_POST['txtLoai'];
                         $LoaiCT = $_POST['txtLoaiCT'];
                         $SoLuong = $_POST['txtSoLuong'];
