@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["admin"])) {
+    header("location:../webforadmin/admin/main.php?ID=".$_SESSION['admin']."");
+}else if(isset($_SESSION["customer"])) {
+  header("location:../webforcustomer/mainafterlogin.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +19,9 @@
     <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
 </head>
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 include ("../../config/config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'];
@@ -39,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     echo "<script>
             alert('Sai mật khẩu hoặc email!!!!');
-            window.location.href='index.php';
+            window.location.href='../../index.php';
         </script>";
   }
 
@@ -133,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <div class="auht-control">
             <div class="forgot">
-              <a href="web/forgot/nhapmail.php">Quên mật khẩu?</a>
+              <a href="../forgot/nhapmail.php">Quên mật khẩu?</a>
             </div>
             <input type="submit" name="dangnhap" class="btn" value="ĐĂNG NHẬP"></input>
           </div>
@@ -159,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </p>
         </div>
 
-        <form method="post" action="web/dangki.php">
+        <form method="post" action="../dangki.php">
           <div class="auth-form">
             <div class="auth-group">
               <p>Họ và tên</p>

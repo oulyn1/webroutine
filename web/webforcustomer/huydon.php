@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["admin"])) {
+    header("location:../webforadmin/admin/main.php?ID=".$_SESSION['admin']."");
+}else if(isset($_SESSION["customer"])) {
+  header("location:../webforcustomer/mainafterlogin.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
