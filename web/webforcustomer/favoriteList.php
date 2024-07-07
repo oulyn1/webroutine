@@ -278,6 +278,7 @@ if (!isset($_SESSION["customer"])) {
                         <li class="nav item"><a href="cuahang_khachhang.php">Danh sách cửa hàng</a></li>
                         <li class="nav item"><strong>Sản phẩm yêu thích</strong></li>
                         <li class="nav item"><span class="delimiter"></span></li>
+                        <li class="nav item"><a href="../doimatkhau.php?ID=<?php echo $_SESSION["customer"];?>">Đổi mật khẩu</a></li>
                         <li class="nav item"><a href="../webforadmin/logout.php">Đăng xuất</a></li>
                     </ul>   
                     </div>
