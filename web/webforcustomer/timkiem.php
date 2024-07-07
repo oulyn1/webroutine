@@ -248,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $keysearch=$_POST['txtSearch'];
             include("../../config/config.php");
-            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
+            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE '%".$keysearch."%' ORDER BY idsanpham DESC";
             //buoc 2 viet truy van
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);
