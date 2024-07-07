@@ -9,10 +9,10 @@
     <?php
     $ID = $_GET["ID"];
     include("../../../config/config.php");
-    $deleteCustomerQuery = "DELETE FROM khach_hang WHERE id='".$ID."'";
-    $resultDeleteCustomer = mysqli_query($conn, $deleteCustomerQuery);
+    $delete = "DELETE FROM user WHERE Id_user='".$ID."'";
+    $result = mysqli_query($conn, $delete);
 
-    if ($resultDeleteCustomer  >0) {
+    if ($result  >0) {
         echo "<script>
             alert('Xóa dữ liệu thành công');
             window.location.href='taikhoan.php';
