@@ -41,57 +41,56 @@
             </div>
             
             <div id="revenue-chart" style="height: 250px;"></div>
-            <script>
-                $(document).ready(function() {
-                    // Dữ liệu doanh thu
-                    var data = [
-                        { date: '2016', sales:5000000, order:40 , quantity: 50 },
-                        { date: '2017', sales:3000000, order:30 , quantity: 40 },
-                        { date: '2018', sales:6000000, order:55 , quantity: 55 },
-                        { date: '2019', sales:8000000, order:65 , quantity: 65 },
-                    ];
-
-                    // Tạo biểu đồ
-                    new Morris.Bar({
-                        element: 'revenue-chart',
-                        data: data,
-                        xkey: 'date',
-                        ykeys: ['sales','order','quantity'],
-                        labels: ['Doanh thu','Số đơn hàng','Số lượng đã bán'],
-                        resize: true
-                    });
-                });
-            </script>
 
             <?php
+            include("../../../config/config.php");
+            $doanhthu = 0;
+            $sodon = 0;
+            $sohang = 0;
+            $query = "SELECT DATE(tbl_donhang.ngaydat) AS ngay, 
+            SUM(tbl_sanpham.giasanpham * tbl_chitietdonhang.soluongCT) AS doanhthu_ngay,
+            COUNT(DISTINCT tbl_donhang.iddonhang) AS sodon_ngay,
+            SUM(tbl_chitietdonhang.soluongCT) AS sohang_ngay
+            FROM tbl_donhang,tbl_sanpham,tbl_chitietdonhang
+            WHERE tbl_donhang.iddonhang = tbl_chitietdonhang.madon
+            AND tbl_chitietdonhang.idsanpham = tbl_sanpham.idsanpham
+            AND tbl_donhang.tinhtrang = 0
+            GROUP BY DATE(tbl_donhang.ngaydat)
+            ORDER BY DATE(tbl_donhang.ngaydat) DESC";
 
-                include("../../../config/config.php");
-                $doanhthu = 0;
-                $sodon = 0;
-                $sohang = 0;
-                $query = "SELECT * FROM tbl_donhang,tbl_chitietdonhang,tbl_sanpham 
-                WHERE tbl_donhang.iddonhang=tbl_chitietdonhang.madon
-                AND tbl_chitietdonhang.idsanpham=tbl_sanpham.idsanpham
-                AND tbl_donhang.tinhtrang=0";
-                //buoc 3 thuc thi cau lenh
-                $result = mysqli_query($conn, $query);
-                //buoc 4 lay du lieu
-                if(mysqli_num_rows($result) >0){
-                    while ($row = mysqli_fetch_assoc($result)){
-                        $doanhthu += $row ["giasanpham"] * $row["soluongCT"];
-                        $sohang += $row ["soluongCT"] ;
-                    }
-                }
+            $result = mysqli_query($conn, $query);
 
-                $querya = "SELECT * FROM tbl_donhang where tinhtrang = 0 ";
-                //buoc 3 thuc thi cau lenh
-                $resulta = mysqli_query($conn, $querya);
-                //buoc 4 lay du lieu
-                if(mysqli_num_rows($resulta) >0){
-                    while ($rowa = mysqli_fetch_assoc($resulta)){
-                        $sodon ++ ;
-                    }
-                }
+            // Kiểm tra và xử lý kết quả truy vấn
+            if(mysqli_num_rows($result) > 0) {
+            echo "<script>
+            $(document).ready(function() {
+            // Dữ liệu doanh thu
+            var data = [";
+            while ($row = mysqli_fetch_assoc($result)) {
+            $doanhthu += $row["doanhthu_ngay"];
+            $sodon += $row["sodon_ngay"];
+            $sohang += $row["sohang_ngay"];
+
+            echo "
+            { date: '".$row["ngay"]."', sales: ".$row["doanhthu_ngay"].", order: ".$row["sodon_ngay"].", quantity: ".$row["sohang_ngay"]." },";
+            }
+            echo "
+            ];
+
+            // Tạo biểu đồ
+            new Morris.Bar({
+            element: 'revenue-chart',
+            data: data,
+            xkey: 'date',
+            ykeys: ['sales', 'order', 'quantity'],
+            labels: ['Doanh thu', 'Số đơn hàng', 'Số lượng đã bán'],
+            resize: true
+            });
+            });
+            </script>";
+            } else {
+            echo "Không có dữ liệu";
+            }
 
             ?>
 
