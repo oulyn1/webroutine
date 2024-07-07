@@ -45,23 +45,56 @@
                 $(document).ready(function() {
                     // Dữ liệu doanh thu
                     var data = [
-                        { year: '2016', sales:5000000, order:40 , quantity: 50 },
-                        { year: '2017', sales:3000000, order:30 , quantity: 40 },
-                        { year: '2018', sales:6000000, order:55 , quantity: 55 },
-                        { year: '2019', sales:8000000, order:65 , quantity: 65 },
+                        { date: '2016', sales:5000000, order:40 , quantity: 50 },
+                        { date: '2017', sales:3000000, order:30 , quantity: 40 },
+                        { date: '2018', sales:6000000, order:55 , quantity: 55 },
+                        { date: '2019', sales:8000000, order:65 , quantity: 65 },
                     ];
 
                     // Tạo biểu đồ
                     new Morris.Bar({
                         element: 'revenue-chart',
                         data: data,
-                        xkey: 'year',
+                        xkey: 'date',
                         ykeys: ['sales','order','quantity'],
                         labels: ['Doanh thu','Số đơn hàng','Số lượng đã bán'],
                         resize: true
                     });
                 });
             </script>
+
+            <?php
+
+                include("../../../config/config.php");
+                $doanhthu = 0;
+                $sodon = 0;
+                $sohang = 0;
+                $query = "SELECT * FROM tbl_donhang,tbl_chitietdonhang,tbl_sanpham 
+                WHERE tbl_donhang.iddonhang=tbl_chitietdonhang.madon
+                AND tbl_chitietdonhang.idsanpham=tbl_sanpham.idsanpham
+                AND tbl_donhang.tinhtrang=0";
+                //buoc 3 thuc thi cau lenh
+                $result = mysqli_query($conn, $query);
+                //buoc 4 lay du lieu
+                if(mysqli_num_rows($result) >0){
+                    while ($row = mysqli_fetch_assoc($result)){
+                        $doanhthu += $row ["giasanpham"] * $row["soluongCT"];
+                        $sohang += $row ["soluongCT"] ;
+                    }
+                }
+
+                $querya = "SELECT * FROM tbl_donhang where tinhtrang = 0 ";
+                //buoc 3 thuc thi cau lenh
+                $resulta = mysqli_query($conn, $querya);
+                //buoc 4 lay du lieu
+                if(mysqli_num_rows($resulta) >0){
+                    while ($rowa = mysqli_fetch_assoc($resulta)){
+                        $sodon ++ ;
+                    }
+                }
+
+            ?>
+
 
         </div>
     </div>
