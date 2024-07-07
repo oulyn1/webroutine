@@ -362,8 +362,8 @@ li {
 }
 
 .items-container .items__details .items__name{
-    margin: 20px 0;
     font-size: 16px;
+    margin: 20px 0;
 }
 
 .items-container .items__quantity .title {
@@ -374,6 +374,7 @@ li {
 .items-container .items__details .items__price {
     font-size: 16px;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .items-container .ti-close {

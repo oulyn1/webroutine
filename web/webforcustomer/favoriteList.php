@@ -225,7 +225,7 @@ if (!isset($_SESSION["customer"])) {
                     echo' <div class="items-container">
                             <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                             <div class="items__details">
-                                <p class="items__name">'.$row["tensanpham"].'</p>
+                                <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" class="items__name" style="text-decoration: none; color: black;">'.$row["tensanpham"].'</a>
                                 
                                 <p class="items__price">
                                     <span class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></span>

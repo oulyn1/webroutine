@@ -229,7 +229,7 @@ if (!isset($_SESSION["customer"])) {
               echo'<div class="cart-item">
                   <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                   <div class="item-details">
-                      <p class="item-name">'.$row["tensanpham"].'</p>
+                      <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" class="item-name" style="text-decoration: none; color: #000;" >'.$row["tensanpham"].'</a>
                       
                       <div class="item-quantity">
                           Số lượng: '.$row["SoLuong"].'
