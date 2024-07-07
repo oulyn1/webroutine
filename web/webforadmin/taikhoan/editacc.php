@@ -116,14 +116,12 @@ if (!isset($_SESSION["admin"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Fullname = $_POST['txtName'];
         $Email = $_POST['txtEmail'];
+        $qsl = "SELECT * FROM user WHERE Email='$Email'";
+        $result = mysqli_query($conn, $qsl);
+        if (mysqli_num_rows($result) == 0) {
         $query = "UPDATE user SET Fullname='" . $Fullname . "', Email='" . $Email . "' WHERE id_user='" . $id_user . "'";
-        $result = mysqli_query($conn, $query);
-        if ($result > 0) {
-            // Cập nhật thông tin trong bảng khach_hang nếu user là khách hàng
-            if ($Permission == 'Customer') {
-                $query_khachhang = "UPDATE khach_hang SET ten='" . $Fullname . "', email='" . $Email . "' WHERE id='" . $id_user . "'";
-                mysqli_query($conn, $query_khachhang);
-            }
+        $result2 = mysqli_query($conn, $query);
+        if ($result2 > 0) {
             echo "<script>
                 alert('Cập nhật dữ liệu thành công');
                 window.location.href='taikhoan.php';
@@ -134,7 +132,12 @@ if (!isset($_SESSION["admin"])) {
                 window.location.href='taikhoan.php';
             </script>";
         }
+    }else {
+        echo "<script>
+            alert('Email đã tồn tại! Vui lòng thử 1 email khác');
+        </script>";
     }
+}
     ?>
 </body>
 
