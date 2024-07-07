@@ -22,7 +22,9 @@ if (isset($_POST['update'])) {
     $email = $_POST['email'];
     $so_dien_thoai = $_POST['so_dien_thoai'];
     $dia_chi = $_POST['dia_chi'];
-
+    $qsl = "SELECT * FROM user WHERE Email='$email' AND Id_user!='".$ID."'";
+        $result = mysqli_query($conn, $qsl);
+        if (mysqli_num_rows($result) == 0) {
     // Câu lệnh SQL để cập nhật thông tin khách hàng
     $query_update_user = "UPDATE user SET Fullname='$ten', Email='$email' WHERE Id_user=$ID";
     $query_update_khachhang = "UPDATE khach_hang SET so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
@@ -37,6 +39,11 @@ if (isset($_POST['update'])) {
     } else {
         echo "<script>alert('Lỗi khi cập nhật thông tin');</script>";
     }
+}else {
+  echo "<script>
+      alert('Email đã tồn tại! Vui lòng thử 1 email khác');
+  </script>";
+}
 }
 ?>
 <!DOCTYPE html>
