@@ -39,7 +39,7 @@ if (isset($_POST['dangnhap'])) {
   } else {
     echo "<script>
             alert('Sai mật khẩu hoặc email!!!!');
-            window.location.href='index.php';
+            window.location.href='../../index.php';
         </script>";
   }
 
