@@ -133,7 +133,7 @@ if (isset($_POST['dangnhap'])) {
           </div>
           <div class="auht-control">
             <div class="forgot">
-              <a href="web/forgot/nhapmail.php">Quên mật khẩu?</a>
+              <a href="../forgot/nhapmail.php">Quên mật khẩu?</a>
             </div>
             <input type="submit" name="dangnhap" class="btn" value="ĐĂNG NHẬP"></input>
           </div>
