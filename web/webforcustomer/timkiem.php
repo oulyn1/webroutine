@@ -13,7 +13,7 @@
 <?php
 session_start();
 include ("../../config/config.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit'])||isset($_POST['dangnhap'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
   $query = "SELECT * FROM user WHERE Email='" . $email . "' AND Password='" . $password . "' LIMIT 1";
