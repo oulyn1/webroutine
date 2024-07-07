@@ -237,7 +237,7 @@ if (isset($_POST['dangnhap'])) {
 
     <form method="POST">
         <div class="Search" id="Search">
-            <label for="txtSearch">Nhập thông tin tìm kiếm: </label>
+            <label for="txtSearch">Tìm kiếm sản phẩm: </label>
             <input type="text" name = "txtSearch" id="txtSearch" name="txtSearch" class="txtSearch">
             <input type="submit" value = "Tìm kiếm" id="btnSearch" name="btnSearch">
         </div>

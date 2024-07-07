@@ -249,7 +249,8 @@ if (!isset($_SESSION["customer"])) {
                     <h3>Đơn hàng gồm có</h3>';
                     $sqlsanpham="SELECT * FROM tbl_sanpham,tbl_chitietdonhang,tbl_donhang 
                                 WHERE tbl_sanpham.idsanpham=tbl_chitietdonhang.idsanpham 
-                                AND tbl_donhang.iddonhang=tbl_chitietdonhang.madon";
+                                AND tbl_donhang.iddonhang=tbl_chitietdonhang.madon
+                                AND tbl_donhang.iddonhang=$madon";
                                 $result2=mysqli_query($conn,$sqlsanpham);
                                 if (mysqli_num_rows($result2) > 0){
                                     while ($row = mysqli_fetch_assoc($result2)){
