@@ -226,6 +226,7 @@ if (!isset($_SESSION["customer"])) {
             $query = "SELECT * FROM tbl_sanpham
             WHERE iddanhmuccon='$_GET[IDDM]'
             AND idloaisanpham='$_GET[IDLSP]'
+            AND soluong > 0
             ORDER BY idsanpham DESC";
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);

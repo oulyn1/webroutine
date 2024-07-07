@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
         include("config/config.php");
         //buoc 2 viet truy van
-        $query = "SELECT * FROM tbl_sanpham ORDER BY idsanpham DESC limit 4";
+        $query = "SELECT * FROM tbl_sanpham WHERE soluong > 0 ORDER BY idsanpham DESC limit 4";
         //buoc 3 thuc thi cau lenh
         $result = mysqli_query($conn, $query);
         //buoc 4 lay du lieu
