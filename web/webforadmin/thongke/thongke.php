@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/admin.css" />
     <link rel="stylesheet" href="../../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <title>Thống kê</title>
 </head>
 
@@ -35,3 +39,30 @@
             <div class="body-header">
                 <h1>Thống kê</h1>
             </div>
+            
+            <div id="revenue-chart" style="height: 250px;"></div>
+            <script>
+                $(document).ready(function() {
+                    // Dữ liệu doanh thu
+                    var data = [
+                        { year: '2016', sales:5000000, order:40 , quantity: 50 },
+                        { year: '2017', sales:3000000, order:30 , quantity: 40 },
+                        { year: '2018', sales:6000000, order:55 , quantity: 55 },
+                        { year: '2019', sales:8000000, order:65 , quantity: 65 },
+                    ];
+
+                    // Tạo biểu đồ
+                    new Morris.Bar({
+                        element: 'revenue-chart',
+                        data: data,
+                        xkey: 'year',
+                        ykeys: ['sales','order','quantity'],
+                        labels: ['Doanh thu','Số đơn hàng','Số lượng đã bán'],
+                        resize: true
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+</body>
