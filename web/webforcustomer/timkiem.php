@@ -13,7 +13,7 @@
 <?php
 session_start();
 include ("../../config/config.php");
-if (isset($_POST['submit'])||isset($_POST['dangnhap'])) {
+if (isset($_POST['dangnhap'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
   $query = "SELECT * FROM user WHERE Email='" . $email . "' AND Password='" . $password . "' LIMIT 1";
@@ -159,7 +159,7 @@ if (isset($_POST['submit'])||isset($_POST['dangnhap'])) {
           </p>
         </div>
 
-        <form method="post" action="web/dangki.php">
+        <form method="post" action="../dangki.php">
           <div class="auth-form">
             <div class="auth-group">
               <p>Họ và tên</p>
