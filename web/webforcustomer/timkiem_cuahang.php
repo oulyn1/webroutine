@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm kiếm sản phẩm</title>
+    <title>Tìm kiếm cửa hàng</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
@@ -270,7 +270,7 @@ if (isset($_POST['dangnhap'])) {
                 </div>';
             }else{
                 echo'<div class="maincontent" id="content">
-                Hiện chưa có sản phẩm này vui lòng tìm kiếm sản phẩm khác!
+                Hiện chưa có cửa hàng này vui lòng tìm kiếm cửa hàng khác!
                 </div>';
             }
         }

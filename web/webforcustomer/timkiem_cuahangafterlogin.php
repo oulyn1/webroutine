@@ -13,7 +13,7 @@ if (!isset($_SESSION["customer"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm Kiếm Sản phẩm</title>
+    <title>Tìm Kiếm Cửa Hàng</title>
     <link rel="stylesheet" href="../../asset/css/customer.css?v= <?php echo time(); ?>">
     <link rel="stylesheet" href="../../asset/css/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../../asset/css/footer.css">
@@ -177,7 +177,7 @@ if (!isset($_SESSION["customer"])) {
                 </div>';
             }else{
                 echo'<div class="maincontent" id="content">
-                Hiện chưa có sản phẩm này vui lòng tìm kiếm sản phẩm khác!
+                 Hiện chưa có cửa hàng này vui lòng tìm kiếm cửa hàng khác!
                 </div>';
             }
         }
