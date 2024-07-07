@@ -105,7 +105,7 @@ if (!isset($_SESSION["admin"])) {
                             $query = "SELECT * FROM tbl_donhang,user,khach_hang 
                             WHERE user.id_user=tbl_donhang.iduser
                             AND khach_hang.id=tbl_donhang.iduser
-                            AND iddonhang LIKE '%".$keysearch."%'";
+                            AND (tbl_donhang.iddonhang LIKE '%".$keysearch."%' OR user.Fullname LIKE '%".$keysearch."%' OR khach_hang.so_dien_thoai LIKE '%".$keysearch."%')";
                             //buoc 3 thuc thi cau lenh
                             $result = mysqli_query($conn, $query);
                             echo '

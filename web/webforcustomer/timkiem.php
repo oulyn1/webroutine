@@ -13,7 +13,7 @@
 <?php
 session_start();
 include ("../../config/config.php");
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['dangnhap'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
   $query = "SELECT * FROM user WHERE Email='" . $email . "' AND Password='" . $password . "' LIMIT 1";
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     echo "<script>
             alert('Sai mật khẩu hoặc email!!!!');
-            window.location.href='index.php';
+            window.location.href='../../index.php';
         </script>";
   }
 
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </p>
         </div>
 
-        <form method="post" action="web/dangki.php">
+        <form method="post" action="../dangki.php">
           <div class="auth-form">
             <div class="auth-group">
               <p>Họ và tên</p>
@@ -248,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $keysearch=$_POST['txtSearch'];
             include("../../config/config.php");
-            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE N'%".$keysearch."%' ORDER BY idsanpham DESC";
+            $query = "SELECT * FROM tbl_sanpham WHERE tensanpham LIKE '%".$keysearch."%' ORDER BY idsanpham DESC";
             //buoc 2 viet truy van
             //buoc 3 thuc thi cau lenh
             $result = mysqli_query($conn, $query);

@@ -34,9 +34,6 @@ if (!isset($_SESSION["admin"])) {
                 <a href="../danhgia/danhgia.php" class="header__list-items"><b>Đánh giá</b></a>
             </div>
             <div class="header__list2">
-                <form method="POST">
-                    <input type="text" name="txtTimkiem" id="txtTimkiem" placeholder="Tìm kiếm...." class="search">
-                </form>
                 <a href="../logout.php" class="logout" class="logout">Đăng xuất</a>
             </div>
             </div>
