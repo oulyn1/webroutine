@@ -116,7 +116,7 @@ if (!isset($_SESSION["admin"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Fullname = $_POST['txtName'];
         $Email = $_POST['txtEmail'];
-        $qsl = "SELECT * FROM user WHERE Email='$Email'";
+        $qsl = "SELECT * FROM user WHERE Email='$Email' AND Id_user!='".$id_user."'";
         $result = mysqli_query($conn, $qsl);
         if (mysqli_num_rows($result) == 0) {
         $query = "UPDATE user SET Fullname='" . $Fullname . "', Email='" . $Email . "' WHERE id_user='" . $id_user . "'";
