@@ -246,7 +246,7 @@ if (!isset($_SESSION["customer"])) {
         ?>
         
         <?php
-        // Truy vấn thông tin người dùng
+
         $sql = "SELECT * FROM khach_hang, user WHERE user.Id_user = $ID AND khach_hang.id = user.Id_user";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
@@ -264,26 +264,25 @@ if (!isset($_SESSION["customer"])) {
         ?>
         <div class="shopping-info">
             <h3>Thông tin giao hàng</h3>
-            <form>
+            <form method="POST">
                 <div class="form-group">
-                    <input type="text" value="<?php echo $ten;?>"placeholder="Nhập Họ Và Tên">
-                    <input type="text" value="<?php echo $so_dien_thoai; ?>"placeholder="Nhập Số Điện Thoại">
+                    <input type="text" value="<?php echo $ten;?>"placeholder="Nhập Họ Và Tên" required>
+                    <input type="text" id="sdt" value="<?php echo $so_dien_thoai; ?>"placeholder="Nhập Số Điện Thoại" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" value="<?php echo $dia_chi; ?>"placeholder="Nhập Địa Chỉ">
+                    <input type="text" id="dia_chi" value="<?php echo $dia_chi; ?>"placeholder="Nhập Địa Chỉ" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" value="<?php echo $email?>"placeholder="Nhập Địa Chỉ Email">
+                    <input type="text" value="<?php echo $email?>"placeholder="Nhập Địa Chỉ Email" required>
                 </div>
-            </form>
-        </div>
+                </div>
         <div class="total-price">
             <p>Tổng tiền:</p>
             <p><?php echo''.number_format($tongtien,0,',','.').' <u>đ</u>'; ?></p>
         </div>
-        <form method="POST">
+        
         <div class="cart-buttons">
-            <input type="submit" class="checkout" value="THANH TOÁN">
+            <input type="submit" class="checkout" onclick="check()" value="THANH TOÁN">
         </div>
         </form>
     </div>
