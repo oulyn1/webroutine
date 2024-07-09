@@ -1,7 +1,6 @@
 <?php
 include("../../config/config.php");
 
-// Kiểm tra nếu người dùng đã đăng nhập
 session_start();
 if (!isset($_SESSION["customer"])) {
     header("location: ../../index.php");
@@ -10,13 +9,13 @@ if (!isset($_SESSION["customer"])) {
     $ID = $_SESSION["customer"];
 }
 
-// Khởi tạo các biến để tránh lỗi Undefined variable
+
 $ten = "";
 $email = "";
 $so_dien_thoai = "";
 $dia_chi = "";
 
-// Nếu người dùng submit form cập nhật
+
 if (isset($_POST['update'])) {
     $ten = $_POST['ten'];
     $email = $_POST['email'];
@@ -25,17 +24,16 @@ if (isset($_POST['update'])) {
     $qsl = "SELECT * FROM user WHERE Email='$email' AND Id_user!='".$ID."'";
         $result = mysqli_query($conn, $qsl);
         if (mysqli_num_rows($result) == 0) {
-    // Câu lệnh SQL để cập nhật thông tin khách hàng
+   
     $query_update_user = "UPDATE user SET Fullname='$ten', Email='$email' WHERE Id_user=$ID";
     $query_update_khachhang = "UPDATE khach_hang SET so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi' WHERE id=$ID";
 
-    // Thực thi câu lệnh cập nhật
+    
     $result_update_user = mysqli_query($conn, $query_update_user);
     $result_update_khachhang = mysqli_query($conn, $query_update_khachhang);
 
     if ($result_update_user && $result_update_khachhang) {
         echo "<script>alert('Cập nhật thông tin thành công');</script>";
-        // Cập nhật lại thông tin hiển thị trên trang
     } else {
         echo "<script>alert('Lỗi khi cập nhật thông tin');</script>";
     }
