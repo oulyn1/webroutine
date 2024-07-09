@@ -77,7 +77,7 @@ if (!isset($_SESSION["admin"])) {
                                         </tr>
                                         <tr>
                                             <td class="info-name"><label for="Soluong">Số lượng</label></td>
-                                            <td><input type="text" class="info-name-property" id="Soluong" name="txtSoluong"
+                                            <td><input type="number" class="info-name-property" id="Soluong" name="txtSoluong"
                                                     value="<?php echo $Soluong ?>" require /></td>
                                         </tr>
                                         <tr>
