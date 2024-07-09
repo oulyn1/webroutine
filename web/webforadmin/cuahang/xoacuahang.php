@@ -1,11 +1,9 @@
 <?php
 include("../../../config/config.php");
 
-// Kiểm tra xem ID của cửa hàng đã được truyền vào từ URL chưa
 if (isset($_GET['ID'])) {
     $id = $_GET['ID'];
 
-    // Xóa cửa hàng từ database
     $query_delete = "DELETE FROM cua_hang WHERE idcuahang = $id";
 
     if (mysqli_query($conn, $query_delete)) {

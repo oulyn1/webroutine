@@ -281,14 +281,12 @@ if (!isset($_SESSION["customer"])) {
         </div>
             </div>
             <?php
-                // Include file cấu hình kết nối CSDL và thực hiện truy vấn
                             include("../../config/config.php");
 
-                            // Mã SQL để lấy thông tin tên và email của người dùng (giả sử đã đăng nhập)
-                            $user_id = $ID; // Thay đổi thành phương thức phù hợp để lấy ID người dùng đăng nhập
+                            $user_id = $ID; 
                             $sql = "SELECT * FROM khach_hang,user WHERE user.Id_user= $user_id AND khach_hang.id=user.Id_user";
 
-                            // Thực thi truy vấn và lấy kết quả
+                            
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)){
@@ -298,7 +296,6 @@ if (!isset($_SESSION["customer"])) {
                                 $address= $row["dia_chi"];
                             }
                             } else {
-                                // Xử lý khi không tìm thấy thông tin người dùng
                                 $ten = "Không có thông tin";
                                 $email = "Không có thông tin";
                                 $phone= "";

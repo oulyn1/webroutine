@@ -1,11 +1,11 @@
 <?php
 include("../../../config/config.php");
 
-// Kiểm tra xem ID của cửa hàng đã được truyền vào từ URL chưa
+
 if (isset($_GET['ID'])) {
     $id = $_GET['ID'];
     
-    // Truy vấn lấy thông tin của cửa hàng dựa trên ID
+
     $query = "SELECT * FROM cua_hang WHERE idcuahang = $id";
     $result = mysqli_query($conn, $query);
     
@@ -25,7 +25,7 @@ if (isset($_GET['ID'])) {
     exit();
 }
 
-// Xử lý khi người dùng submit form sửa thông tin cửa hàng
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ten_moi = $_POST['ten'];
     $dia_chi_moi = $_POST['dia_chi'];
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hinhanh = $_POST['hinhanh'];
     $sdt = $_POST['sdt'];
 
-    // Cập nhật thông tin cửa hàng trong database
+
     $query_update = "UPDATE cua_hang SET 
                         ten = '$ten_moi', 
                         dia_chi = '$dia_chi_moi', 
