@@ -113,7 +113,7 @@ if (!isset($_SESSION["customer"])) {
       </div>
     </div>
 
-      <div class="model" id="modal-love">
+    <div class="model" id="modal-love">
       <div class="model-overlay"></div>
       <div class="modal-right">
         <div class="modal-love">
@@ -136,6 +136,7 @@ if (!isset($_SESSION["customer"])) {
             while ($row = mysqli_fetch_assoc($result)){
                 echo' <div class="modal__items">
               
+            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
@@ -144,6 +145,7 @@ if (!isset($_SESSION["customer"])) {
 
                 <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
+            </a>
 
               <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
             </div> ';       
@@ -157,6 +159,7 @@ if (!isset($_SESSION["customer"])) {
         </div>
       </div>
     </div>
+
 
     <div class="model" id="modal-shopping">
       <div class="model-overlay"></div>
@@ -179,6 +182,7 @@ if (!isset($_SESSION["customer"])) {
                  echo'
             <div class="modal__items">
               
+            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
@@ -188,6 +192,7 @@ if (!isset($_SESSION["customer"])) {
                 <div class="modal__items__quantity">
                     <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
+            </a>
 
                 <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
@@ -209,8 +214,7 @@ if (!isset($_SESSION["customer"])) {
           </div>';
           }
         
-        ?> 
-          
+        ?>  
           
       </div>
     </div>

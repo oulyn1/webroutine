@@ -138,7 +138,7 @@ if (!isset($_SESSION["admin"])) {
                                     if($row["tinhtrang"]==1){
                                         $status="Đơn hàng mới";
                                         echo'<td><a class="thea" href="capnhatdon.php?CODE='.$row["iddonhang"].'">'.$status.'</a></td>
-                                        <td><a class="thea" onclick="return confirm(\'Bạn có muốn xóa sản phẩm không?\');" href="huydonhang.php?ID='.$row["iddonhang"].'">Hủy</a></td>';
+                                        <td><a class="thea" onclick="return confirm(\'Bạn có muốn hủy đơn hàng không?\');" href="huydonhang.php?ID='.$row["iddonhang"].'">Hủy</a></td>';
                                     }else{
                                         $status="Đã xử lý";
                                         echo'<td>'.$status.'</td>

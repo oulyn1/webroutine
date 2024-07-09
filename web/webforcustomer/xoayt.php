@@ -16,7 +16,7 @@
             echo'<script>
             window.location.href="infoItemLayout.php?ID='.$ID.'";
         </script>';
-        }else{
+        } else {
             echo'<script>
             window.location.href="infoItemLayout.php?ID='.$ID.'";
         </script>';
