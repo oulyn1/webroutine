@@ -116,10 +116,10 @@ if (isset($_POST['update'])) {
         </ul>
       </div>
       <div class="header__right">
-        <a class="search" href="">
-          <i class="ti-search"></i>
-          <span class="search__title">Tìm kiếm</span>
-        </a>
+      <a class="search" href="timkiemafterlogin.php">
+            <i class="ti-search"></i>
+            <span class="search__title">Tìm kiếm</span>
+          </a>
         <span class="ti-user" id="openlogin" href=""></span>
         <span class="ti-heart" id="openlove" href=""></span>
         <span class="ti-shopping-cart" id="openshopping" href=""></span>
@@ -405,16 +405,16 @@ if (isset($_POST['update'])) {
 
         <div class="policy">
 
-            <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
+        <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
             <ul>
-                  <li><p >Chính sách khách hàng thân thiết</p></li>
-                  <li><p >Chính sách đổi trả</p></li>
-                  <li><p >Chính sách bảo hành</p></li>
-                  <li><p >Chính sách bảo mật</p></li>
-                  <li><p >Câu hỏi thường gặp</p></li>
-                  <li><p >Hướng dẫn mua hàng online</p></li>
-                  <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
-              </ul>
+                <li><p>Chính sách khách hàng thân thiết</p></li>
+                <li><p>Chính sách đổi trả</p></li>
+                <li><p>Chính sách bảo hành</p></li>
+                <li><p>Chính sách bảo mật</p></li>
+                <li><p>Câu hỏi thường gặp</p></li>
+                <li><p>Hướng dẫn mua hàng online</p></li>
+                <li><p>Hướng dẫn kiểm tra hạng thành viên</p></li>
+            </ul>
             
         </div>
 

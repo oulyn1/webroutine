@@ -229,7 +229,7 @@ if (!isset($_SESSION["customer"])) {
               echo'<div class="cart-item">
                   <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="">
                   <div class="item-details">
-                      <p class="item-name">'.$row["tensanpham"].'</p>
+                      <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" class="item-name" style="text-decoration: none; color: #000;" >'.$row["tensanpham"].'</a>
                       
                       <div class="item-quantity">
                           Số lượng: '.$row["SoLuong"].'
@@ -327,13 +327,13 @@ if (!isset($_SESSION["customer"])) {
 
             <h5>CHÍNH SÁCH KHÁCH HÀNG</h5>
             <ul>
-                <li><p >Chính sách khách hàng thân thiết</p></li>
-                <li><p >Chính sách đổi trả</p></li>
-                <li><p >Chính sách bảo hành</p></li>
-                <li><p >Chính sách bảo mật</p></li>
-                <li><p >Câu hỏi thường gặp</p></li>
-                <li><p >Hướng dẫn mua hàng online</p></li>
-                <li><p>Hướng dẫn kiểm trra hạng thành viên</p></li>
+                <li><p>Chính sách khách hàng thân thiết</p></li>
+                <li><p>Chính sách đổi trả</p></li>
+                <li><p>Chính sách bảo hành</p></li>
+                <li><p>Chính sách bảo mật</p></li>
+                <li><p>Câu hỏi thường gặp</p></li>
+                <li><p>Hướng dẫn mua hàng online</p></li>
+                <li><p>Hướng dẫn kiểm tra hạng thành viên</p></li>
             </ul>
             
         </div>
