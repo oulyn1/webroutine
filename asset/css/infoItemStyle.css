@@ -319,6 +319,10 @@ ul li a {
     max-height: 80%;
 }
 
+#modal-love .modal__items a {
+    display: flex;
+}
+
 .modal__items .image {
     width: 88px;
     height: auto;

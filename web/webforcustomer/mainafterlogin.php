@@ -199,7 +199,7 @@ if (!isset($_SESSION["customer"])) {
             while ($row = mysqli_fetch_assoc($result)){
                 echo' <div class="modal__items">
               
-            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
+            <a class="modal__yt" href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
