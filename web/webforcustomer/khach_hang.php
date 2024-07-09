@@ -333,7 +333,7 @@ if (isset($_POST['update'])) {
                         </div>
                         <div class="field-group">
                             <p class="p2">Số điện thoại</p>
-                            <input id="input" type="number" name="so_dien_thoai" placeholder="hãy điền số điện thoại" value="<?php echo $phone; ?>">
+                            <input id="input" type="number" name="so_dien_thoai" placeholder="Hãy điền số điện thoại" value="<?php echo $phone; ?>">
                         </div>
                         <div class="field-group">
                             <p class="p2">Địa chỉ</p>
