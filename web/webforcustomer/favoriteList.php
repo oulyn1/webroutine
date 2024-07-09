@@ -86,7 +86,7 @@ if (!isset($_SESSION["customer"])) {
             <span class="search__title">Tìm kiếm</span>
           </a>
           <span class="ti-user" id="openlogin" href=""></span>
-          <span class="ti-heart" id="openlove" href=""></span>
+          <span class="ti-heart" id="openlove" href="" style="display: none;"></span>
           <span class="ti-shopping-cart" id="openshopping" href=""></span>
         </div>
       </div>
@@ -118,7 +118,7 @@ if (!isset($_SESSION["customer"])) {
       </div>
     </div>
 
-      <div class="model" id="modal-love">
+    <div class="model" id="modal-love">
       <div class="model-overlay"></div>
       <div class="modal-right">
         <div class="modal-love">
@@ -154,6 +154,7 @@ if (!isset($_SESSION["customer"])) {
                  echo'
             <div class="modal__items">
               
+            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
@@ -163,6 +164,7 @@ if (!isset($_SESSION["customer"])) {
                 <div class="modal__items__quantity">
                     <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
+            </a>
 
                 <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
@@ -185,7 +187,6 @@ if (!isset($_SESSION["customer"])) {
           }
         
         ?>  
-          
           
       </div>
     </div>
@@ -231,6 +232,8 @@ if (!isset($_SESSION["customer"])) {
                                     <span class="price">'.number_format($row["giasanpham"],0,',','.').' <u>đ</u></span>
                                 </p>
                             </div>
+
+                            <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black; margin-left: 20px;">X</a>
                           </div> ';
                   }
                 }

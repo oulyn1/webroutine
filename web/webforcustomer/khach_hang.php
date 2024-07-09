@@ -171,36 +171,39 @@ if (isset($_POST['update'])) {
 
           <div class="item_sp" style="overflow: auto;width: 100%;height: 600px;">
 
-            <?php
+          <?php
 
-              include("../../config/config.php");
-              $sql="SELECT * FROM yeuthich,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
-              $result=mysqli_query($conn, $sql);
-              if(mysqli_num_rows($result) > 0){
-              while ($row = mysqli_fetch_assoc($result)){
-                  echo' <div class="modal__items">
-                
-                <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
-                <div class="modal__items__details">
-                  <p class="modal__items__name">
-                    '.$row["tensanpham"].'
-                  </p>
+            include("../../config/config.php");
+            $sql="SELECT * FROM yeuthich,tbl_sanpham WHERE IDUser='$ID' AND tbl_sanpham.idsanpham=yeuthich.IDSanPham";
+            $result=mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) > 0){
+            while ($row = mysqli_fetch_assoc($result)){
+                echo' <div class="modal__items">
+              
+            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
+              <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
+              <div class="modal__items__details">
+                <p class="modal__items__name">
+                  '.$row["tensanpham"].'
+                </p>
 
-                  <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
-                </div>
+                <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
+              </div>
+            </a>
 
-                <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
-              </div> ';       
-                }
+              <a href="xoayt.php?ID='.$row["IDSanPham"].'" class="" style="text-decoration: none; color: black;">X</a>
+            </div> ';       
               }
+            }
 
-            ?>
-                
+          ?>
+               
           </div>
 
         </div>
       </div>
     </div>
+
 
     <div class="model" id="modal-shopping">
       <div class="model-overlay"></div>
@@ -223,6 +226,7 @@ if (isset($_POST['update'])) {
                  echo'
             <div class="modal__items">
               
+            <a href="infoItemLayout.php?ID='.$row["idsanpham"].'" style="text-decoration: none; color: #000">
               <img src="../../asset/img/'.$row["hinhanhsanpham"].'" alt="" class="image">
               <div class="modal__items__details">
                 <p class="modal__items__name">
@@ -232,6 +236,7 @@ if (isset($_POST['update'])) {
                 <div class="modal__items__quantity">
                     <div class="title">Số lượng: '.$row["SoLuong"].'</div>
                 </div>
+            </a>
 
                 <p class="modal__items__price">'.number_format($row["giasanpham"],0,',','.').'<u>đ</u></p>
               </div>
@@ -254,7 +259,6 @@ if (isset($_POST['update'])) {
           }
         
         ?>  
-          
           
       </div>
     </div>
