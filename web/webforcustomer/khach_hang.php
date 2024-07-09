@@ -60,6 +60,7 @@ if (isset($_POST['update'])) {
   <link rel="shortcut icon" href="../../asset/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../asset/css/infoItemStyle.css">
   <link rel="stylesheet" href="../../asset/css/favoriteList.css">
+  <link rel="stylesheet" href="../../asset/css/khach_hang.css">
 </head>
 
 <body>
@@ -327,20 +328,20 @@ if (isset($_POST['update'])) {
                         <div class="field-group-name">
                             <div class="field-group-1">
                                 <p class="p2">Họ và tên</p>
-                                <input type="text" name="ten" value="<?php echo $ten; ?>">
+                                <input id="input" type="text" name="ten" value="<?php echo $ten; ?>">
                             </div>
                         </div>
                         <div class="field-group">
                             <p class="p2">Email</p>
-                            <input type="email" name="email" value="<?php echo $email; ?>">
+                            <input id="input" type="email" name="email" value="<?php echo $email; ?>">
                         </div>
                         <div class="field-group">
                             <p class="p2">Số điện thoại</p>
-                            <input type="number" name="so_dien_thoai" placeholder="hãy điền số điện thoại" value="<?php echo $phone; ?>">
+                            <input id="input" type="number" name="so_dien_thoai" placeholder="hãy điền số điện thoại" value="<?php echo $phone; ?>">
                         </div>
                         <div class="field-group">
                             <p class="p2">Địa chỉ</p>
-                            <input type="text" name="dia_chi" value="<?php echo $address; ?>"placeholder="Hãy điền địa chỉ">
+                            <input id="input" type="text" name="dia_chi" value="<?php echo $address; ?>"placeholder="Hãy điền địa chỉ">
                         </div>
                         <button type="submit" name="update">CẬP NHẬT THÔNG TIN</button>
                     </form>
