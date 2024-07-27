@@ -324,8 +324,8 @@ if (!isset($_SESSION["customer"])) {
         <div class="label"><label for="mota" class="modal-label"> Chia sẻ cảm nhận của bạn về sản phẩm </label></div>
         <div class="textarea"><textarea name="txtmota" id="mota" class="modal-input" cols="26" rows="10"></textarea></div>
         
-          <input id="ticket-email"type="text" class="modal-input" placeholder="Tên" value="<?php echo $name?>"/>
-          <input id="ticket-email"type="email" class="modal-input" placeholder="Enter email" value="<?php echo $email?>"/>
+          <input id="ticket-email"type="text" class="modal-input" placeholder="Tên" value="<?php echo $name?>" disabled/>
+          <input id="ticket-email"type="email" class="modal-input" placeholder="Enter email" value="<?php echo $email?>" disabled/>
         
         <input type="submit" class="modal-btn" name="add" value="Gửi">
       </form>
